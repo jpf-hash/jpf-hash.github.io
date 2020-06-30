@@ -6,16 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: pyhon | jpf_blog</title>
+  <title>&#39;linux基础命令&#39; | jpf_blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="nothing">
-<meta property="og:type" content="website">
-<meta property="og:title" content="jpf_blog">
-<meta property="og:url" content="http://yoursite.com/tags/pyhon/index.html">
+  <meta name="description" content="Linux基础命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="&#39;linux基础命令&#39;">
+<meta property="og:url" content="http://yoursite.com/2020/06/30/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/index.html">
 <meta property="og:site_name" content="jpf_blog">
-<meta property="og:description" content="nothing">
+<meta property="og:description" content="Linux基础命令">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-30T08:48:07.000Z">
+<meta property="article:modified_time" content="2020-06-30T09:56:00.967Z">
 <meta property="article:author" content="斯乌">
+<meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="jpf_blog" type="application/atom+xml">
@@ -165,59 +168,283 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-  
+<article id="post-linux基础命令" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/10/%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2020-06-10T13:45:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-10</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/10/%E5%8D%9A%E5%AE%A2/">博客</a>
+    <h1 class="article-title" itemprop="name">
+      &#39;linux基础命令&#39;
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/06/30/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" class="archive-article-date">
+  	<time datetime="2020-06-30T08:48:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Linux基础命令"><a href="#Linux基础命令" class="headerlink" title="Linux基础命令"></a>Linux基础命令</h1><a id="more"></a>
+<h2 id="用户配置"><a href="#用户配置" class="headerlink" title="用户配置"></a>用户配置</h2><ol>
+<li>超级用户(root) 普通用户<ul>
+<li>超级用户可以在linux下做任何事 情，不受限制。</li>
+<li>普通用户在linux下做有限的事情</li>
+<li>切换用户<blockquote>
+<p>su [用户名]  # 功能切换用户</p>
+</blockquote>
+</li>
+<li>初次切换root用户时，需要设置密码。<blockquote>
+<p>sudo passwd root</p>
+</blockquote>
+</li>
+<li>添加新用户(-m添加家目录，-s指定使用的脚本解释器)<blockquote>
+<p>sudo useradd -m [用户名] -s /bin/bash  </p>
+</blockquote>
+</li>
+<li>设置密码<blockquote>
+<p>sudo passwd [用户名]</p>
+</blockquote>
+</li>
+<li>查看当前系统用户<blockquote>
+<p>cat /etc/passwd</p>
+</blockquote>
+</li>
+<li>删除用户(-r 删除家目录，不加则不删)<blockquote>
+<p>userdel -r [用户名]</p>
+</blockquote>
+<h2 id="目录及文件操作"><a href="#目录及文件操作" class="headerlink" title="目录及文件操作"></a>目录及文件操作</h2></li>
+</ul>
+<ol>
+<li>查看文件或目录<blockquote>
+<p>ls -a/-l/<br>-a: 显示所有文件包括隐藏文件<br>-l: 列出所有目录及文件的详细信息</p>
+</blockquote>
+<ul>
+<li>从左至右依次是：文件类型及权限、连接数、文件所有者、文件所处组、文件大小、最近修改时间、文件名字</li>
+<li>文件类型及权限中最开头的字符串，第一个字母为文件类型,可以有以下几种：<blockquote>
+<p>d:目录文件<br>l:符号链接<br>b:块设备文件<br>c:字符设备文件<br>p:命名管道<br>s:socket文件<br>-:普通文件<br>后9个字符，3各位一组，分别是文件创建者权限(u)，同组用户权限(g)，其他用户权限(o)，r\w\x，分别为读\写\执<br>行权限,</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>更改目录或文件权限<br>使用chmod命令改变权限.<ul>
+<li>文字设定改变文件权限<blockquote>
+<p>chmod +x test.txt 表示给test文件增加可执行权限，u\g\o都可执行，-代表取消某些权限，=表示给定某个权限并取消其他权限<br>chmod g+r，o+r test.txt 表示给同组用户和其他用户增加可读权限</p>
+</blockquote>
+</li>
+<li>数字设定发改变文件权限<blockquote>
+<p>chmod 数字 文件名<br>例如 chmod 664 test.txt 表示拥有者可读可写，同组可读可写，其他用户可读。 (数字是2可读，4可写，6为可读写，7可读可写可执行)</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>改变工作目录<blockquote>
+<p>cd 目录名<br>cd .. 到父目录<br>cd / 到根目录<br>cd - 到上一次的目录</p>
+</blockquote>
+</li>
+<li>创建目录<blockquote>
+<p>mkdir 创建目录的名字</p>
+</blockquote>
+</li>
+<li>删除目录<blockquote>
+<p>rmdir 目录名字 (目录中若不为空，需要加-r)</p>
+</blockquote>
+</li>
+<li>拷贝文件或目录<blockquote>
+<p>cp 源文件或目录 目标文件或目录<br>cp -f/-i test.c /home/user/test1.c（-f表示若有重名文件不提示直接覆盖，-i则提示是否覆盖）若拷贝目录则需要加-r</p>
+</blockquote>
+</li>
+<li>移动文件或目录<blockquote>
+<p>mv 源文件或目录 目标文件或目录<br>也有-f -i 也是重复是否提示</p>
+</blockquote>
+</li>
+<li>删除文件或目录<blockquote>
+<p>rm 文件或目录<br>-f 删除不给提示<br>-i 会有提示<br>删除目录 加-r</p>
+</blockquote>
+</li>
+<li>显示目录树形结构<br>首先安装功能<blockquote>
+<p>sudo apt-get install tree<br>tree<br>-a: 显示所有文件和目录<br>-c: 在文件和目录清单加上色彩，区分类型<br>-d: 显示目录名称<br>-D: 列出文件或目录的更改时间<br>-g: 列出文件或目录的所属群组名称<br>-i: 不以阶梯状列出文件或目录名称<br>-t: 用文件和目录的更改时间排序<br>-u: 列出文件或目的的拥有者名称<br>-h: 显示每个文件大小</p>
+</blockquote>
+</li>
+<li>显示当前目录<blockquote>
+<p>pwd</p>
+</blockquote>
+</li>
+<li>文件系统使用情况<blockquote>
+<p>df -h 显示整个磁盘使用情况<br>du -h 显示所有文件的使用空间 若只想显示当前目录 du -h –max-depth=0 /home/jpf</p>
+</blockquote>
+</li>
+<li>文件查找<h2 id="文件查看"><a href="#文件查看" class="headerlink" title="文件查看"></a>文件查看</h2></li>
+</ol>
+</li>
+</ol>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">pyhon</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/linux//" class="article-tag-list-link color2">-linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+  <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+  <p>扫一扫，分享到微信</p>
+  <div class="wx-qrcode">
+    <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://jpf-hash.github.io/2020/06/30/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" alt="微信分享二维码">
+  </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/06/10/%E5%8D%9A%E5%AE%A2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">博客</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux基础命令"><span class="toc-number">1.</span> <span class="toc-text">Linux基础命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#用户配置"><span class="toc-number">1.1.</span> <span class="toc-text">用户配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目录及文件操作"><span class="toc-number">1.2.</span> <span class="toc-text">目录及文件操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件查看"><span class="toc-number">1.3.</span> <span class="toc-text">文件查看</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -244,9 +471,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
