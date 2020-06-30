@@ -16,7 +16,7 @@
 <meta property="og:description" content="Linux基础命令">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-30T08:48:07.000Z">
-<meta property="article:modified_time" content="2020-06-30T10:07:55.518Z">
+<meta property="article:modified_time" content="2020-06-30T10:11:53.825Z">
 <meta property="article:author" content="斯乌">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
@@ -189,8 +189,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Linux基础命令"><a href="#Linux基础命令" class="headerlink" title="Linux基础命令"></a>Linux基础命令</h1><a id="more"></a>
-<h2 id="用户配置"><a href="#用户配置" class="headerlink" title="用户配置"></a>用户配置</h2><ol>
-<li>超级用户(root) 普通用户<ul>
+<h2 id="用户配置"><a href="#用户配置" class="headerlink" title="用户配置"></a>用户配置</h2><ul>
+<li>超级用户(root) 普通用户</li>
 <li>超级用户可以在linux下做任何事 情，不受限制。</li>
 <li>普通用户在linux下做有限的事情</li>
 <li>切换用户<blockquote>
@@ -216,15 +216,13 @@
 <li>删除用户(-r 删除家目录，不加则不删)<blockquote>
 <p>userdel -r [用户名]</p>
 </blockquote>
-<h2 id="目录及文件操作"><a href="#目录及文件操作" class="headerlink" title="目录及文件操作"></a>目录及文件操作</h2></li>
-</ul>
-</li>
+<h2 id="目录及文件操作"><a href="#目录及文件操作" class="headerlink" title="目录及文件操作"></a>目录及文件操作</h2><ol>
 <li>查看文件或目录<blockquote>
-<p>ls -a/-l/<br> -a: 显示所有文件包括隐藏文件<br> -l: 列出所有目录及文件的详细信息<br> 从左至右依次是：文件类型及权限、连接数、文件所有者、文件所处组、文件大小、最近修改时间、文件名字<br> *文件类型及权限中最开头的字符串，第一个字母为文件类型,可以有以下几种：<br>d:目录文件<br>l:符号链接<br>b:块设备文件<br>c:字符设备文件<br>p:命名管道<br>s:socket文件<br>-:普通文件<br> 后9个字符，3各位一组，分别是文件创建者权限(u)，同组用户权限(g)，其他用户权限(o)，r\w\x，分别为读\写\执<br> 行权限,</p>
+<p>ls -a/-l/<br>-a: 显示所有文件包括隐藏文件<br>-l: 列出所有目录及文件的详细信息<br>从左至右依次是：文件类型及权限、连接数、文件所有者、文件所处组、文件大小、最近修改时间、文件名字<br>*文件类型及权限中最开头的字符串，第一个字母为文件类型,可以有以下几种：<br>d:目录文件<br>l:符号链接<br>b:块设备文件<br>c:字符设备文件<br>p:命名管道<br>s:socket文件<br>-:普通文件<br>后9个字符，3各位一组，分别是文件创建者权限(u)，同组用户权限(g)，其他用户权限(o)，r\w\x，分别为读\写\执<br>行权限,</p>
 </blockquote>
 </li>
-<li>更改目录或文件权限<br> 使用chmod命令改变权限.<br> 文字设定改变文件权限<blockquote>
-<p>chmod +x test.txt 表示给test文件增加可执行权限，u\g\o都可执行，-代表取消某些权限，=表示给定某个权限并取消其他权限<br>chmod g+r，o+r test.txt 表示给同组用户和其他用户增加可读权限<br> 数字设定发改变文件权限<br>chmod 数字 文件名<br>例如 chmod 664 test.txt 表示拥有者可读可写，同组可读可写，其他用户可读。 (数字是2可读，4可写，6为可读写，7可读可写可执行)</p>
+<li>更改目录或文件权限<br>使用chmod命令改变权限.<br>文字设定改变文件权限<blockquote>
+<p>chmod +x test.txt 表示给test文件增加可执行权限，u\g\o都可执行，-代表取消某些权限，=表示给定某个权限并取消其他权限<br>chmod g+r，o+r test.txt 表示给同组用户和其他用户增加可读权限<br>数字设定发改变文件权限<br>chmod 数字 文件名<br>例如 chmod 664 test.txt 表示拥有者可读可写，同组可读可写，其他用户可读。 (数字是2可读，4可写，6为可读写，7可读可写可执行)</p>
 </blockquote>
 </li>
 <li>改变工作目录<blockquote>
@@ -251,8 +249,8 @@
 <p>rm 文件或目录<br>-f 删除不给提示<br>-i 会有提示<br>删除目录 加-r</p>
 </blockquote>
 </li>
-<li>显示目录树形结构<br> 首先安装功能<blockquote>
-<p>sudo apt-get install tree<br> tree<br> -a: 显示所有文件和目录<br> -c: 在文件和目录清单加上色彩，区分类型<br> -d: 显示目录名称<br> -D: 列出文件或目录的更改时间<br> -g: 列出文件或目录的所属群组名称<br> -i: 不以阶梯状列出文件或目录名称<br> -t: 用文件和目录的更改时间排序<br> -u: 列出文件或目的的拥有者名称<br> -h: 显示每个文件大小</p>
+<li>显示目录树形结构<br>首先安装功能<blockquote>
+<p>sudo apt-get install tree<br>tree<br>-a: 显示所有文件和目录<br>-c: 在文件和目录清单加上色彩，区分类型<br>-d: 显示目录名称<br>-D: 列出文件或目录的更改时间<br>-g: 列出文件或目录的所属群组名称<br>-i: 不以阶梯状列出文件或目录名称<br>-t: 用文件和目录的更改时间排序<br>-u: 列出文件或目的的拥有者名称<br>-h: 显示每个文件大小</p>
 </blockquote>
 </li>
 <li>显示当前目录<blockquote>
@@ -265,6 +263,8 @@
 </li>
 <li>文件查找<h2 id="文件查看"><a href="#文件查看" class="headerlink" title="文件查看"></a>文件查看</h2></li>
 </ol>
+</li>
+</ul>
 
       
 
@@ -525,11 +525,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
