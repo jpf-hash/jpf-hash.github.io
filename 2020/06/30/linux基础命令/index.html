@@ -16,7 +16,7 @@
 <meta property="og:description" content="Linux基础命令">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-30T08:48:07.000Z">
-<meta property="article:modified_time" content="2020-06-30T10:22:35.456Z">
+<meta property="article:modified_time" content="2020-07-01T10:51:00.428Z">
 <meta property="article:author" content="斯乌">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
@@ -218,7 +218,7 @@
 </blockquote>
 <h2 id="目录及文件操作"><a href="#目录及文件操作" class="headerlink" title="目录及文件操作"></a>目录及文件操作</h2><ol>
 <li>查看文件或目录<blockquote>
-<p>ls -a/-l/<br>-a: 显示所有文件包括隐藏文件<br>-l: 列出所有目录及文件的详细信息<br>从左至右依次是：文件类型及权限、连接数、文件所有者、文件所处组、文件大小、最近修改时间、文件名字<br>*文件类型及权限中最开头的字符串，第一个字母为文件类型,可以有以下几种：<br>d:目录文件<br>l:符号链接<br>b:块设备文件<br>c:字符设备文件<br>p:命名管道<br>s:socket文件<br>-:普通文件<br>后9个字符，3各位一组，分别是文件创建者权限(u)，同组用户权限(g)，其他用户权限(o)，r\w\x，分别为读\写\执<br>行权限,</p>
+<p>ls -a/-l/<br>-a: 显示所有文件包括隐藏文件<br>-l: 列出所有目录及文件的详细信息<br>从左至右依次是：文件类型及权限、连接数、文件所有者、文件所处组、文件大小、最近修改时间、文件名字<br>文件类型及权限中最开头的字符串，第一个字母为文件类型,可以有以下几种：<br>d:目录文件<br>l:符号链接<br>b:块设备文件<br>c:字符设备文件<br>p:命名管道<br>s:socket文件<br>-:普通文件<br>后9个字符，3各位一组，分别是文件创建者权限(u)，同组用户权限(g)，其他用户权限(o)，r\w\x，分别为读\写\执行权限。</p>
 </blockquote>
 </li>
 <li>更改目录或文件权限<br>使用chmod命令改变权限.<br>文字设定改变文件权限<blockquote>
@@ -261,9 +261,101 @@
 <p>df -h 显示整个磁盘使用情况<br>du -h 显示所有文件的使用空间 若只想显示当前目录 du -h –max-depth=0 /home/jpf</p>
 </blockquote>
 </li>
-<li>文件查找<h2 id="文件查看"><a href="#文件查看" class="headerlink" title="文件查看"></a>文件查看</h2></li>
+<li>文件查找<blockquote>
+<p>and  -a<br>not   !<br>or   -o<br>find 起始目录 查找条件 操作</p>
+</blockquote>
+<ul>
+<li>查找条件</li>
+</ul>
+<ol>
+<li>根据名称和文件属性查找</li>
+</ol>
+<ul>
+<li>-name ‘字串’ 查找文件名匹配所给字串的所有文件<blockquote>
+<p>find . -name file1  查找当前目录下所有的file1文件</p>
+</blockquote>
+</li>
+<li>-gid/uid n  查找属于ID号位n的用户组/用户的所有文件<blockquote>
+<p>find . -gid 1000  查找当前目录下gid为1000的所有文件</p>
+</blockquote>
+</li>
+<li>-group/user ‘字串’ 查找属于用户组名/属于用户名为所给字串的所有文件  <blockquote>
+<p>find . -user jpf  查找当前目录下属于用户jpf的所有文件</p>
+</blockquote>
+</li>
+<li>-empty 查找大小为0的目录文件<blockquote>
+<p>find . -empty 查找当前目录下大小为0的文件</p>
+</blockquote>
+</li>
+<li>-perm 权限数字 查找指定权限的文件<blockquote>
+<p>find . -perm 664 查找当前目录下权限为文件所有者可读可写，组用户可读写，其他用户可读的所有文件</p>
+</blockquote>
+</li>
+<li>-size n 查找指定文件大小的文件 一般默认按块，一块为512字节<blockquote>
+<p>find . -size 1 </p>
+</blockquote>
+</li>
+<li>-type x 查找文件类型为x的文件，x可以分为以下几种：<blockquote>
+<p>d:目录文件<br>l:符号链接<br>b:块设备文件<br>c:字符设备文件<br>p:命名管道<br>s:socket文件<br>-:普通文件<br>find . -type d  查找当前目录下所有的目录文件</p>
+</blockquote>
+</li>
+<li>其中查找文件时也可以使用通配符 * ? []</li>
+</ul>
+<ol start="2">
+<li>根据时间查找</li>
+</ol>
+<ul>
+<li>分钟<blockquote>
+<p>-amin n 查找n分钟前被访问过的文件，n前可使用加减表示，n分钟以内(-)和以外(+)<br>-cmin n 查找n分钟以前文件状态被修改过的文件，n前可使用加减表示，n分钟以内(-)和以外(+)<br>-mmin n 查找n分钟以前文件内容被修改过的文件，n前可使用加减表示，n分钟以内(-)和以外(+)</p>
+</blockquote>
+</li>
+<li>天数<blockquote>
+<p>-atime n 查找n天前被访问过的文件，n前可使用加减表示，n分钟以内(-)和以外(+)<br>-ctime n 查找n天以前文件状态被修改过的文件，n前可使用加减表示，n分钟以内(-)和以外(+)<br>-mtime n 查找n天以前文件内容被修改过的文件，n前可使用加减表示，n分钟以内(-)和以外(+)</p>
+</blockquote>
+</li>
+</ul>
+<ol start="3">
+<li>一些混合操作</li>
+</ol>
+<ul>
+<li>-exec<blockquote>
+<p>find . -type f -exec cp {} /home/user/ ;<br>其中{}为exec之前查找出的内容，而后复制到/home/user/路径下, ;为结束</p>
+</blockquote>
+</li>
+<li>-xargs 通道<blockquote>
+<p>fing . -type f |xargs -i cp {} /home/user/<br>其中{}表示前边找到的内容 -i是xargs的参数，不是cp的参数。 -i 防止异常<br>find . -type f |xargs rm 查找到普通文件删除<br>find . -type f |xargs -i  mv {} /home/user/  查到普通文件移动</p>
+</blockquote>
+</li>
+</ul>
+</li>
 </ol>
 </li>
+</ul>
+<hr>
+<h3 id="发广播"><a href="#发广播" class="headerlink" title="发广播"></a>发广播</h3><blockquote>
+<p>wall<br>广播内容 回车 ctrl+d</p>
+</blockquote>
+<h3 id="软硬链接"><a href="#软硬链接" class="headerlink" title="软硬链接"></a>软硬链接</h3><ul>
+<li><p>软链接(symbolic link)<br> 我们把符号链接称为软链接，它是指向另一个文件的特殊文件，这种文件的数据部分仅包含它所要链接文件的路径名。软链接是为了克服硬链接的不足而引入的，软链接不直接使用inode号作为文件指针，而是使用文件路径名作为指针（软链接：文件名 + 数据部分–&gt;目标文件的路径名）。软件有自己的inode，并在磁盘上有一小片空间存放路径名。因此，软链接能够跨文件系统，也可以和目录链接！其二，软链接可以对一个不存在的文件名进行链接，但直到这个名字对应的文件被创建后，才能打开其链接。</p>
+<blockquote>
+<p>ln -s file file1  file1软连接file上    类似win的快捷方式</p>
+</blockquote>
+</li>
+<li><p>硬链接(hard link)<br>可以将它理解为一个 “指向原始文件 inode 的指针”，系统不为它分配独立的 inode 和 文件。所以，硬链接文件与原始文件其实是同一个文件，只是名字不同。我们每添加一个硬链接，该文件的 innode 连接数就会增加 1。</p>
+<blockquote>
+<p>ln file file2  file file2 之间建立硬链接  那个文件修改内容 都会修改，比如file中本来是hello，建立硬链接后，修改file2内容，file也变了。</p>
+</blockquote>
+</li>
+<li><p>删除文件比复制文件快，是因为只是移除了文件名，去掉了进入该文件的入口，所以文件可以被恢复，一个inode号对应一个文件。</p>
+</li>
+</ul>
+<hr>
+<h2 id="文件查看"><a href="#文件查看" class="headerlink" title="文件查看"></a>文件查看</h2><ol>
+<li>查看文件内容及用户</li>
+</ol>
+<ul>
+<li>cat /etc/passwd 查看用户</li>
+<li>cat 文件   查看文件内容</li>
 </ul>
 
       
@@ -409,7 +501,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux基础命令"><span class="toc-number">1.</span> <span class="toc-text">Linux基础命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#用户配置"><span class="toc-number">1.1.</span> <span class="toc-text">用户配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目录及文件操作"><span class="toc-number">1.2.</span> <span class="toc-text">目录及文件操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件查看"><span class="toc-number">1.3.</span> <span class="toc-text">文件查看</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux基础命令"><span class="toc-number">1.</span> <span class="toc-text">Linux基础命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#用户配置"><span class="toc-number">1.1.</span> <span class="toc-text">用户配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目录及文件操作"><span class="toc-number">1.2.</span> <span class="toc-text">目录及文件操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#发广播"><span class="toc-number">1.2.1.</span> <span class="toc-text">发广播</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#软硬链接"><span class="toc-number">1.2.2.</span> <span class="toc-text">软硬链接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件查看"><span class="toc-number">1.3.</span> <span class="toc-text">文件查看</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -525,15 +617,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
             
             <div class="clearfix"></div>
