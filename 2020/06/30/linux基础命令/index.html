@@ -16,7 +16,7 @@
 <meta property="og:description" content="Linux基础命令">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-30T08:48:07.000Z">
-<meta property="article:modified_time" content="2020-07-02T01:19:48.796Z">
+<meta property="article:modified_time" content="2020-07-02T15:20:50.354Z">
 <meta property="article:author" content="斯乌">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
@@ -351,23 +351,21 @@
 </ul>
 <hr>
 <h2 id="文件查看"><a href="#文件查看" class="headerlink" title="文件查看"></a>文件查看</h2><ol>
-<li>查看文件内容及用户</li>
-</ol>
-<ul>
+<li>查看文件内容及用户<ul>
 <li>查看用户<blockquote>
 <p>cat /etc/passwd </p>
 </blockquote>
 </li>
 <li>查看文件内容<blockquote>
-<p>cat 文件</p>
+<p>cat 文件<br>cat -b 文件 给代码增加行数 空行不算行数</p>
 </blockquote>
 </li>
 <li>创建文件内容<blockquote>
-<p>1 echo (-n) &gt;a.txt (加了-n会变0字节，不加是一个字节)<br>2 touch b.txt<br>3 cat &gt; c.txt ctrl+c退出<br>4 vi d.txt   使用:wq退出</p>
+<p>echo (-n) &gt;a.txt (加了-n会变0字节，不加是一个字节)<br>touch b.txt<br>cat &gt; c.txt ctrl+c退出<br>vi d.txt   使用:wq退出</p>
 </blockquote>
 </li>
 </ul>
-<ol start="2">
+</li>
 <li>显示内容前几行<blockquote>
 <p>head -n 行数 文件名<br>head -n 15 file 显示file文件的前15行</p>
 </blockquote>
@@ -376,7 +374,74 @@
 <p>tail -n 行数 文件名<br>tail -n 15 file 显示file文件的最后15行</p>
 </blockquote>
 </li>
-<li></li>
+<li>对文件内容进行排序<blockquote>
+<p>sort 文件名<br>sort file &gt; file1 把file中的内容排序后,输出重定向至file1中</p>
+</blockquote>
+</li>
+<li>查看文件内容类型<blockquote>
+<p>file 文件名<br>file a.txt 根据a.txt内容查看是什么文件类型</p>
+</blockquote>
+</li>
+<li>报告或删除文件中的重复的行<blockquote>
+<p>uniq 文件名  # 去掉重复的只显示不重复的<br>-c 在输出行前面加上每行在输入文件中出现的次数<br>-d 仅显示重复行<br>-u 仅显示不重复的行</p>
+</blockquote>
+</li>
+<li>统计指定文件中的行数、字数、字节数<blockquote>
+<p>wc 文件名   不加就是 行数 字数 字节数<br>-c 统计字节数<br>-w 统计字数<br>-l 统计行数</p>
+</blockquote>
+</li>
+<li>搜索文件内容<blockquote>
+<p>grep 选项 查找模式 文件名1，文件名2<br>grep hello file 看file内容中哪几行有hello</p>
+</blockquote>
+<ul>
+<li>grep 通配符  .*   .（一个字符） []字符范围<blockquote>
+<p>grep he.* file 查看file中有he开头的，.*通配一个或多个字符</p>
+</blockquote>
+</li>
+<li>^ 以什么开头<blockquote>
+<p>grep ^def file 在file中以def开头的<br>ls -l|grep ^d|wc -l 当前文件夹下 目录文件的个数</p>
+</blockquote>
+</li>
+<li>$以什么结尾<blockquote>
+<p>ls -l|grep py$  当前目录下以py结尾</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>文件打包和解压缩<ul>
+<li>tar(v显示处理文件，c创建新的档案文件，f使用档案文件，z压缩)<blockquote>
+<p>tar czfv tset.tar.gz  *.c 把当前目录的.c文件打包<br>tar xfv test.tar.gz 解包，把文件释放出来</p>
+</blockquote>
+</li>
+<li>gzip(压缩)<blockquote>
+<p>gzip -v * 把当前目录所有文件各自打一个.gz结尾包<br>gzip -dv * 把当前目录所有.gz包释放</p>
+</blockquote>
+</li>
+<li>bzip2<blockquote>
+<p>bzip -v * 把当前目录所有文件各自打一个.bz2结尾包<br>bzip -dv * 把当前目录所有.gz2包释放</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>scp远程拷贝文件<ul>
+<li>发送文件<blockquote>
+<p>scp 文件名 要发送的账户名字@要发往的ip地址:~/</p>
+</blockquote>
+</li>
+<li>从对方那里拿到自己这里<blockquote>
+<p>scp 对方账户名字@对方ip:~/文件名字 .</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>查看网络配置（不同的系统重启网络命令不同）<blockquote>
+<p>ifconfig<br>ifconfig ens33 down<br>ifconfig ens33 up</p>
+</blockquote>
+</li>
+<li>查看路由<blockquote>
+<p>route</p>
+</blockquote>
+</li>
 </ol>
 
       
@@ -492,6 +557,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/07/02/vim%E5%91%BD%E4%BB%A4/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          vim命令
+        
+      </div>
+    </a>
   
   
     <a href="/2020/06/10/%E5%8D%9A%E5%AE%A2/" id="article-nav-older" class="article-nav-link-wrap">
@@ -639,6 +713,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
