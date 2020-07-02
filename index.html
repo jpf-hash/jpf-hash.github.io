@@ -268,57 +268,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="VIM-编辑器"><a href="#VIM-编辑器" class="headerlink" title="VIM 编辑器"></a>VIM 编辑器</h1><p>安装vim<br>sudo apt install vim<br>安装 vim-plus插件</p>
-<blockquote>
-<p>sudo apt install git<br>git clone <a href="https://gitee.com/cskaoyan123/vimplus.git" target="_blank" rel="noopener">https://gitee.com/cskaoyan123/vimplus.git</a> ~/.vimplus<br>cd ~/.vimplus<br>./install.sh<br><a href="https://www.jianshu.com/p/75cde8a80fd7" target="_blank" rel="noopener">文档</a></p>
-</blockquote>
-<h2 id="VIM内命令"><a href="#VIM内命令" class="headerlink" title="VIM内命令"></a>VIM内命令</h2><h3 id="删除修改"><a href="#删除修改" class="headerlink" title="删除修改"></a>删除修改</h3><ul>
-<li>x 删除光标处的字符</li>
-<li>dd 删除所在行</li>
-<li>3dd 删除光标所在往下3行</li>
-<li>yy 复制所在行</li>
-<li>3yy 复制所在往下3行</li>
-<li>p 粘贴</li>
-<li>u 撤销上次操作<h3 id="光标"><a href="#光标" class="headerlink" title="光标"></a>光标</h3></li>
-<li>^ 光标到行首</li>
-<li>$ 光标到行尾</li>
-<li>ctrl+d/u 向下/上翻半页</li>
-<li>ctrl+f/b 向下/上翻一页</li>
-<li>gg定位到文档头</li>
-<li>G定位到文档尾</li>
-<li>H定位到行首</li>
-<li>L定位到当前页最后一行的行首</li>
-<li>w 光标往后移一个字</li>
-<li>b 光标往前移一个字</li>
-<li>n+ 往后移动n行</li>
-<li>n- 往前移动n行<h3 id="查找和替换"><a href="#查找和替换" class="headerlink" title="查找和替换"></a>查找和替换</h3></li>
-<li>/[str] 查找字符串str的位置<blockquote>
-<p>/hello 查找hello</p>
-</blockquote>
-</li>
-<li>部分替换 (替换所在行)<blockquote>
-<p>:s/[src]/[dst]/g 加g表示全文替换，i表示大小写 不加g表示只替换所在行的第一个</p>
-</blockquote>
-</li>
-<li>全部替换<blockquote>
-<p>:%s/[src]/[dst]/g 全文替换<br>%s/^ //g 全文的每一行行首空格去掉</p>
-</blockquote>
-<h3 id="多行注释"><a href="#多行注释" class="headerlink" title="多行注释"></a>多行注释</h3></li>
-<li>v进入可视化状态(选择后可y复制和x剪切） 注释时不需要</li>
-<li>ctrl+v 竖向选择模式</li>
-<li>输入I，然后输入//</li>
-<li>再输入ESC<h3 id="文档保存和退出"><a href="#文档保存和退出" class="headerlink" title="文档保存和退出"></a>文档保存和退出</h3><blockquote>
-<p>:q 未修改文档的情况下推出<br>:q! 放弃文档修改退出<br>:w 文档保存<br>:wq 文档存盘退出<br>:%!xxd 十六进制模式<br>:#!xxd -r 返回文档模式<br>ctrl+s会锁死，ctrl+q解除锁定<br>gg=G可以自动对齐<br>new+tab VIM中打开另一个文件<br>:sp 同一份代码打开两份<br>:vsp 竖屏两份 ctrl+ww 切换窗口</p>
-</blockquote>
-<h2 id="VIM外的命令"><a href="#VIM外的命令" class="headerlink" title="VIM外的命令"></a>VIM外的命令</h2><h3 id="VIMdiffer"><a href="#VIMdiffer" class="headerlink" title="VIMdiffer"></a>VIMdiffer</h3><blockquote>
-<p>vimdiff 文件1  文件2  会展开俩分代码的差异</p>
-</blockquote>
-<h3 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h3><blockquote>
-<p>find . -name “<em>.py”<br>grep tcp file.py<br>sed -i “s/tcp/udp/g” file.py 把file.py中的tcp换成udp，-i表示生效，不加-i只打印源文件不变<br>find . -name “</em>.py”|xargs sed -i “s/tcp/udp/g” 把当前目录的所有py文件中的tcp改为udp</p>
-</blockquote>
-</li>
-</ul>
-
+        <h1 id="VIM-编辑器"><a href="#VIM-编辑器" class="headerlink" title="VIM 编辑器"></a>VIM 编辑器</h1>
+        
+          <a class="article-more-a" href="/2020/07/02/vim%E5%91%BD%E4%BB%A4/#more">more >></a>
+        
       
 
       
@@ -650,11 +603,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
             
             <div class="clearfix"></div>
