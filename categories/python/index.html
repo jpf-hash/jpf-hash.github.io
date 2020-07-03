@@ -6,19 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>vim命令 | jpf_blog</title>
+  <title>Category: -python | jpf_blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="VIM 编辑器">
-<meta property="og:type" content="article">
-<meta property="og:title" content="vim命令">
-<meta property="og:url" content="http://yoursite.com/2020/07/02/vim%E5%91%BD%E4%BB%A4/index.html">
+  <meta name="description" content="nothing">
+<meta property="og:type" content="website">
+<meta property="og:title" content="jpf_blog">
+<meta property="og:url" content="http://yoursite.com/categories/python/index.html">
 <meta property="og:site_name" content="jpf_blog">
-<meta property="og:description" content="VIM 编辑器">
+<meta property="og:description" content="nothing">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-07-02T15:20:40.000Z">
-<meta property="article:modified_time" content="2020-07-02T17:05:45.224Z">
 <meta property="article:author" content="斯乌">
-<meta property="article:tag" content="vim">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="jpf_blog" type="application/atom+xml">
@@ -168,256 +165,70 @@
           </div>
           <div id="js-content" class="content-ll">
             
-<article id="post-vim命令" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 class="article-title" itemprop="name">
-      vim命令
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/07/03/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2020-07-03T12:33:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-03</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/07/03/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">python基础语法</a>
     </h1>
   
 
-        
-        <a href="/2020/07/02/vim%E5%91%BD%E4%BB%A4/" class="archive-article-date">
-  	<time datetime="2020-07-02T15:20:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="VIM-编辑器"><a href="#VIM-编辑器" class="headerlink" title="VIM 编辑器"></a>VIM 编辑器</h1><a id="more"></a>
-<p>安装vim</p>
-<blockquote>
-<p>sudo apt install vim</p>
-</blockquote>
-<h2 id="vim-vimrc-不安装vimplus的修改配置文件"><a href="#vim-vimrc-不安装vimplus的修改配置文件" class="headerlink" title="vim .vimrc (不安装vimplus的修改配置文件)"></a>vim .vimrc (不安装vimplus的修改配置文件)</h2><blockquote>
-<p>set nu “设置行号 set number<br>set hlsearch “高亮所有查找结果<br>syntax on “语法高亮<br>set showmode “显示当前模式<br>set showcmd “显示输入的命令<br>set cursorline “光标所在行添加横线显示<br>set tabstop=4 “设置 tab 键的等价空格数量<br>set shiftwidth=4 “设置每次缩进的宽度<br>set expandtab “设置 tab 自动替换为空格<br>set cindent “C 语言缩进规则<br>set path +=.,/usr/include “使用 gf 命令查找的目录<br>set fileencodings=utf-8,gb18030,gbk,gb2312<br>filetype indent on “文件类型检查</p>
-</blockquote>
-<h2 id="安装-vim-plus插件"><a href="#安装-vim-plus插件" class="headerlink" title="安装 vim-plus插件"></a>安装 vim-plus插件</h2><blockquote>
-<p>sudo apt install git<br>git clone <a href="https://gitee.com/cskaoyan123/vimplus.git" target="_blank" rel="noopener">https://gitee.com/cskaoyan123/vimplus.git</a> ~/.vimplus<br>cd ~/.vimplus<br>./install.sh<br><a href="https://www.jianshu.com/p/75cde8a80fd7" target="_blank" rel="noopener">文档</a></p>
-</blockquote>
-<h2 id="VIM内命令"><a href="#VIM内命令" class="headerlink" title="VIM内命令"></a>VIM内命令</h2><h3 id="删除修改"><a href="#删除修改" class="headerlink" title="删除修改"></a>删除修改</h3><ul>
-<li>x 删除光标处的字符</li>
-<li>dd 删除所在行</li>
-<li>3dd 删除光标所在往下3行</li>
-<li>yy 复制所在行</li>
-<li>3yy 复制所在往下3行</li>
-<li>p 粘贴</li>
-<li>u 撤销上次操作<h3 id="光标"><a href="#光标" class="headerlink" title="光标"></a>光标</h3></li>
-<li>^ 光标到行首</li>
-<li>$ 光标到行尾</li>
-<li>ctrl+d/u 向下/上翻半页</li>
-<li>ctrl+f/b 向下/上翻一页</li>
-<li>gg定位到文档头</li>
-<li>G定位到文档尾</li>
-<li>H定位到行首</li>
-<li>L定位到当前页最后一行的行首</li>
-<li>w 光标往后移一个字</li>
-<li>b 光标往前移一个字</li>
-<li>n+ 往后移动n行</li>
-<li>n- 往前移动n行<h3 id="查找和替换"><a href="#查找和替换" class="headerlink" title="查找和替换"></a>查找和替换</h3></li>
-<li>/[str] 查找字符串str的位置<blockquote>
-<p>/hello 查找hello</p>
-</blockquote>
-</li>
-<li>部分替换 (替换所在行)<blockquote>
-<p>:s/[src]/[dst]/g 加g表示全文替换，i表示大小写 不加g表示只替换所在行的第一个</p>
-</blockquote>
-</li>
-<li>全部替换<blockquote>
-<p>:%s/[src]/[dst]/g 全文替换<br>%s/^ //g 全文的每一行行首空格去掉</p>
-</blockquote>
-<h3 id="多行注释"><a href="#多行注释" class="headerlink" title="多行注释"></a>多行注释</h3></li>
-<li>v进入可视化状态(选择后可y复制和x剪切） 注释时不需要</li>
-<li>ctrl+v 竖向选择模式</li>
-<li>输入I，然后输入//</li>
-<li>再输入ESC<h3 id="文档保存和退出"><a href="#文档保存和退出" class="headerlink" title="文档保存和退出"></a>文档保存和退出</h3><blockquote>
-<p>:q 未修改文档的情况下推出<br>:q! 放弃文档修改退出<br>:w 文档保存<br>:wq 文档存盘退出<br>:%!xxd 十六进制模式<br>:#!xxd -r 返回文档模式<br>ctrl+s会锁死，ctrl+q解除锁定<br>gg=G可以自动对齐<br>new+tab VIM中打开另一个文件<br>:sp 同一份代码打开两份<br>:vsp 竖屏两份 ctrl+ww 切换窗口</p>
-</blockquote>
-<h2 id="VIM外的命令"><a href="#VIM外的命令" class="headerlink" title="VIM外的命令"></a>VIM外的命令</h2><h3 id="VIMdiffer"><a href="#VIMdiffer" class="headerlink" title="VIMdiffer"></a>VIMdiffer</h3><blockquote>
-<p>vimdiff 文件1  文件2  会展开俩分代码的差异</p>
-</blockquote>
-<h3 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h3><blockquote>
-<p>find . -name “<em>.py”<br>grep tcp file.py<br>sed -i “s/tcp/udp/g” file.py 把file.py中的tcp换成udp，-i表示生效，不加-i只打印源文件不变<br>find . -name “</em>.py”|xargs sed -i “s/tcp/udp/g” 把当前目录的所有py文件中的tcp改为udp</p>
-</blockquote>
-</li>
-</ul>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/linux//" class="article-tag-list-link color2">-linux</a>
+        			<a href="/categories/python//" class="article-tag-list-link color3">-python</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-  <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-  <p>扫一扫，分享到微信</p>
-  <div class="wx-qrcode">
-    <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://jpf-hash.github.io/2020/07/02/vim%E5%91%BD%E4%BB%A4/" alt="微信分享二维码">
-  </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2020/07/03/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          python基础语法
-        
-      </div>
-    </a>
   
   
-    <a href="/2020/06/30/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">&#39;linux基础命令&#39;</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#VIM-编辑器"><span class="toc-number">1.</span> <span class="toc-text">VIM 编辑器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#vim-vimrc-不安装vimplus的修改配置文件"><span class="toc-number">1.1.</span> <span class="toc-text">vim .vimrc (不安装vimplus的修改配置文件)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装-vim-plus插件"><span class="toc-number">1.2.</span> <span class="toc-text">安装 vim-plus插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VIM内命令"><span class="toc-number">1.3.</span> <span class="toc-text">VIM内命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#删除修改"><span class="toc-number">1.3.1.</span> <span class="toc-text">删除修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#光标"><span class="toc-number">1.3.2.</span> <span class="toc-text">光标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查找和替换"><span class="toc-number">1.3.3.</span> <span class="toc-text">查找和替换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多行注释"><span class="toc-number">1.3.4.</span> <span class="toc-text">多行注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档保存和退出"><span class="toc-number">1.3.5.</span> <span class="toc-text">文档保存和退出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VIM外的命令"><span class="toc-number">1.4.</span> <span class="toc-text">VIM外的命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#VIMdiffer"><span class="toc-number">1.4.1.</span> <span class="toc-text">VIMdiffer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sed"><span class="toc-number">1.4.2.</span> <span class="toc-text">sed</span></a></li></ol></li></ol></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -444,10 +255,10 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
-		isCategory: false,
+		isCategory: true,
 		open_in_new: false,
 		toc_hide_index: true,
 		root: "/",
