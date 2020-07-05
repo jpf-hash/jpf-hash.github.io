@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/07/03/Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/douban.png">
 <meta property="og:image" content="http://yoursite.com/2020/07/03/Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/moban.png">
 <meta property="article:published_time" content="2020-07-03T12:33:38.000Z">
-<meta property="article:modified_time" content="2020-07-05T08:33:27.316Z">
+<meta property="article:modified_time" content="2020-07-05T08:38:38.260Z">
 <meta property="article:author" content="斯乌">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
@@ -421,15 +421,14 @@
 </li>
 </ul>
 <p>1.快速找出一个数最低位为1的那个值：</p>
-<p>比如 6 是 0110 怎么快速找到一个值为10 也就是2 ，n&amp;（~n）+1可以得到</p>
+<p>​        比如 6 是 0110 怎么快速找到一个值为10 也就是2 ，n&amp;（~n）+1可以得到</p>
 <p>2.有101个整数，其中有50个数出现了两次，1个数出现了一次， 找出出现了一次的那个数。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">7</span>]</span><br><span class="line">list1 = [<span class="number">-1</span>, <span class="number">3</span>, <span class="number">-1</span>, <span class="number">3</span>, <span class="number">-1</span>, <span class="number">3</span>, <span class="number">-2</span>]</span><br><span class="line"><span class="comment"># result = 0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(list1)):</span><br><span class="line">    result = <span class="number">0</span></span><br><span class="line">    result ^= list1[i]</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
 
 <p>3.有102个整数，其中有50个数出现了两次，2个数出现了一次， 找出出现了一次的那2个数。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">list2 = [<span class="number">15</span>, <span class="number">18</span>, <span class="number">9</span>, <span class="number">7</span>, <span class="number">11</span>, <span class="number">9</span>, <span class="number">13</span>, <span class="number">18</span>, <span class="number">11</span>, <span class="number">15</span>, ]</span><br><span class="line">temp = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(list2)):</span><br><span class="line">    temp ^= list2[i]</span><br><span class="line"><span class="comment"># 分割值</span></span><br><span class="line">splice = temp &amp; (-temp)</span><br><span class="line">temp1 = <span class="number">0</span></span><br><span class="line">temp2 = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(list2)):</span><br><span class="line">    <span class="keyword">if</span> splice &amp; list2[i]:</span><br><span class="line">        temp1 ^= list2[i]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        temp2 ^= list2[i]</span><br><span class="line">print(<span class="string">f'<span class="subst">&#123;temp1&#125;</span>,<span class="subst">&#123;temp2&#125;</span>'</span>)</span><br></pre></td></tr></table></figure>
 
-<ol start="4">
-<li><p>有103个整数，其中有50个数出现了两次，3个数出现了一次， 找出出现了一次的那3个数。</p>
+<p>4.有103个整数，其中有50个数出现了两次，3个数出现了一次， 找出出现了一次的那3个数。</p>
 <p>思路：检查所有数，用1二进制位这一位异或列表为0或1分堆，因为是2n+3所以必然一个奇数一个偶数，偶数堆个数若为0 说明这一位都一样，那就左移1位继续检查，直到把这堆数分成奇数堆和偶数堆，奇数堆的异或值就是其中一个数</p>
 <p>再对剩下的两个数进行查找，传入列表，和偶数堆的异或值作为新的分割值，还有传入之前找的第一个数。</p>
 <p>通过新的分割值来找第二个数，因为新分成的两堆中有原来找到的第一个数，再用分割值对第一个数异或，看第一个数被分到了那一堆找到第三个数</p>
@@ -437,8 +436,6 @@
 
 
 
-</li>
-</ol>
 <p>​            </p>
 <h5 id><a href="#" class="headerlink" title></a></h5>
       
@@ -700,11 +697,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
