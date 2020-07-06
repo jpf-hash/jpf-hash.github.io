@@ -6,16 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | jpf_blog</title>
+  <title>Py基础-循环、函数、可变类型和不可变类型 | jpf_blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="nothing">
-<meta property="og:type" content="website">
-<meta property="og:title" content="jpf_blog">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="python基础-判断、循环、函数、可变类型及不可变类型一、 判断">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Py基础-循环、函数、可变类型和不可变类型">
+<meta property="og:url" content="http://yoursite.com/2020/07/06/Py%E5%9F%BA%E7%A1%80-%E5%BE%AA%E7%8E%AF%E3%80%81%E5%87%BD%E6%95%B0%E3%80%81%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B%E5%92%8C%E4%B8%8D%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B/index.html">
 <meta property="og:site_name" content="jpf_blog">
-<meta property="og:description" content="nothing">
+<meta property="og:description" content="python基础-判断、循环、函数、可变类型及不可变类型一、 判断">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-06T13:55:06.000Z">
+<meta property="article:modified_time" content="2020-07-06T15:53:17.880Z">
 <meta property="article:author" content="斯乌">
+<meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="jpf_blog" type="application/atom+xml">
@@ -159,35 +162,90 @@
           </div>
           <div id="js-content" class="content-ll">
             
+<article id="post-Py基础-循环、函数、可变类型和不可变类型" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Py基础-循环、函数、可变类型和不可变类型
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/06/Py%E5%9F%BA%E7%A1%80-%E5%BE%AA%E7%8E%AF%E3%80%81%E5%87%BD%E6%95%B0%E3%80%81%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B%E5%92%8C%E4%B8%8D%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
+
+        
+        <a href="/2020/07/06/Py%E5%9F%BA%E7%A1%80-%E5%BE%AA%E7%8E%AF%E3%80%81%E5%87%BD%E6%95%B0%E3%80%81%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B%E5%92%8C%E4%B8%8D%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
   	<time datetime="2020-07-06T13:55:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-06</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/06/Py%E5%9F%BA%E7%A1%80-%E5%BE%AA%E7%8E%AF%E3%80%81%E5%87%BD%E6%95%B0%E3%80%81%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B%E5%92%8C%E4%B8%8D%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B/">Py基础-循环、函数、可变类型和不可变类型</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="python基础-判断、循环、函数、可变类型及不可变类型"><a href="#python基础-判断、循环、函数、可变类型及不可变类型" class="headerlink" title="python基础-判断、循环、函数、可变类型及不可变类型"></a>python基础-判断、循环、函数、可变类型及不可变类型</h1><h2 id="一、-判断"><a href="#一、-判断" class="headerlink" title="一、 判断"></a>一、 判断</h2><a id="more"></a>
 
-        <div class="article-info info-on-right">
-          
+<h3 id="1-if-、else、elif"><a href="#1-if-、else、elif" class="headerlink" title="1. if 、else、elif:"></a>1. if 、else、elif:</h3><p>python是很注意缩进的，缩进很重要</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">age = int（input(<span class="string">"请输入年龄："</span>))</span><br><span class="line"><span class="keyword">if</span> age &gt;= <span class="number">18</span>:</span><br><span class="line">	print(<span class="string">'大学</span></span><br><span class="line"><span class="string">elif age&gt;=16 and age &lt;18:</span></span><br><span class="line"><span class="string">	print('</span>高中</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">'高中以下'</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、循环"><a href="#二、循环" class="headerlink" title="二、循环"></a>二、循环</h2><p>循环需要注意，要有跳出循环的条件。</p>
+<h3 id="1-while循环"><a href="#1-while循环" class="headerlink" title="1. while循环"></a>1. while循环</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> i &lt; <span class="number">5</span>:</span><br><span class="line">    print(<span class="string">'i'</span>)</span><br><span class="line">    i+=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-for-循环"><a href="#2-for-循环" class="headerlink" title="2. for 循环"></a>2. for 循环</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">    print(<span class="string">"hello"</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-break-和continue"><a href="#3-break-和continue" class="headerlink" title="3. break 和continue"></a>3. break 和continue</h3><blockquote>
+<p>break：直接终止此次循环</p>
+<p>continue：跳过该次循环，后边边的代码不执行，直接进行下一次循环。</p>
+</blockquote>
+<h2 id="三、函数"><a href="#三、函数" class="headerlink" title="三、函数"></a>三、函数</h2><h3 id="1-定义函数"><a href="#1-定义函数" class="headerlink" title="1. 定义函数"></a>1. 定义函数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> 函数名<span class="params">(参数)</span>：</span></span><br><span class="line"><span class="function">	<span class="title">return</span>   # <span class="title">return</span> 代表函数返回值</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-调用函数"><a href="#2-调用函数" class="headerlink" title="2. 调用函数"></a>2. 调用函数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">函数名（参数）</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：需要先定义函数再调用</p>
+</blockquote>
+<h3 id="3-函数的说明文档"><a href="#3-函数的说明文档" class="headerlink" title="3.函数的说明文档"></a>3.函数的说明文档</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> 函数名<span class="params">()</span>:</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">这里写函数的说明文档</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">"""在这里敲回车直接可以写"""</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>ctrl+左键可直接跳转到函数位置，放在函数名字上可看说明文档</p>
+</blockquote>
+<h3 id="4-局部变量和全局变量"><a href="#4-局部变量和全局变量" class="headerlink" title="4.局部变量和全局变量"></a>4.局部变量和全局变量</h3><p>局部变量一般在函数内部，函数调用结束后，销毁局部变量</p>
+<p>全局变量：全局是可以被本程序所有对象或函数引用。</p>
+<ul>
+<li>如果想在函数内部修改全局变量的值，需要加global关键字声明是全局变量</li>
+<li>资源销毁与否，要看引用计数，有没有人用没人用就销毁，对象也一样。</li>
+</ul>
+<h2 id="四、可变类型与不可变类型"><a href="#四、可变类型与不可变类型" class="headerlink" title="四、可变类型与不可变类型"></a>四、可变类型与不可变类型</h2><h3 id="4-1-可变类型："><a href="#4-1-可变类型：" class="headerlink" title="4.1 可变类型："></a>4.1 可变类型：</h3><p>列表、字典、集合都是可变类型，可变类型就是内存中的数据可以被修改，同一个内存上可以存不同的值。</p>
+<h3 id="4-2-不可变类型"><a href="#4-2-不可变类型" class="headerlink" title="4.2 不可变类型"></a>4.2 不可变类型</h3><p>整型、浮点型、字符串、元组是不可变类型，内存中的值不可以被修改。即当值变化时，该变量的id也会变，但是值相同的其他变量id还是之前的id。</p>
+<p>这些变量在值改变是，是写时复制，即先复制之前的值，在新的内存上先存再进行改值</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -199,7 +257,7 @@
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -212,164 +270,117 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+  <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+  <p>扫一扫，分享到微信</p>
+  <div class="wx-qrcode">
+    <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://jpf-hash.github.io/2020/07/06/Py%E5%9F%BA%E7%A1%80-%E5%BE%AA%E7%8E%AF%E3%80%81%E5%87%BD%E6%95%B0%E3%80%81%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B%E5%92%8C%E4%B8%8D%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B/" alt="微信分享二维码">
+  </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/03/Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2020-07-03T12:33:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-03</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/03/Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">python基础语法</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/03/Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">python基础语法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/python//" class="article-tag-list-link color3">-python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#python基础-判断、循环、函数、可变类型及不可变类型"><span class="toc-number">1.</span> <span class="toc-text">python基础-判断、循环、函数、可变类型及不可变类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、-判断"><span class="toc-number">1.1.</span> <span class="toc-text">一、 判断</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-if-、else、elif"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. if 、else、elif:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、循环"><span class="toc-number">1.2.</span> <span class="toc-text">二、循环</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-while循环"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. while循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-for-循环"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. for 循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-break-和continue"><span class="toc-number">1.2.3.</span> <span class="toc-text">3. break 和continue</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、函数"><span class="toc-number">1.3.</span> <span class="toc-text">三、函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-定义函数"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. 定义函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-调用函数"><span class="toc-number">1.3.2.</span> <span class="toc-text">2. 调用函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-函数的说明文档"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.函数的说明文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-局部变量和全局变量"><span class="toc-number">1.3.4.</span> <span class="toc-text">4.局部变量和全局变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、可变类型与不可变类型"><span class="toc-number">1.4.</span> <span class="toc-text">四、可变类型与不可变类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-可变类型："><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 可变类型：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-不可变类型"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2 不可变类型</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/02/vim%E5%91%BD%E4%BB%A4/" class="archive-article-date">
-  	<time datetime="2020-07-02T15:20:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/02/vim%E5%91%BD%E4%BB%A4/">vim命令</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/linux//" class="article-tag-list-link color2">-linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/30/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" class="archive-article-date">
-  	<time datetime="2020-06-30T08:48:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-30</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/30/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/">&#39;linux基础命令&#39;</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/linux//" class="article-tag-list-link color2">-linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -396,8 +407,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
