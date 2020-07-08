@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Py基础-循环、函数、可变类型和不可变类型 | jpf_blog</title>
+  <title>Py基础-list增删查改 | jpf_blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="python基础-判断、循环、函数、可变类型及不可变类型一、 判断">
+  <meta name="description" content="py 基础-list增删改查">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Py基础-循环、函数、可变类型和不可变类型">
-<meta property="og:url" content="http://yoursite.com/2020/07/06/Py%E5%9F%BA%E7%A1%80-%E5%BE%AA%E7%8E%AF%E3%80%81%E5%87%BD%E6%95%B0%E3%80%81%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B%E5%92%8C%E4%B8%8D%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B/index.html">
+<meta property="og:title" content="Py基础-list增删查改">
+<meta property="og:url" content="http://yoursite.com/2020/07/08/Py%E5%9F%BA%E7%A1%80-list%E5%A2%9E%E5%88%A0%E6%9F%A5%E6%94%B9/index.html">
 <meta property="og:site_name" content="jpf_blog">
-<meta property="og:description" content="python基础-判断、循环、函数、可变类型及不可变类型一、 判断">
+<meta property="og:description" content="py 基础-list增删改查">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-07-06T13:55:06.000Z">
-<meta property="article:modified_time" content="2020-07-06T15:53:17.880Z">
+<meta property="article:published_time" content="2020-07-08T02:35:33.000Z">
+<meta property="article:modified_time" content="2020-07-08T12:55:55.334Z">
 <meta property="article:author" content="斯乌">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
@@ -162,61 +162,105 @@
           </div>
           <div id="js-content" class="content-ll">
             
-<article id="post-Py基础-循环、函数、可变类型和不可变类型" class="article article-type-post " itemscope itemprop="blogPost">
+<article id="post-Py基础-list增删查改" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Py基础-循环、函数、可变类型和不可变类型
+      Py基础-list增删查改
     </h1>
   
 
         
-        <a href="/2020/07/06/Py%E5%9F%BA%E7%A1%80-%E5%BE%AA%E7%8E%AF%E3%80%81%E5%87%BD%E6%95%B0%E3%80%81%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B%E5%92%8C%E4%B8%8D%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2020-07-06T13:55:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-06</time>
+        <a href="/2020/07/08/Py%E5%9F%BA%E7%A1%80-list%E5%A2%9E%E5%88%A0%E6%9F%A5%E6%94%B9/" class="archive-article-date">
+  	<time datetime="2020-07-08T02:35:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="python基础-判断、循环、函数、可变类型及不可变类型"><a href="#python基础-判断、循环、函数、可变类型及不可变类型" class="headerlink" title="python基础-判断、循环、函数、可变类型及不可变类型"></a>python基础-判断、循环、函数、可变类型及不可变类型</h1><h2 id="一、-判断"><a href="#一、-判断" class="headerlink" title="一、 判断"></a>一、 判断</h2><a id="more"></a>
+        <h1 id="py-基础-list增删改查"><a href="#py-基础-list增删改查" class="headerlink" title="py 基础-list增删改查"></a>py 基础-list增删改查</h1><a id="more"></a>
 
-<h3 id="1-if-、else、elif"><a href="#1-if-、else、elif" class="headerlink" title="1. if 、else、elif:"></a>1. if 、else、elif:</h3><p>python是很注意缩进的，缩进很重要</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">age = int（input(<span class="string">"请输入年龄："</span>))</span><br><span class="line"><span class="keyword">if</span> age &gt;= <span class="number">18</span>:</span><br><span class="line">	print(<span class="string">'大学</span></span><br><span class="line"><span class="string">elif age&gt;=16 and age &lt;18:</span></span><br><span class="line"><span class="string">	print('</span>高中</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">'高中以下'</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="二、循环"><a href="#二、循环" class="headerlink" title="二、循环"></a>二、循环</h2><p>循环需要注意，要有跳出循环的条件。</p>
-<h3 id="1-while循环"><a href="#1-while循环" class="headerlink" title="1. while循环"></a>1. while循环</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> i &lt; <span class="number">5</span>:</span><br><span class="line">    print(<span class="string">'i'</span>)</span><br><span class="line">    i+=<span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="2-for-循环"><a href="#2-for-循环" class="headerlink" title="2. for 循环"></a>2. for 循环</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">    print(<span class="string">"hello"</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-break-和continue"><a href="#3-break-和continue" class="headerlink" title="3. break 和continue"></a>3. break 和continue</h3><blockquote>
-<p>break：直接终止此次循环</p>
-<p>continue：跳过该次循环，后边边的代码不执行，直接进行下一次循环。</p>
-</blockquote>
-<h2 id="三、函数"><a href="#三、函数" class="headerlink" title="三、函数"></a>三、函数</h2><h3 id="1-定义函数"><a href="#1-定义函数" class="headerlink" title="1. 定义函数"></a>1. 定义函数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> 函数名<span class="params">(参数)</span>：</span></span><br><span class="line"><span class="function">	<span class="title">return</span>   # <span class="title">return</span> 代表函数返回值</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="2-调用函数"><a href="#2-调用函数" class="headerlink" title="2. 调用函数"></a>2. 调用函数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">函数名（参数）</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意：需要先定义函数再调用</p>
-</blockquote>
-<h3 id="3-函数的说明文档"><a href="#3-函数的说明文档" class="headerlink" title="3.函数的说明文档"></a>3.函数的说明文档</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> 函数名<span class="params">()</span>:</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">这里写函数的说明文档</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">"""在这里敲回车直接可以写"""</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>ctrl+左键可直接跳转到函数位置，放在函数名字上可看说明文档</p>
-</blockquote>
-<h3 id="4-局部变量和全局变量"><a href="#4-局部变量和全局变量" class="headerlink" title="4.局部变量和全局变量"></a>4.局部变量和全局变量</h3><p>局部变量一般在函数内部，函数调用结束后，销毁局部变量</p>
-<p>全局变量：全局是可以被本程序所有对象或函数引用。</p>
-<ul>
-<li>如果想在函数内部修改全局变量的值，需要加global关键字声明是全局变量</li>
-<li>资源销毁与否，要看引用计数，有没有人用没人用就销毁，对象也一样。</li>
+<h2 id="关于list"><a href="#关于list" class="headerlink" title="关于list"></a>关于list</h2><h3 id="1-定义"><a href="#1-定义" class="headerlink" title="1. 定义"></a>1. 定义</h3><ul>
+<li><p>列表定义用[  ] ,数据之间用逗号隔开，列表索引从0开始，超出索引会报错。</p>
+</li>
+<li><p>列表用于专门存储一串信息，数据之间使用逗号分隔</p>
+</li>
 </ul>
-<h2 id="四、可变类型与不可变类型"><a href="#四、可变类型与不可变类型" class="headerlink" title="四、可变类型与不可变类型"></a>四、可变类型与不可变类型</h2><h3 id="4-1-可变类型："><a href="#4-1-可变类型：" class="headerlink" title="4.1 可变类型："></a>4.1 可变类型：</h3><p>列表、字典、集合都是可变类型，可变类型就是内存中的数据可以被修改，同一个内存上可以存不同的值。</p>
-<h3 id="4-2-不可变类型"><a href="#4-2-不可变类型" class="headerlink" title="4.2 不可变类型"></a>4.2 不可变类型</h3><p>整型、浮点型、字符串、元组是不可变类型，内存中的值不可以被修改。即当值变化时，该变量的id也会变，但是值相同的其他变量id还是之前的id。</p>
-<p>这些变量在值改变是，是写时复制，即先复制之前的值，在新的内存上先存再进行改值</p>
+<h3 id="2-常用操作"><a href="#2-常用操作" class="headerlink" title="2. 常用操作"></a>2. 常用操作</h3><h4 id="2-1-查找"><a href="#2-1-查找" class="headerlink" title="2.1 查找"></a>2.1 查找</h4><ul>
+<li><p>通过下标进行查找</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name_list = [<span class="string">'zhangsan'</span>, <span class="string">'lisi'</span>, <span class="string">'wangwu'</span>]</span><br><span class="line">print(name_list[<span class="number">0</span>])</span><br><span class="line"><span class="comment"># zhangsan</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过函数查找</p>
+</li>
+<li><p>index(data，start，end),成功返回数据下标，失败报异常。start ，end控制查找范围，但是会返回相对于整个列表的下标，而不是相对于范围内的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">name_list = [<span class="string">'zhangsan'</span>, <span class="string">'lisi'</span>, <span class="string">'wangwu'</span>]</span><br><span class="line"></span><br><span class="line">print(name_list.index(<span class="string">"lisi"</span>, <span class="number">1</span>, <span class="number">2</span>))</span><br><span class="line"><span class="comment"># 1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>count（data），用来统计列表中某个数据出现的次数，若无该数据返回0</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name_list = [<span class="string">'zhangsan'</span>, <span class="string">'lisi'</span>, <span class="string">'wangwu'</span>,<span class="string">'lisi'</span>]</span><br><span class="line">print(name_list.count(<span class="string">"lisi"</span>))</span><br><span class="line"><span class="comment"># 2</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>len (l列表名)，用来统计整个列表有多长。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name_list = [<span class="string">'zhangsan'</span>, <span class="string">'lisi'</span>, <span class="string">'wangwu'</span>,<span class="string">'lisi'</span>]</span><br><span class="line">print(len(name_list))</span><br><span class="line"><span class="comment"># 4</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>in / not in 判断某个数据是否再列表中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">name_list = [<span class="string">'zhangsan'</span>, <span class="string">'lisi'</span>, <span class="string">'wangwu'</span>, <span class="string">'lisi'</span>]</span><br><span class="line"></span><br><span class="line">print(<span class="string">"lisi"</span> <span class="keyword">in</span> name_list)</span><br><span class="line"><span class="comment"># True</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="2-2-增加操作"><a href="#2-2-增加操作" class="headerlink" title="2.2 增加操作"></a>2.2 增加操作</h4><h4 id="列表为空不能进行直接list-i-values-不可以直接赋值，要使用方法赋值。"><a href="#列表为空不能进行直接list-i-values-不可以直接赋值，要使用方法赋值。" class="headerlink" title="列表为空不能进行直接list[i]=values 不可以直接赋值，要使用方法赋值。"></a>列表为空不能进行直接list[i]=values 不可以直接赋值，要使用方法赋值。</h4><ul>
+<li><h4 id="append"><a href="#append" class="headerlink" title="append"></a>append</h4></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># append（data）效果是在列表结尾增加数据，列表是可变数据类型，</span></span><br><span class="line"><span class="comment"># 若增加一个序列则是把整个序列增加到列表中,数据不会被拆开,字符串也不会被拆开</span></span><br><span class="line">name_list = [<span class="string">'zhangsan'</span>, <span class="string">'lisi'</span>, <span class="string">'wangwu'</span>, <span class="string">'lisi'</span>]</span><br><span class="line">name_list.append(<span class="string">"wangliu"</span>)</span><br><span class="line">print(name_list)</span><br><span class="line">name_list.append([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, ])</span><br><span class="line">print(name_list)</span><br><span class="line">name_list.append(<span class="string">"world"</span>)</span><br><span class="line">print(name_list)</span><br><span class="line"><span class="comment"># ['zhangsan', 'lisi', 'wangwu', 'lisi', 'wangliu']</span></span><br><span class="line"><span class="comment"># ['zhangsan', 'lisi', 'wangwu', 'lisi', 'wangliu', [1, 2, 3, 4]]</span></span><br><span class="line"><span class="comment"># ['zhangsan', 'lisi', 'wangwu', 'lisi', 'wangliu', [1, 2, 3, 4], 'world']</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>extend</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># extend(data) ，结尾增加数据，若增加的是序列，将序列拆开，逐个增加到列表后面</span></span><br><span class="line"><span class="comment"># 增加单个字符串会被拆成字符添加</span></span><br><span class="line">name_list = [<span class="string">'zhangsan'</span>, <span class="string">'lisi'</span>, <span class="string">'wangwu'</span>, <span class="string">'lisi'</span>]</span><br><span class="line">name_list.extend([<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>])</span><br><span class="line">print(name_list)</span><br><span class="line"><span class="comment"># ['zhangsan', 'lisi', 'wangwu', 'lisi', 5, 6, 7, 8]</span></span><br><span class="line"></span><br><span class="line">name_list.extend(<span class="string">"hello"</span>)</span><br><span class="line">print(name_list)</span><br><span class="line"><span class="comment"># ['zhangsan', 'lisi', 'wangwu', 'lisi', 5, 6, 7, 8, 'h', 'e', 'l', 'l', 'o']</span></span><br><span class="line"></span><br><span class="line">name_list.extend([<span class="string">"hi"</span>, <span class="string">"how"</span>, <span class="string">"are"</span>, <span class="string">"you "</span>])</span><br><span class="line">print(name_list)</span><br><span class="line"><span class="comment"># ['zhangsan', 'lisi', 'wangwu', 'lisi', 5, 6, 7, 8, 'h', 'e', 'l', 'l', 'o', 'hi', 'how', 'are', 'you ']</span></span><br><span class="line"></span><br><span class="line">name_list.extend(<span class="string">"hi how are you"</span>)</span><br><span class="line">print(name_list)</span><br><span class="line"><span class="comment"># ['zhangsan', 'lisi', 'wangwu', 'lisi', 5, 6, 7, 8, 'h', 'e', 'l', 'l', 'o', 'hi', 'how', 'are', 'you ', 'h', 'i', ' ', 'h', 'o', 'w', ' ', 'a', 'r', 'e', ' ', 'y', 'o', 'u']</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>insert</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定位置增加数据 list.insert(index,data)</span></span><br><span class="line">name_list = [<span class="string">'zhangsan'</span>, <span class="string">'lisi'</span>, <span class="string">'wangwu'</span>, <span class="string">'lisi'</span>]</span><br><span class="line">name_list.insert(<span class="number">0</span>, <span class="string">"woshidiyi"</span>)</span><br><span class="line">print(name_list)</span><br><span class="line"><span class="comment"># ['woshidiyi', 'zhangsan', 'lisi', 'wangwu', 'lisi']</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-3-删除操作"><a href="#2-3-删除操作" class="headerlink" title="2.3 删除操作"></a>2.3 删除操作</h4><ul>
+<li>del </li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># del 目标 （也可以直接删列表）</span></span><br><span class="line">name_list = [<span class="string">'zhangsan'</span>, <span class="string">'lisi'</span>, <span class="string">'wangwu'</span>, <span class="string">'lisi'</span>]</span><br><span class="line"><span class="keyword">del</span> name_list[<span class="number">0</span>]</span><br><span class="line">print(name_list)</span><br><span class="line"><span class="comment"># ['zhangsan', 'wangwu', 'lisi']</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>pop(index)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pop(index)删除指定下标的数据，不指定默认删除最后一个，返回被删除的数据</span></span><br><span class="line">name_list = [<span class="string">'zhangsan'</span>, <span class="string">'lisi'</span>, <span class="string">'wangwu'</span>, <span class="string">'lisi'</span>]</span><br><span class="line">name_list.pop()</span><br><span class="line">print(name_list)</span><br><span class="line">name_list.pop(<span class="number">0</span>)</span><br><span class="line">print(name_list)</span><br><span class="line">a = name_list.pop()</span><br><span class="line">print(a)</span><br><span class="line"><span class="comment"># ['zhangsan', 'lisi', 'wangwu']</span></span><br><span class="line"><span class="comment"># ['lisi', 'wangwu']</span></span><br><span class="line"><span class="comment"># wangwu</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>remove(data)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># remove(data) 根据数据删除内容.</span></span><br><span class="line">name_list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">1</span>]</span><br><span class="line">name_list.remove(<span class="number">1</span>)</span><br><span class="line">print(name_list)</span><br><span class="line"><span class="comment"># [2, 3, 4, 5, 6, 1]</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>clear()</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">name_list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">1</span>]</span><br><span class="line">name_list.clear()</span><br><span class="line">print(name_list)</span><br><span class="line"><span class="comment"># []</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-4-修改操作"><a href="#2-4-修改操作" class="headerlink" title="2.4 修改操作"></a>2.4 修改操作</h4><ul>
+<li>下标修改列表值</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">name_list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">1</span>]</span><br><span class="line">name_list[<span class="number">0</span>]=<span class="number">7</span></span><br><span class="line">print(name_list)</span><br><span class="line"><span class="comment"># [7, 2, 3, 4, 5, 6, 1]</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-5-排序操作"><a href="#2-5-排序操作" class="headerlink" title="2.5 排序操作"></a>2.5 排序操作</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># reverse() 将列表逆序</span></span><br><span class="line">name_list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line">name_list.reverse()</span><br><span class="line">print(name_list)</span><br><span class="line"><span class="comment"># [6, 5, 4, 3, 2, 1]</span></span><br><span class="line"><span class="comment"># sort(),没参数默认按升序排，加上reverse=True，按降序排列</span></span><br><span class="line">num_list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line">print(num_list)</span><br><span class="line">num_list.sort()</span><br><span class="line">print(num_list)</span><br><span class="line">num_list.sort(reverse=<span class="literal">True</span>)</span><br><span class="line">print(num_list)</span><br><span class="line"><span class="comment"># [1, 2, 3, 4, 5, 6]</span></span><br><span class="line"><span class="comment"># [1, 2, 3, 4, 5, 6]</span></span><br><span class="line"><span class="comment"># [6, 5, 4, 3, 2, 1]</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-6-复制操作"><a href="#2-6-复制操作" class="headerlink" title="2.6 复制操作"></a>2.6 复制操作</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lis1 = [<span class="number">1</span>, <span class="number">245</span>, <span class="number">56</span>, <span class="number">67</span>, <span class="number">8</span>]</span><br><span class="line">lis2 = lis1.copy()</span><br><span class="line">print(lis2)</span><br><span class="line"><span class="comment"># [1, 245, 56, 67, 8]</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-7-列表生成式"><a href="#2-7-列表生成式" class="headerlink" title="2.7 列表生成式"></a>2.7 列表生成式</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列表生成式</span></span><br><span class="line">a = [x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)]</span><br><span class="line">print(a)</span><br><span class="line"><span class="comment"># -----等价于</span></span><br><span class="line">b = []</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">    b.append(x)</span><br><span class="line">print(b)</span><br><span class="line"><span class="comment"># [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span></span><br><span class="line"><span class="comment"># [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># --------两个for 循环</span></span><br><span class="line">a = [j <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>) <span class="keyword">for</span> j <span class="keyword">in</span> range(i)]</span><br><span class="line">print(a)</span><br><span class="line">a = [[col * row <span class="keyword">for</span> col <span class="keyword">in</span> range(<span class="number">5</span>)] <span class="keyword">for</span> row <span class="keyword">in</span> range(<span class="number">5</span>)]</span><br><span class="line">print(a)</span><br><span class="line"><span class="comment"># [0, 0, 1, 0, 1, 2, 0, 1, 2, 3, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 8]</span></span><br><span class="line"><span class="comment"># [[0, 0, 0, 0, 0], [0, 1, 2, 3, 4], [0, 2, 4, 6, 8], [0, 3, 6, 9, 12], [0, 4, 8, 12, 16]]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 二位列表转一维列表</span></span><br><span class="line">a = [j <span class="keyword">for</span> x <span class="keyword">in</span> a <span class="keyword">for</span> j <span class="keyword">in</span> x]   <span class="comment"># 把上边的二维数组变成一维数组</span></span><br><span class="line">print(a)</span><br><span class="line">a = [x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>) <span class="keyword">if</span> x % <span class="number">2</span> == <span class="number">0</span>]  <span class="comment"># 筛0-9偶数</span></span><br><span class="line">print(a)</span><br><span class="line">a = [x <span class="keyword">if</span> x % <span class="number">2</span> == <span class="number">0</span> <span class="keyword">else</span> x ** <span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)]</span><br><span class="line">print(a)</span><br><span class="line"><span class="comment"># [0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 0, 2, 4, 6, 8, 0, 3, 6, 9, 12, 0, 4, 8, 12, 16]</span></span><br><span class="line"><span class="comment"># [0, 2, 4, 6, 8]</span></span><br><span class="line"><span class="comment"># [0, 1, 2, 9, 4, 25, 6, 49, 8, 81]</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>切片操作</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切片【start:end:步长】</span></span><br><span class="line">li = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">34</span>, <span class="number">45</span>, <span class="number">56</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">90</span>, <span class="number">0</span>]</span><br><span class="line">print(li[<span class="number">0</span>:<span class="number">3</span>])</span><br><span class="line">print(li[<span class="number">-1</span>])  <span class="comment"># 最后一个数</span></span><br><span class="line">print(li[<span class="number">-5</span>:<span class="number">-2</span>])</span><br><span class="line">print(li[::<span class="number">-1</span>])  <span class="comment"># 逆序</span></span><br><span class="line">print(li[<span class="number">-2</span>:<span class="number">-5</span>])  <span class="comment"># 不能这么写，这么写为空,除非下面这样写可以</span></span><br><span class="line">print(li[<span class="number">-2</span>:<span class="number">-5</span>:<span class="number">-1</span>])  </span><br><span class="line"></span><br><span class="line"><span class="comment"># [1, 2, 34]</span></span><br><span class="line"><span class="comment"># 0</span></span><br><span class="line"><span class="comment"># [7, 8, 9]</span></span><br><span class="line"><span class="comment"># [0, 90, 9, 8, 7, 6, 56, 45, 34, 2, 1]</span></span><br><span class="line"><span class="comment"># []</span></span><br><span class="line"><span class="comment"># [90, 9, 8]</span></span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -318,7 +362,7 @@
   <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
   <p>扫一扫，分享到微信</p>
   <div class="wx-qrcode">
-    <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://jpf-hash.github.io/2020/07/06/Py%E5%9F%BA%E7%A1%80-%E5%BE%AA%E7%8E%AF%E3%80%81%E5%87%BD%E6%95%B0%E3%80%81%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B%E5%92%8C%E4%B8%8D%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://jpf-hash.github.io/2020/07/08/Py%E5%9F%BA%E7%A1%80-list%E5%A2%9E%E5%88%A0%E6%9F%A5%E6%94%B9/" alt="微信分享二维码">
   </div>
 </div>
 
@@ -332,18 +376,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/07/08/Py%E5%9F%BA%E7%A1%80-list%E5%A2%9E%E5%88%A0%E6%9F%A5%E6%94%B9/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Py基础-list增删查改
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/07/03/Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">python基础语法</div>
+    <a href="/2020/07/06/Py%E5%9F%BA%E7%A1%80-%E5%BE%AA%E7%8E%AF%E3%80%81%E5%87%BD%E6%95%B0%E3%80%81%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B%E5%92%8C%E4%B8%8D%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Py基础-循环、函数、可变类型和不可变类型</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -370,7 +405,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#python基础-判断、循环、函数、可变类型及不可变类型"><span class="toc-number">1.</span> <span class="toc-text">python基础-判断、循环、函数、可变类型及不可变类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、-判断"><span class="toc-number">1.1.</span> <span class="toc-text">一、 判断</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-if-、else、elif"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. if 、else、elif:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、循环"><span class="toc-number">1.2.</span> <span class="toc-text">二、循环</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-while循环"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. while循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-for-循环"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. for 循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-break-和continue"><span class="toc-number">1.2.3.</span> <span class="toc-text">3. break 和continue</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、函数"><span class="toc-number">1.3.</span> <span class="toc-text">三、函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-定义函数"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. 定义函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-调用函数"><span class="toc-number">1.3.2.</span> <span class="toc-text">2. 调用函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-函数的说明文档"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.函数的说明文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-局部变量和全局变量"><span class="toc-number">1.3.4.</span> <span class="toc-text">4.局部变量和全局变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、可变类型与不可变类型"><span class="toc-number">1.4.</span> <span class="toc-text">四、可变类型与不可变类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-可变类型："><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 可变类型：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-不可变类型"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2 不可变类型</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#py-基础-list增删改查"><span class="toc-number">1.</span> <span class="toc-text">py 基础-list增删改查</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于list"><span class="toc-number">1.1.</span> <span class="toc-text">关于list</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-定义"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. 定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-常用操作"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. 常用操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-查找"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">2.1 查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-增加操作"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">2.2 增加操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#列表为空不能进行直接list-i-values-不可以直接赋值，要使用方法赋值。"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">列表为空不能进行直接list[i]&#x3D;values 不可以直接赋值，要使用方法赋值。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#append"><span class="toc-number">1.1.2.4.</span> <span class="toc-text">append</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-删除操作"><span class="toc-number">1.1.2.5.</span> <span class="toc-text">2.3 删除操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-修改操作"><span class="toc-number">1.1.2.6.</span> <span class="toc-text">2.4 修改操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-排序操作"><span class="toc-number">1.1.2.7.</span> <span class="toc-text">2.5 排序操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-复制操作"><span class="toc-number">1.1.2.8.</span> <span class="toc-text">2.6 复制操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-7-列表生成式"><span class="toc-number">1.1.2.9.</span> <span class="toc-text">2.7 列表生成式</span></a></li></ol></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
