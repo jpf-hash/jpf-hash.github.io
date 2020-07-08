@@ -16,7 +16,7 @@
 <meta property="og:description" content="py 基础-list增删改查">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-08T02:35:33.000Z">
-<meta property="article:modified_time" content="2020-07-08T12:55:55.334Z">
+<meta property="article:modified_time" content="2020-07-08T13:04:08.380Z">
 <meta property="article:author" content="斯乌">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
@@ -211,7 +211,7 @@
 </li>
 </ul>
 <h4 id="2-2-增加操作"><a href="#2-2-增加操作" class="headerlink" title="2.2 增加操作"></a>2.2 增加操作</h4><h4 id="列表为空不能进行直接list-i-values-不可以直接赋值，要使用方法赋值。"><a href="#列表为空不能进行直接list-i-values-不可以直接赋值，要使用方法赋值。" class="headerlink" title="列表为空不能进行直接list[i]=values 不可以直接赋值，要使用方法赋值。"></a>列表为空不能进行直接list[i]=values 不可以直接赋值，要使用方法赋值。</h4><ul>
-<li><h4 id="append"><a href="#append" class="headerlink" title="append"></a>append</h4></li>
+<li>append</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># append（data）效果是在列表结尾增加数据，列表是可变数据类型，</span></span><br><span class="line"><span class="comment"># 若增加一个序列则是把整个序列增加到列表中,数据不会被拆开,字符串也不会被拆开</span></span><br><span class="line">name_list = [<span class="string">'zhangsan'</span>, <span class="string">'lisi'</span>, <span class="string">'wangwu'</span>, <span class="string">'lisi'</span>]</span><br><span class="line">name_list.append(<span class="string">"wangliu"</span>)</span><br><span class="line">print(name_list)</span><br><span class="line">name_list.append([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, ])</span><br><span class="line">print(name_list)</span><br><span class="line">name_list.append(<span class="string">"world"</span>)</span><br><span class="line">print(name_list)</span><br><span class="line"><span class="comment"># ['zhangsan', 'lisi', 'wangwu', 'lisi', 'wangliu']</span></span><br><span class="line"><span class="comment"># ['zhangsan', 'lisi', 'wangwu', 'lisi', 'wangliu', [1, 2, 3, 4]]</span></span><br><span class="line"><span class="comment"># ['zhangsan', 'lisi', 'wangwu', 'lisi', 'wangliu', [1, 2, 3, 4], 'world']</span></span><br></pre></td></tr></table></figure>
 
@@ -376,6 +376,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2020/07/08/py%E5%9F%BA%E7%A1%80-%E5%85%83%E7%BB%84/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          py基础-元组
+        
+      </div>
+    </a>
+  
   
     <a href="/2020/07/06/Py%E5%9F%BA%E7%A1%80-%E5%BE%AA%E7%8E%AF%E3%80%81%E5%87%BD%E6%95%B0%E3%80%81%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B%E5%92%8C%E4%B8%8D%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">Py基础-循环、函数、可变类型和不可变类型</div>
@@ -405,7 +414,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#py-基础-list增删改查"><span class="toc-number">1.</span> <span class="toc-text">py 基础-list增删改查</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于list"><span class="toc-number">1.1.</span> <span class="toc-text">关于list</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-定义"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. 定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-常用操作"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. 常用操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-查找"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">2.1 查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-增加操作"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">2.2 增加操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#列表为空不能进行直接list-i-values-不可以直接赋值，要使用方法赋值。"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">列表为空不能进行直接list[i]&#x3D;values 不可以直接赋值，要使用方法赋值。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#append"><span class="toc-number">1.1.2.4.</span> <span class="toc-text">append</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-删除操作"><span class="toc-number">1.1.2.5.</span> <span class="toc-text">2.3 删除操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-修改操作"><span class="toc-number">1.1.2.6.</span> <span class="toc-text">2.4 修改操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-排序操作"><span class="toc-number">1.1.2.7.</span> <span class="toc-text">2.5 排序操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-复制操作"><span class="toc-number">1.1.2.8.</span> <span class="toc-text">2.6 复制操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-7-列表生成式"><span class="toc-number">1.1.2.9.</span> <span class="toc-text">2.7 列表生成式</span></a></li></ol></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#py-基础-list增删改查"><span class="toc-number">1.</span> <span class="toc-text">py 基础-list增删改查</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于list"><span class="toc-number">1.1.</span> <span class="toc-text">关于list</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-定义"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. 定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-常用操作"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. 常用操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-查找"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">2.1 查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-增加操作"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">2.2 增加操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#列表为空不能进行直接list-i-values-不可以直接赋值，要使用方法赋值。"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">列表为空不能进行直接list[i]&#x3D;values 不可以直接赋值，要使用方法赋值。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-删除操作"><span class="toc-number">1.1.2.4.</span> <span class="toc-text">2.3 删除操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-修改操作"><span class="toc-number">1.1.2.5.</span> <span class="toc-text">2.4 修改操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-排序操作"><span class="toc-number">1.1.2.6.</span> <span class="toc-text">2.5 排序操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-复制操作"><span class="toc-number">1.1.2.7.</span> <span class="toc-text">2.6 复制操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-7-列表生成式"><span class="toc-number">1.1.2.8.</span> <span class="toc-text">2.7 列表生成式</span></a></li></ol></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -521,15 +530,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vim</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
             
             <div class="clearfix"></div>
