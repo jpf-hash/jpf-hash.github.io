@@ -16,7 +16,7 @@
 <meta property="og:description" content="py 基础-tuple">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-08T13:05:15.000Z">
-<meta property="article:modified_time" content="2020-07-08T13:42:35.043Z">
+<meta property="article:modified_time" content="2020-07-09T01:35:32.159Z">
 <meta property="article:author" content="斯乌">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
@@ -198,7 +198,7 @@
 <ul>
 <li>有数据元组</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 多数据元组</span></span><br><span class="line">t=(<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>)</span><br><span class="line"><span class="comment"># 单数据元组,必须要有逗号，否则t为int类型</span></span><br><span class="line">t1 = (<span class="number">10</span>,)</span><br><span class="line">print(type(t1))</span><br><span class="line">t2 = (<span class="number">10</span>)</span><br><span class="line">print(type(t2))</span><br><span class="line"><span class="comment"># &lt;class 'tuple'&gt;</span></span><br><span class="line"><span class="comment"># &lt;class 'int'&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 多数据元组</span></span><br><span class="line">t=(<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>) <span class="comment"># 也可以用对应个数变量进行赋值t1, t, t3 = (10, 20, 30)</span></span><br><span class="line"><span class="comment"># 单数据元组,必须要有逗号，否则t为int类型</span></span><br><span class="line">t1 = (<span class="number">10</span>,)</span><br><span class="line">print(type(t1))</span><br><span class="line">t2 = (<span class="number">10</span>)</span><br><span class="line">print(type(t2))</span><br><span class="line"><span class="comment"># &lt;class 'tuple'&gt;</span></span><br><span class="line"><span class="comment"># &lt;class 'int'&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="3-元组的操作"><a href="#3-元组的操作" class="headerlink" title="3.元组的操作"></a>3.元组的操作</h3><h4 id="3-1-查找"><a href="#3-1-查找" class="headerlink" title="3.1 查找"></a>3.1 查找</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">t3 = (<span class="number">10</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">54</span>, <span class="number">6</span>, <span class="number">78</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="string">"hello"</span>)</span><br><span class="line"><span class="comment"># 元组不支持修改操作，只支持查找</span></span><br><span class="line"><span class="comment"># index(data) 查看数据是否存在，不在报错，存在返回下标</span></span><br><span class="line">a = t3.index(<span class="string">"hello"</span>)</span><br><span class="line">print(a)</span><br><span class="line"><span class="comment"># 8</span></span><br><span class="line"><span class="comment"># ---------------------------------------------</span></span><br><span class="line"><span class="comment"># count(data)  数据出现次数,没有该数据返回0</span></span><br><span class="line">print(t3.count(<span class="number">9</span>))</span><br><span class="line">print(t3.count(<span class="number">11</span>))</span><br><span class="line"><span class="comment"># 2</span></span><br><span class="line"><span class="comment"># 0</span></span><br><span class="line"><span class="comment"># ----------------------------------------------</span></span><br><span class="line"><span class="comment"># len(元组名),元素个数</span></span><br><span class="line">print(len(t3))</span><br><span class="line"><span class="comment"># 9</span></span><br></pre></td></tr></table></figure>
 
@@ -483,11 +483,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
             
             <div class="clearfix"></div>
