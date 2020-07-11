@@ -6,16 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | jpf_blog</title>
+  <title>文件和目录操作 | jpf_blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="nothing">
-<meta property="og:type" content="website">
-<meta property="og:title" content="jpf_blog">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="文件操作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文件和目录操作">
+<meta property="og:url" content="http://yoursite.com/2020/07/11/%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C/index.html">
 <meta property="og:site_name" content="jpf_blog">
-<meta property="og:description" content="nothing">
+<meta property="og:description" content="文件操作">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-11T07:26:04.000Z">
+<meta property="article:modified_time" content="2020-07-11T13:26:47.435Z">
 <meta property="article:author" content="斯乌">
+<meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="jpf_blog" type="application/atom+xml">
@@ -159,35 +162,139 @@
           </div>
           <div id="js-content" class="content-ll">
             
+<article id="post-文件和目录操作" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      文件和目录操作
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/11/%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C/" class="archive-article-date">
+
+        
+        <a href="/2020/07/11/%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C/" class="archive-article-date">
   	<time datetime="2020-07-11T07:26:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/11/%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C/">文件和目录操作</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h1><a id="more"></a>
 
-        <div class="article-info info-on-right">
-          
+<h2 id="一、文件"><a href="#一、文件" class="headerlink" title="一、文件"></a>一、文件</h2><p>将数据长期保存下来，需要时候使用，文件是以二进制的形式放在磁盘上的。</p>
+<ul>
+<li><h3 id="文本文件"><a href="#文本文件" class="headerlink" title="文本文件"></a>文本文件</h3></li>
+</ul>
+<blockquote>
+<p>可以使用文本编辑器查看，本质上还是二进制文件。</p>
+</blockquote>
+<ul>
+<li><h3 id="二进制文件"><a href="#二进制文件" class="headerlink" title="二进制文件"></a>二进制文件</h3></li>
+</ul>
+<blockquote>
+<p>保存内容不是给人直接阅读的，而是提供给其他软件使用的，比如图片，音频，视频文件，二进制文件不能使用文本编辑软件打开</p>
+</blockquote>
+<h3 id="二、文件操作"><a href="#二、文件操作" class="headerlink" title="二、文件操作"></a>二、文件操作</h3><ul>
+<li><h3 id="打开文件、读文件、写文件"><a href="#打开文件、读文件、写文件" class="headerlink" title="打开文件、读文件、写文件"></a>打开文件、读文件、写文件</h3></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">open(name,mode) </span><br><span class="line">name:是打开目标文件则字符串</span><br><span class="line">mode：是打开的模式</span><br><span class="line">f=open(<span class="string">"test"</span>,<span class="string">'w'</span>) <span class="comment"># 以写的模式打开test文件</span></span><br><span class="line">f.write(<span class="string">'hello'</span>) <span class="comment"># 写入hello</span></span><br><span class="line">f.close() <span class="comment"># 关闭文件</span></span><br><span class="line"><span class="comment"># open打开文件函数，存在返回文件操作对象，不存在抛出异常</span></span><br><span class="line"><span class="comment"># read可以一次型读入并返回文件的所有内容，注意read执行后会把光标移动到文件末尾</span></span><br><span class="line"><span class="comment"># close关闭文件。</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h3 id="打开文件的方式"><a href="#打开文件的方式" class="headerlink" title="打开文件的方式"></a>打开文件的方式</h3><table>
+<thead>
+<tr>
+<th>访问方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>r</td>
+<td>以只读形式打开文件，光标在文件开头，若文件不存在抛出异常</td>
+</tr>
+<tr>
+<td>w</td>
+<td>以只写方式打开文件，文件存在文件中的内容会被删除，重新进行书写。如果文件不存在，则会创建新文件</td>
+</tr>
+<tr>
+<td>a</td>
+<td>打开一个文件用于追加内容，如果文件已存在，光标会放在文件末尾，若此时进行读取是没有内容的，因为光标在最后。若此时新写内容会被放在原来内容之后。如果文件不存在创建新文件</td>
+</tr>
+<tr>
+<td>r+</td>
+<td>以读写方式打开文件，文件的指针会被放在开头，文件不存在抛出异常</td>
+</tr>
+<tr>
+<td>w+</td>
+<td>以读写方式打开文件，文件存在，原来内容会被清空，文件不存在则创建新文件</td>
+</tr>
+<tr>
+<td>a+</td>
+<td>以读写形式打开文件，文件指针会在末尾，文件不存在创建新文件</td>
+</tr>
+<tr>
+<td>rb</td>
+<td>以二进制打开一个文件只读，文件指针会在文章开头</td>
+</tr>
+<tr>
+<td>wb</td>
+<td>以二进制打开一个文件用于只写，文件存在，原有文件内容会被清空，文件不存在创建新文件</td>
+</tr>
+<tr>
+<td>ab</td>
+<td>以二进制打开一个文件用于追加，文件存在，文件指针在末尾，文件不存在则创建新文件</td>
+</tr>
+<tr>
+<td>rb+</td>
+<td>以二进制打开一个文件读写，文件指针会在文章开头，文件不存在抛出异常</td>
+</tr>
+<tr>
+<td>wb+</td>
+<td>以二进制打开一个文件用于读写，文件存在，原有文件内容会被清空，文件不存在创建新文件</td>
+</tr>
+<tr>
+<td>ab+</td>
+<td>以二进制打开一个文件用于追加，文件存在，文件指针在末尾，文件不存在则创建新文件。</td>
+</tr>
+</tbody></table>
+<p>总结：<strong>文件操作三种模式：r、w、a读、写、追加 ，b都是进行二进制操作，写入时b’‘,读出来的也都是b’’，带+号可读可写，r的光标在最开始，w在当前但是会会清除文件内容后在写入，a追加内容。</strong></p>
+</li>
+</ul>
+<h2 id="三、目录操作"><a href="#三、目录操作" class="headerlink" title="三、目录操作"></a>三、目录操作</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.mkdir <span class="comment"># 创建文件夹</span></span><br><span class="line">os.rmdir <span class="comment"># 删除文件夹</span></span><br><span class="line">os.rename(目标文件，新名字)  <span class="comment"># 更改名字</span></span><br><span class="line">os.remove(目标文件) <span class="comment"># 删除文件</span></span><br><span class="line">os.getcwd() <span class="comment"># 获取当前目录路径</span></span><br><span class="line">os.chdir(<span class="string">'路径'</span>) <span class="comment"># 改变目录路径类似linux cd</span></span><br><span class="line">os.listdir() <span class="comment"># 获取目录列表</span></span><br><span class="line">os.path.isdir(<span class="string">'文件路径'</span>) <span class="comment">#判断是不是文件夹类型</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="文件编码："><a href="#文件编码：" class="headerlink" title="文件编码："></a>文件编码：</h4><p>打开一个记事本，右下角有CRLF格式还有LF格式，在文本文件下，crlf格式中的\n是\r\n，lf格式下\n就是\n</p>
+<p>文本文件下，读\r\n会自动变\n，写\n会写入\r\n，可在观看记事本的大小字节数得到验证。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -199,7 +306,7 @@
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -212,461 +319,116 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+  <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+  <p>扫一扫，分享到微信</p>
+  <div class="wx-qrcode">
+    <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://jpf-hash.github.io/2020/07/11/%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C/" alt="微信分享二维码">
+  </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/10/%E6%A8%A1%E5%9D%97%E5%92%8C%E5%8C%85/" class="archive-article-date">
-  	<time datetime="2020-07-10T15:31:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-10</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/10/%E6%A8%A1%E5%9D%97%E5%92%8C%E5%8C%85/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">模块和包</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/10/%E6%A8%A1%E5%9D%97%E5%92%8C%E5%8C%85/">模块和包</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/python基础//" class="article-tag-list-link color5">-python基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#文件操作"><span class="toc-number">1.</span> <span class="toc-text">文件操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、文件"><span class="toc-number">1.1.</span> <span class="toc-text">一、文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文本文件"><span class="toc-number">1.1.1.</span> <span class="toc-text">文本文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二进制文件"><span class="toc-number">1.1.2.</span> <span class="toc-text">二进制文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、文件操作"><span class="toc-number">1.1.3.</span> <span class="toc-text">二、文件操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#打开文件、读文件、写文件"><span class="toc-number">1.1.4.</span> <span class="toc-text">打开文件、读文件、写文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#打开文件的方式"><span class="toc-number">1.1.5.</span> <span class="toc-text">打开文件的方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、目录操作"><span class="toc-number">1.2.</span> <span class="toc-text">三、目录操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#文件编码："><span class="toc-number">1.2.0.1.</span> <span class="toc-text">文件编码：</span></a></li></ol></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/10/%E5%BC%82%E5%B8%B8/" class="archive-article-date">
-  	<time datetime="2020-07-10T06:19:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/10/%E5%BC%82%E5%B8%B8/">异常</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/python基础//" class="article-tag-list-link color5">-python基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/09/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="archive-article-date">
-  	<time datetime="2020-07-09T14:17:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/09/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/python基础//" class="article-tag-list-link color5">-python基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/09/py%E5%9F%BA%E7%A1%80-%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2020-07-09T02:35:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/09/py%E5%9F%BA%E7%A1%80-%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0/">py基础-函数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/python基础//" class="article-tag-list-link color5">-python基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/py%E5%9F%BA%E7%A1%80-%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="archive-article-date">
-  	<time datetime="2020-07-08T15:13:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/py%E5%9F%BA%E7%A1%80-%E5%AD%97%E7%AC%A6%E4%B8%B2/">py基础-字符串</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/python基础//" class="article-tag-list-link color5">-python基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/py%E5%9F%BA%E7%A1%80-%E9%9B%86%E5%90%88/" class="archive-article-date">
-  	<time datetime="2020-07-08T14:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/py%E5%9F%BA%E7%A1%80-%E9%9B%86%E5%90%88/">py基础-集合</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/python基础//" class="article-tag-list-link color5">-python基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/py%E5%9F%BA%E7%A1%80-%E5%AD%97%E5%85%B8/" class="archive-article-date">
-  	<time datetime="2020-07-08T13:43:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/py%E5%9F%BA%E7%A1%80-%E5%AD%97%E5%85%B8/">py基础-字典</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/python基础//" class="article-tag-list-link color5">-python基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/py%E5%9F%BA%E7%A1%80-%E5%85%83%E7%BB%84/" class="archive-article-date">
-  	<time datetime="2020-07-08T13:05:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/py%E5%9F%BA%E7%A1%80-%E5%85%83%E7%BB%84/">py基础-元组</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/python基础//" class="article-tag-list-link color5">-python基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/Py%E5%9F%BA%E7%A1%80-list%E5%A2%9E%E5%88%A0%E6%9F%A5%E6%94%B9/" class="archive-article-date">
-  	<time datetime="2020-07-08T02:35:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/Py%E5%9F%BA%E7%A1%80-list%E5%A2%9E%E5%88%A0%E6%9F%A5%E6%94%B9/">Py基础-list增删查改</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/python基础//" class="article-tag-list-link color5">-python基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -694,8 +456,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
