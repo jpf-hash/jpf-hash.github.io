@@ -16,7 +16,7 @@
 <meta property="og:description" content="VIM 编辑器">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-02T15:20:40.000Z">
-<meta property="article:modified_time" content="2020-07-02T17:05:45.224Z">
+<meta property="article:modified_time" content="2020-07-12T07:16:52.348Z">
 <meta property="article:author" content="斯乌">
 <meta property="article:tag" content="vim">
 <meta name="twitter:card" content="summary">
@@ -192,6 +192,12 @@
 </blockquote>
 <h2 id="安装-vim-plus插件"><a href="#安装-vim-plus插件" class="headerlink" title="安装 vim-plus插件"></a>安装 vim-plus插件</h2><blockquote>
 <p>sudo apt install git<br>git clone <a href="https://gitee.com/cskaoyan123/vimplus.git" target="_blank" rel="noopener">https://gitee.com/cskaoyan123/vimplus.git</a> ~/.vimplus<br>cd ~/.vimplus<br>./install.sh<br><a href="https://www.jianshu.com/p/75cde8a80fd7" target="_blank" rel="noopener">文档</a></p>
+</blockquote>
+<blockquote>
+<p>关于打开预生成代码，在路径<br>~/.vim/plugged/prepare-code下</p>
+<p>修改vim预生成代码~/.vim/plugged/prepare-code/<br>找到vim的配置文件，  /etc/vimrc</p>
+<p>修改注释颜色：vim ~/.vimrc，插入 hi comment ctermfg=6 </p>
+<p>修改xshell 家目录下~./barsh文件 export PS1=”[\e[37;40m][[\e[32;40m]\u[\e[37;40m]@\h[\e[36;40m]\w[\e[0m]]\$ “<br>改名字为黑色 以及xshell配色方案改背景色</p>
 </blockquote>
 <h2 id="VIM内命令"><a href="#VIM内命令" class="headerlink" title="VIM内命令"></a>VIM内命令</h2><h3 id="删除修改"><a href="#删除修改" class="headerlink" title="删除修改"></a>删除修改</h3><ul>
 <li>x 删除光标处的字符</li>
@@ -517,6 +523,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vim</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
             
             <div class="clearfix"></div>
