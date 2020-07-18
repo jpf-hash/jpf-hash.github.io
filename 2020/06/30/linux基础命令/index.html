@@ -16,7 +16,7 @@
 <meta property="og:description" content="Linux基础命令">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-30T08:48:07.000Z">
-<meta property="article:modified_time" content="2020-07-02T15:20:50.354Z">
+<meta property="article:modified_time" content="2020-07-17T13:14:34.185Z">
 <meta property="article:author" content="斯乌">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
@@ -184,80 +184,101 @@
       
         <h1 id="Linux基础命令"><a href="#Linux基础命令" class="headerlink" title="Linux基础命令"></a>Linux基础命令</h1><a id="more"></a>
 <h2 id="用户配置"><a href="#用户配置" class="headerlink" title="用户配置"></a>用户配置</h2><ul>
-<li>超级用户(root) 普通用户</li>
-<li>超级用户可以在linux下做任何事情，不受限制。</li>
-<li>普通用户在linux下做有限的事情</li>
-<li>切换用户<blockquote>
+<li><p>超级用户(root) 普通用户</p>
+</li>
+<li><p>超级用户可以在linux下做任何事情，不受限制。</p>
+</li>
+<li><p>普通用户在linux下做有限的事情</p>
+</li>
+<li><p>切换用户</p>
+<blockquote>
 <p>su [用户名]  # 功能切换用户</p>
 </blockquote>
 </li>
-<li>初次切换root用户时，需要设置密码。<blockquote>
+<li><p>初次切换root用户时，需要设置密码。</p>
+<blockquote>
 <p>sudo passwd root</p>
 </blockquote>
 </li>
-<li>添加新用户(-m添加家目录，-s指定使用的脚本解释器)<blockquote>
+<li><p>添加新用户(-m添加家目录，-s指定使用的脚本解释器)</p>
+<blockquote>
 <p>sudo useradd -m [用户名] -s /bin/bash  </p>
 </blockquote>
 </li>
-<li>设置密码<blockquote>
+<li><p>设置密码</p>
+<blockquote>
 <p>sudo passwd [用户名]</p>
 </blockquote>
 </li>
-<li>查看当前系统用户<blockquote>
+<li><p>查看当前系统用户</p>
+<blockquote>
 <p>cat /etc/passwd</p>
 </blockquote>
 </li>
-<li>删除用户(-r 删除家目录，不加则不删)<blockquote>
+<li><p>删除用户(-r 删除家目录，不加则不删)</p>
+<blockquote>
 <p>userdel -r [用户名]</p>
 </blockquote>
 <h2 id="目录及文件操作"><a href="#目录及文件操作" class="headerlink" title="目录及文件操作"></a>目录及文件操作</h2></li>
 </ul>
 <ol>
-<li>查看文件或目录<blockquote>
+<li><p>查看文件或目录</p>
+<blockquote>
 <p>ls -a/-l/<br>-a: 显示所有文件包括隐藏文件<br>-l: 列出所有目录及文件的详细信息<br>从左至右依次是：文件类型及权限、连接数、文件所有者、文件所处组、文件大小、最近修改时间、文件名字<br>文件类型及权限中最开头的字符串，第一个字母为文件类型,可以有以下几种：<br>d:目录文件<br>l:符号链接<br>b:块设备文件<br>c:字符设备文件<br>p:命名管道<br>s:socket文件<br>-:普通文件<br>后9个字符，3各位一组，分别是文件创建者权限(u)，同组用户权限(g)，其他用户权限(o)，r\w\x，分别为读\写\执行权限。</p>
 </blockquote>
 </li>
-<li>更改目录或文件权限<br>使用chmod命令改变权限.<br>文字设定改变文件权限<blockquote>
+<li><p>更改目录或文件权限<br>使用chmod命令改变权限.<br>文字设定改变文件权限</p>
+<blockquote>
 <p>chmod +x test.txt 表示给test文件增加可执行权限，u\g\o都可执行，-代表取消某些权限，=表示给定某个权限并取消其他权限<br>chmod g+r，o+r test.txt 表示给同组用户和其他用户增加可读权限<br>数字设定发改变文件权限<br>chmod 数字 文件名<br>例如 chmod 664 test.txt 表示拥有者可读可写，同组可读可写，其他用户可读。 (数字是2可读，4可写，6为可读写，7可读可写可执行)</p>
 </blockquote>
 </li>
-<li>改变工作目录<blockquote>
+<li><p>改变工作目录</p>
+<blockquote>
 <p>cd 目录名<br>cd .. 到父目录<br>cd / 到根目录<br>cd - 到上一次的目录</p>
 </blockquote>
 </li>
-<li>创建目录<blockquote>
+<li><p>创建目录</p>
+<blockquote>
 <p>mkdir 创建目录的名字</p>
 </blockquote>
 </li>
-<li>删除目录<blockquote>
+<li><p>删除目录</p>
+<blockquote>
 <p>rmdir 目录名字 (目录中若不为空，需要加-r)</p>
 </blockquote>
 </li>
-<li>拷贝文件或目录<blockquote>
+<li><p>拷贝文件或目录</p>
+<blockquote>
 <p>cp 源文件或目录 目标文件或目录<br>cp -f/-i test.c /home/user/test1.c（-f表示若有重名文件不提示直接覆盖，-i则提示是否覆盖）若拷贝目录则需要加-r</p>
 </blockquote>
 </li>
-<li>移动文件或目录<blockquote>
+<li><p>移动文件或目录</p>
+<blockquote>
 <p>mv 源文件或目录 目标文件或目录<br>也有-f -i 也是重复是否提示</p>
 </blockquote>
 </li>
-<li>删除文件或目录<blockquote>
+<li><p>删除文件或目录</p>
+<blockquote>
 <p>rm 文件或目录<br>-f 删除不给提示<br>-i 会有提示<br>删除目录 加-r</p>
 </blockquote>
 </li>
-<li>显示目录树形结构<br>首先安装功能<blockquote>
+<li><p>显示目录树形结构<br>首先安装功能</p>
+<blockquote>
 <p>sudo apt-get install tree<br>tree<br>-a: 显示所有文件和目录<br>-c: 在文件和目录清单加上色彩，区分类型<br>-d: 显示目录名称<br>-D: 列出文件或目录的更改时间<br>-g: 列出文件或目录的所属群组名称<br>-i: 不以阶梯状列出文件或目录名称<br>-t: 用文件和目录的更改时间排序<br>-u: 列出文件或目的的拥有者名称<br>-h: 显示每个文件大小</p>
 </blockquote>
 </li>
-<li>显示当前目录<blockquote>
+<li><p>显示当前目录</p>
+<blockquote>
 <p>pwd</p>
 </blockquote>
 </li>
-<li>文件系统使用情况<blockquote>
+<li><p>文件系统使用情况</p>
+<blockquote>
 <p>df -h 显示整个磁盘使用情况<br>du -h 显示所有文件的使用空间 若只想显示当前目录 du -h –max-depth=0 /home/jpf</p>
 </blockquote>
 </li>
-<li>文件查找<blockquote>
+<li><p>文件查找</p>
+<blockquote>
 <p>and  -a<br>not   !<br>or   -o<br>find 起始目录 查找条件 操作</p>
 </blockquote>
 <ul>
@@ -345,7 +366,8 @@
 </ul>
 <hr>
 <h2 id="文件查看"><a href="#文件查看" class="headerlink" title="文件查看"></a>文件查看</h2><ol>
-<li>查看文件内容及用户<ul>
+<li><p>查看文件内容及用户</p>
+<ul>
 <li>查看用户<blockquote>
 <p>cat /etc/passwd </p>
 </blockquote>
@@ -360,31 +382,38 @@
 </li>
 </ul>
 </li>
-<li>显示内容前几行<blockquote>
+<li><p>显示内容前几行</p>
+<blockquote>
 <p>head -n 行数 文件名<br>head -n 15 file 显示file文件的前15行</p>
 </blockquote>
 </li>
-<li>显示文件后几行<blockquote>
+<li><p>显示文件后几行</p>
+<blockquote>
 <p>tail -n 行数 文件名<br>tail -n 15 file 显示file文件的最后15行</p>
 </blockquote>
 </li>
-<li>对文件内容进行排序<blockquote>
+<li><p>对文件内容进行排序</p>
+<blockquote>
 <p>sort 文件名<br>sort file &gt; file1 把file中的内容排序后,输出重定向至file1中</p>
 </blockquote>
 </li>
-<li>查看文件内容类型<blockquote>
+<li><p>查看文件内容类型</p>
+<blockquote>
 <p>file 文件名<br>file a.txt 根据a.txt内容查看是什么文件类型</p>
 </blockquote>
 </li>
-<li>报告或删除文件中的重复的行<blockquote>
+<li><p>报告或删除文件中的重复的行</p>
+<blockquote>
 <p>uniq 文件名  # 去掉重复的只显示不重复的<br>-c 在输出行前面加上每行在输入文件中出现的次数<br>-d 仅显示重复行<br>-u 仅显示不重复的行</p>
 </blockquote>
 </li>
-<li>统计指定文件中的行数、字数、字节数<blockquote>
+<li><p>统计指定文件中的行数、字数、字节数</p>
+<blockquote>
 <p>wc 文件名   不加就是 行数 字数 字节数<br>-c 统计字节数<br>-w 统计字数<br>-l 统计行数</p>
 </blockquote>
 </li>
-<li>搜索文件内容<blockquote>
+<li><p>搜索文件内容</p>
+<blockquote>
 <p>grep 选项 查找模式 文件名1，文件名2<br>grep hello file 看file内容中哪几行有hello</p>
 </blockquote>
 <ul>
@@ -402,7 +431,8 @@
 </li>
 </ul>
 </li>
-<li>文件打包和解压缩<ul>
+<li><p>文件打包和解压缩</p>
+<ul>
 <li>tar(v显示处理文件，c创建新的档案文件，f使用档案文件，z压缩)<blockquote>
 <p>tar czfv tset.tar.gz  *.c 把当前目录的.c文件打包<br>tar xfv test.tar.gz 解包，把文件释放出来</p>
 </blockquote>
@@ -417,7 +447,8 @@
 </li>
 </ul>
 </li>
-<li>scp远程拷贝文件<ul>
+<li><p>scp远程拷贝文件</p>
+<ul>
 <li>发送文件<blockquote>
 <p>scp 文件名 要发送的账户名字@要发往的ip地址:~/</p>
 </blockquote>
@@ -428,15 +459,23 @@
 </li>
 </ul>
 </li>
-<li>查看网络配置（不同的系统重启网络命令不同）<blockquote>
+<li><p>查看网络配置（不同的系统重启网络命令不同）</p>
+<blockquote>
 <p>ifconfig<br>ifconfig ens33 down<br>ifconfig ens33 up</p>
 </blockquote>
 </li>
-<li>查看路由<blockquote>
+<li><p>查看路由</p>
+<blockquote>
 <p>route</p>
 </blockquote>
 </li>
 </ol>
+<h2 id="一些系统命令："><a href="#一些系统命令：" class="headerlink" title="一些系统命令："></a>一些系统命令：</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Ps -elf  查看进程状态</span><br><span class="line">Ps -aux 查看cpu占比率 （一瞬间）</span><br><span class="line">Cat /proc/cpuinfo 看cpu个数</span><br><span class="line">Kill <span class="number">-9</span> pid 杀掉pid进程</span><br><span class="line">Top 看动态状态</span><br><span class="line">Free 查看系统内存占有情况</span><br><span class="line">Df -h查看磁盘空间</span><br><span class="line">jobs 查看当前窗口有哪些进程</span><br><span class="line">fdisk -l 查看磁盘及分区情况</span><br><span class="line">renice 可以更改优先级</span><br><span class="line">renice -n +<span class="number">19</span> -p pid  增大数字是降低优先级</span><br><span class="line">设置定时任务的两种方式：</span><br><span class="line">	<span class="number">1.</span>Crontab -e   -l是查看自己设置的定时任务列表</span><br><span class="line">	<span class="number">2.</span>Vim /etc/crontab</span><br></pre></td></tr></table></figure>
+
+
+<p>​    </p>
+<p>​    </p>
+<p>​    </p>
 
       
 
@@ -585,7 +624,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux基础命令"><span class="toc-number">1.</span> <span class="toc-text">Linux基础命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#用户配置"><span class="toc-number">1.1.</span> <span class="toc-text">用户配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目录及文件操作"><span class="toc-number">1.2.</span> <span class="toc-text">目录及文件操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#发广播"><span class="toc-number">1.2.1.</span> <span class="toc-text">发广播</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#软硬链接"><span class="toc-number">1.2.2.</span> <span class="toc-text">软硬链接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件查看"><span class="toc-number">1.3.</span> <span class="toc-text">文件查看</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux基础命令"><span class="toc-number">1.</span> <span class="toc-text">Linux基础命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#用户配置"><span class="toc-number">1.1.</span> <span class="toc-text">用户配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目录及文件操作"><span class="toc-number">1.2.</span> <span class="toc-text">目录及文件操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#发广播"><span class="toc-number">1.2.1.</span> <span class="toc-text">发广播</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#软硬链接"><span class="toc-number">1.2.2.</span> <span class="toc-text">软硬链接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件查看"><span class="toc-number">1.3.</span> <span class="toc-text">文件查看</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些系统命令："><span class="toc-number">1.4.</span> <span class="toc-text">一些系统命令：</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -705,15 +744,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
             
             <div class="clearfix"></div>
