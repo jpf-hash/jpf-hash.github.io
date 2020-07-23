@@ -16,7 +16,7 @@
 <meta property="og:description" content="协程">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-22T12:22:39.000Z">
-<meta property="article:modified_time" content="2020-07-22T16:17:30.196Z">
+<meta property="article:modified_time" content="2020-07-23T00:32:15.833Z">
 <meta property="article:author" content="斯乌">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
@@ -192,7 +192,7 @@
 <h2 id="二、生成器"><a href="#二、生成器" class="headerlink" title="二、生成器"></a>二、生成器</h2><p>使用了yield关键字的函数，就可以成为生成器，yield作用是保存当前运行状态，暂停代码、保留现场，将该函数挂起，yield后边的值作为返回值返回。</p>
 <p>使用next命令可以唤醒</p>
 <p>还可以使用send函数来唤醒，send可以在唤醒同时向断点处传入一个附加数据</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 可以看看去掉yield打印出来啥样</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'i am func'</span>)</span><br><span class="line">    <span class="keyword">yield</span></span><br><span class="line">    print(<span class="string">'使用next 看见我'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">result = func()</span><br><span class="line">result.__next__()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 可以看看去掉yield打印出来啥样</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'i am func'</span>)</span><br><span class="line">    <span class="keyword">yield</span></span><br><span class="line">    print(<span class="string">'使用yield next后看不见我'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">result = func()</span><br><span class="line">result.__next__()</span><br></pre></td></tr></table></figure>
 
 <h2 id="三、协程的实现"><a href="#三、协程的实现" class="headerlink" title="三、协程的实现"></a>三、协程的实现</h2><p>使用协程库来实现协程greenlet，gevent，</p>
 <h4 id="3-1-greenlet"><a href="#3-1-greenlet" class="headerlink" title="3.1 greenlet"></a>3.1 greenlet</h4><p>首先需要安装greenlet模块。pip install greenlet</p>
@@ -471,19 +471,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vim</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
             
             <div class="clearfix"></div>
