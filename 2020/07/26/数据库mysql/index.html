@@ -16,7 +16,7 @@
 <meta property="og:description" content="Mysql数据库">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-26T13:12:51.000Z">
-<meta property="article:modified_time" content="2020-07-28T14:14:52.150Z">
+<meta property="article:modified_time" content="2020-07-31T01:12:06.671Z">
 <meta property="article:author" content="斯乌">
 <meta property="article:tag" content="mysql">
 <meta name="twitter:card" content="summary">
@@ -369,8 +369,73 @@
 
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果只想显示查询的前几行</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> 表名 <span class="keyword">limit</span> <span class="keyword">start</span>,<span class="keyword">count</span>;</span><br><span class="line"><span class="comment"># start表示最开始的索引，count是条数，从0开始算第一行 5，10 显示的是6-15行。</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="数据库条件查询"><a href="#数据库条件查询" class="headerlink" title="数据库条件查询"></a>数据库条件查询</h4><p>聚合函数：</p>
+<h4 id="数据库条件查询"><a href="#数据库条件查询" class="headerlink" title="数据库条件查询"></a>数据库条件查询</h4><p><strong>聚合函数：</strong>对表中的数据统计，计算对分组进行统计，一般结合分组使用就是group by。（聚合函数默认对空值不做统计），如果想要带null进行统计需要，使用ifnull或者对null值替换。</p>
+<p>常用聚合函数；</p>
+<p>count():表示求指定列的总行数</p>
+<p>max():表示求指定列的最大值</p>
+<p>min():表示求指定列的最小值</p>
+<p>sum():表示求指定列的和</p>
+<p>avg():表示求指定列的平均值</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 求某一列行数</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(列名) <span class="keyword">from</span> students; <span class="comment"># 返回的是不包含null数据的总行数</span></span><br><span class="line"><span class="comment"># select count(*) from students; # 返回包含null数据的总行数</span></span><br></pre></td></tr></table></figure>
 
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 求年龄最大的女生</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">max</span>(列名) <span class="keyword">from</span> students <span class="keyword">where</span> gender=<span class="string">'女'</span>;</span><br><span class="line"><span class="comment"># 就类似这样 平均值、和、最小值都是这样只是改变函数</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>分组查询(group by)：</strong></p>
+<p>分组查询就是将查询结果按照指定字段进行分组，字段中数据相等的分为一组</p>
+<ul>
+<li>group by可以对单个字段进行分组，也可对对各字段进行分组，</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 根据年龄字段来分组 ，select 什么 group by就写什么</span></span><br><span class="line"><span class="keyword">select</span> age <span class="keyword">from</span> students <span class="keyword">group</span> <span class="keyword">by</span> age;</span><br><span class="line"><span class="comment">-- 根据name和gender字段进行分组</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">name</span>, gender <span class="keyword">from</span> students <span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">name</span>, gender;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>group by 和聚合函数使用</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 统计不同性别的人的平均身高</span></span><br><span class="line"><span class="keyword">select</span> gender,<span class="keyword">avg</span>(height) <span class="keyword">from</span> students <span class="keyword">group</span> <span class="keyword">by</span> gender;</span><br><span class="line"><span class="comment">-- 统计不同性别的人的最大年龄</span></span><br><span class="line"><span class="keyword">select</span> gender,<span class="keyword">max</span>(age) <span class="keyword">from</span> students <span class="keyword">group</span> <span class="keyword">by</span> gender;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>group和having</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># having和where都可以过滤数据，having只可以过滤分组数据.</span></span><br><span class="line"><span class="keyword">select</span> gender,<span class="keyword">group_concat</span>(<span class="keyword">name</span>) <span class="keyword">from</span> students <span class="keyword">group</span> <span class="keyword">by</span> gender</span><br><span class="line">就会出现下面这种效果</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>男</th>
+<th>张飞，刘备，曹操</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>女</td>
+<td>孙尚香，甄姬</td>
+</tr>
+</tbody></table>
+<ul>
+<li>group by和with rollup</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># with rollup 在最后记录新增一行，显示select查询的聚合函数的统计结果，就比如根据性别查询人数，汇总就是总人数。</span></span><br><span class="line"><span class="comment">-- 根据gender字段进行分组，汇总总人数</span></span><br><span class="line"><span class="keyword">select</span> gender,<span class="keyword">count</span>(*) <span class="keyword">from</span> students <span class="keyword">group</span> <span class="keyword">by</span> gender <span class="keyword">with</span> <span class="keyword">rollup</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h4><ul>
+<li>内连接查询</li>
+</ul>
+<p>内连接查询相当于去除两个表对应列的交集数据</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> 字段 <span class="keyword">from</span> 表<span class="number">1</span> <span class="keyword">as</span> 表<span class="number">1</span>别名 <span class="keyword">inner</span> <span class="keyword">join</span> 表<span class="number">2</span> <span class="keyword">as</span> 表<span class="number">2</span>别名 <span class="keyword">on</span> 表<span class="number">1.</span>字段<span class="number">1</span> = 表<span class="number">2.</span>字段<span class="number">2</span></span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span>为内连接查询的关键字</span><br><span class="line"><span class="keyword">on</span> 后是查询条件</span><br><span class="line">一个学生表，一个班级表，条件是学生表的班级<span class="keyword">id</span>和班级表的<span class="keyword">id</span>对应，查询学生所对应的班级</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> students <span class="keyword">as</span> s <span class="keyword">inner</span> <span class="keyword">join</span> classes <span class="keyword">as</span> c <span class="keyword">on</span> s.cls_id = c.id;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>左连接查询和右连接查询</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 左连接查询</span></span><br><span class="line"><span class="keyword">select</span> 字段 <span class="keyword">from</span> 表<span class="number">1</span> <span class="keyword">left</span> <span class="keyword">join</span> 表<span class="number">2</span> <span class="keyword">on</span> 表<span class="number">1.</span>字段<span class="number">1</span> = 表<span class="number">2.</span>字段<span class="number">2</span></span><br><span class="line"><span class="comment"># 右连接查询</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> students <span class="keyword">as</span> s <span class="keyword">left</span> <span class="keyword">join</span> classes <span class="keyword">as</span> c <span class="keyword">on</span> s.cls_id = c.id;</span><br><span class="line"><span class="comment"># 以左连接为例，就是以左表为主根据条件查询右表数据，右表数据不存在的值使用null填充</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>自连接查询</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 自连接查询 就是左边右表都是同一个表，一张表当两张表来看，当然这两张表可以起不一样的别名用于区分</span></span><br><span class="line"><span class="keyword">select</span> c.id, c.title, c.pid, p.title <span class="keyword">from</span> areas <span class="keyword">as</span> c <span class="keyword">inner</span> <span class="keyword">join</span> areas <span class="keyword">as</span> p <span class="keyword">on</span> c.pid = p.id <span class="keyword">where</span> p.title = <span class="string">'河北省'</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>子查询</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 子查询就是一个select语句中嵌入了另外一个select语句，被嵌入的select语句成为子查询语句，外部select为主查询语句</span></span><br><span class="line"><span class="comment"># 子查询语句辅助主语句，要么当数据源要么当条件,子查询语句是一条完整的select语句</span></span><br><span class="line">比如查询大于平均年龄的学生</span><br><span class="line">首先要查找出学生的平均年龄，然后需要查找出大于这个年龄的学生</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> students <span class="keyword">where</span> age &gt; (<span class="keyword">select</span> <span class="keyword">avg</span>(age) <span class="keyword">from</span> students);</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、mysql高级操作"><a href="#四、mysql高级操作" class="headerlink" title="四、mysql高级操作"></a>四、mysql高级操作</h2>
       
 
       
@@ -514,7 +579,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Mysql数据库"><span class="toc-number">1.</span> <span class="toc-text">Mysql数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、关于mysql数据库"><span class="toc-number">1.1.</span> <span class="toc-text">一、关于mysql数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、sql语句以及mysql数据类型和约束"><span class="toc-number">1.2.</span> <span class="toc-text">二、sql语句以及mysql数据类型和约束</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-SQL语句分类"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 SQL语句分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-数据类型"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-数据约束"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3 数据约束</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、mysql操作"><span class="toc-number">1.3.</span> <span class="toc-text">三、mysql操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1登录和登出"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1登录和登出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-DDL（数据库的库、表操作）"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 DDL（数据库的库、表操作）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-DML-增删改"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.3 DML(增删改)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-DQL（查询数据）"><span class="toc-number">1.3.4.</span> <span class="toc-text">3.4 DQL（查询数据）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#排序查询"><span class="toc-number">1.3.4.1.</span> <span class="toc-text">排序查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据库条件查询"><span class="toc-number">1.3.4.2.</span> <span class="toc-text">数据库条件查询</span></a></li></ol></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Mysql数据库"><span class="toc-number">1.</span> <span class="toc-text">Mysql数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、关于mysql数据库"><span class="toc-number">1.1.</span> <span class="toc-text">一、关于mysql数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、sql语句以及mysql数据类型和约束"><span class="toc-number">1.2.</span> <span class="toc-text">二、sql语句以及mysql数据类型和约束</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-SQL语句分类"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 SQL语句分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-数据类型"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-数据约束"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3 数据约束</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、mysql操作"><span class="toc-number">1.3.</span> <span class="toc-text">三、mysql操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1登录和登出"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1登录和登出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-DDL（数据库的库、表操作）"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 DDL（数据库的库、表操作）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-DML-增删改"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.3 DML(增删改)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-DQL（查询数据）"><span class="toc-number">1.3.4.</span> <span class="toc-text">3.4 DQL（查询数据）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#排序查询"><span class="toc-number">1.3.4.1.</span> <span class="toc-text">排序查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据库条件查询"><span class="toc-number">1.3.4.2.</span> <span class="toc-text">数据库条件查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#连接查询"><span class="toc-number">1.3.4.3.</span> <span class="toc-text">连接查询</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、mysql高级操作"><span class="toc-number">1.4.</span> <span class="toc-text">四、mysql高级操作</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
