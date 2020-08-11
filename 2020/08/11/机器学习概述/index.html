@@ -6,16 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: numpy | jpf_blog</title>
+  <title>机器学习概述 | jpf_blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="nothing">
-<meta property="og:type" content="website">
-<meta property="og:title" content="jpf_blog">
-<meta property="og:url" content="http://yoursite.com/tags/numpy/index.html">
+  <meta name="description" content="机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习概述">
+<meta property="og:url" content="http://yoursite.com/2020/08/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A6%82%E8%BF%B0/index.html">
 <meta property="og:site_name" content="jpf_blog">
-<meta property="og:description" content="nothing">
+<meta property="og:description" content="机器学习">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-08-11T13:25:51.000Z">
+<meta property="article:modified_time" content="2020-08-11T14:44:42.566Z">
 <meta property="article:author" content="斯乌">
+<meta property="article:tag" content="机器学习综述">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="jpf_blog" type="application/atom+xml">
@@ -159,70 +162,301 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-  
+<article id="post-机器学习概述" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/08/02/numpy/" class="archive-article-date">
-  	<time datetime="2020-08-02T12:47:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-02</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/02/numpy/">numpy</a>
+    <h1 class="article-title" itemprop="name">
+      机器学习概述
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/08/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A6%82%E8%BF%B0/" class="archive-article-date">
+  	<time datetime="2020-08-11T13:25:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h1><a id="more"></a>
+
+<h2 id="人工智能、机器学习、深度学习的关系"><a href="#人工智能、机器学习、深度学习的关系" class="headerlink" title="人工智能、机器学习、深度学习的关系"></a>人工智能、机器学习、深度学习的关系</h2><p>机器学习是实现人工智能的一种实现途径，深度学习是机器学习的一个方法发展来的</p>
+<h2 id="人工智能的分支"><a href="#人工智能的分支" class="headerlink" title="人工智能的分支"></a>人工智能的分支</h2><p>根据通讯、感知、行动可以分为计算机视觉（cv）、自然语言处理（NLP，其中包括文本分类，机器翻译、语音识别），机器人。</p>
+<h2 id="人工智能发展必备三要素"><a href="#人工智能发展必备三要素" class="headerlink" title="人工智能发展必备三要素"></a>人工智能发展必备三要素</h2><ol>
+<li>数据</li>
+<li>算法</li>
+<li>计算力</li>
+</ol>
+<h2 id="机器学习的工作流程"><a href="#机器学习的工作流程" class="headerlink" title="机器学习的工作流程"></a>机器学习的工作流程</h2><p>机器学习：机器学习主要对数据进行预测，机器学习从数据中自动分析获得模型，并利用模型对未知数据进行预测，即预测未来可能出现的结果</p>
+<p>分为：</p>
+<ol>
+<li>获取数据</li>
+<li>数据处理</li>
+<li>特征工程</li>
+<li>机器学习</li>
+<li>模型评估</li>
+</ol>
+<h3 id="1-获取数据"><a href="#1-获取数据" class="headerlink" title="1.获取数据"></a>1.获取数据</h3><p>将数据成为数据集，一行数据称为一个<strong>样本</strong>，一列数据称为一个<strong>特征</strong>，<strong>目标值</strong>也叫标签值有些数据没有标签值，简单来说目标值即当前样本属于什么类型，或者说经过训练后要得到的值，根据接吻镜头的多少，判断该电影的类型，是爱情片还是惊悚片，电影的类型就是目标值</p>
+<p>当然这样就有两类数据，一类为既有特征值也有目标值，另一类只有特征值，没有目标值</p>
+<p>一般将进行机器学习的数据集分为两个部分，一部分<strong>训练数据</strong>，一部分<strong>测试数据</strong>，训练数据用于构建模型，测试数据用于模型评估，其中比例：训练数据占（0.7-0.8）,测试数据（0.2-0.3）</p>
+<h3 id="2-数据处理"><a href="#2-数据处理" class="headerlink" title="2.数据处理"></a>2.数据处理</h3><p>对数据中的异常数据、缺失数据进行处理，或删除或填充值</p>
+<h3 id="3-特征工程"><a href="#3-特征工程" class="headerlink" title="3.特征工程"></a>3.特征工程</h3><h4 id="特征工程是什么："><a href="#特征工程是什么：" class="headerlink" title="特征工程是什么："></a>特征工程是什么：</h4><p>特征工程指的是把原始数据转变为模型的训练数据的过程，它的目的就是获取更好的训练数据特征，使得机器学习模型逼近这个上限，就是将数据转换成机器更容易理解的数据。</p>
+<p>吴恩达老师说过：数据和特征决定了机器学习的上限，而模型和算法只是逼近这个上限而已</p>
+<h4 id="特征工程包括："><a href="#特征工程包括：" class="headerlink" title="特征工程包括："></a>特征工程包括：</h4><ol>
+<li>特征提取：将数据转换为机器学习的数字特征，即将文字或者图像，转换为数字，让机器更容易理解</li>
+<li>特征预处理：将数据转化为适合算法模型的特征数据，就是讲数据转换为一定范围内的数据，</li>
+<li>特征降维：降低数据维度，使数据更容易处理</li>
+</ol>
+<h3 id="4-机器学习"><a href="#4-机器学习" class="headerlink" title="4.机器学习"></a>4.机器学习</h3><p>选择合适的算法对模型进行训练</p>
+<h3 id="5-模型评估"><a href="#5-模型评估" class="headerlink" title="5.模型评估"></a>5.模型评估</h3><p>对训练好的模型进行评估</p>
+<h2 id="机器学习算法分类"><a href="#机器学习算法分类" class="headerlink" title="机器学习算法分类"></a>机器学习算法分类</h2><p>根据数据集的组成不同，可以把机器学习算法分为：</p>
+<ol>
+<li>监督学习（<strong>supervised learning</strong>）</li>
+<li>无监督学习（<strong>unsupervised learning</strong>）</li>
+<li>半监督学习</li>
+<li>强化学习</li>
+</ol>
+<p><strong>监督学习：</strong></p>
+<p>定义：输入数据是由输入特征值和目标值所组成。函数的输出可以是一个连续的值(称为回归），或是输出是有限个离散值（称作分类），简单来说就是我们教机器做事情</p>
+<p>回归（Regression）、分类（classification）</p>
+<p>回归问题是对于连续型变量的（预测房屋价格），分类是针对离散型变量的（猫狗分类）</p>
+<p>分类：k-近邻算法、贝叶斯分类、决策树与随机森林、逻辑回归、神经网络</p>
+<p>回归：线性回归、岭回归</p>
+<p><strong>无监督学习</strong>:</p>
+<p>定义：输入数据是由输入特征值所组成，对于无监督学习，像是机器在自学，没有标准答案，监督学习有正确答案</p>
+<p>比如聚类：训练后将数据根据不同内容分为相应的类别，这就是一种无监督学习</p>
+<p><strong>半监督学习</strong>:</p>
+<p>即训练集同时包含有标记样本数据和未标记样本数据。主要用在训练数据量过多，单独监督学习不能满足需求时</p>
+<p><strong>强化学习</strong>：</p>
+<p>简单说就是做选择的问题，自动进行选择，并且可以连续做选择</p>
+<p>例子：学下棋</p>
+<p>主要包含四个元素：agent，环境状态，行动，奖励</p>
+<p>算法：马尔科夫决策，动态规划</p>
+<p><strong>小结：</strong></p>
+<blockquote>
+<ul>
+<li>监督学习 – 有特征值，有目标值【重点】<ul>
+<li>回归问题 – 目标值是连续</li>
+<li>分类问题 – 目标值是离散的</li>
+</ul>
+</li>
+<li>无监督学习 – 有特征值，无目标值</li>
+<li>半监督学习 – 有特征值，但是一部分数据有目标值，其他数据没有目标值</li>
+<li>强化学习 – 根据动态数据<ul>
+<li>主要关注四个元素：agent,environment, action, reward</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="模型评估"><a href="#模型评估" class="headerlink" title="模型评估"></a>模型评估</h2><p>按照数据集的目标值不同，可以把模型评估分为<strong>分类模型评估</strong>和<strong>回归模型评估</strong>。</p>
+<p>准确率：预测正确的数占样本总数的比例</p>
+<p>精确率：正确预测为正占<strong>全部预测为正</strong>的比例</p>
+<p>召回率：正确预测为正占<strong>全部正样本</strong>的比例</p>
+<p>F1-score：主要用于评估模型的稳健性</p>
+<p>AUC指标：主要用于评估样本不均衡的情况</p>
+<p>回归模型评估：</p>
+<ul>
+<li>MSE – 均方误差</li>
+<li>RMSE – 均方根误差</li>
+<li>MAE – 平方绝对误差</li>
+</ul>
+<p>拟合：</p>
+<ul>
+<li>欠拟合<ul>
+<li>学习到的东西太少</li>
+<li>学习到的特征少</li>
+</ul>
+</li>
+<li>过拟合<ul>
+<li>学习到的东西太多</li>
+<li>学习到的特征多，不好泛化</li>
+</ul>
+</li>
+</ul>
+<h2 id="完整机器学习项目的流程"><a href="#完整机器学习项目的流程" class="headerlink" title="完整机器学习项目的流程"></a>完整机器学习项目的流程</h2><p><strong>1</strong> <strong>抽象成数学问题</strong></p>
+<p><strong>2</strong> <strong>获取数据</strong></p>
+<p><strong>3</strong> <strong>特征预处理与特征选择</strong></p>
+<p><strong>4</strong> <strong>训练模型与调优</strong></p>
+<p><strong>5</strong> <strong>模型诊断</strong></p>
+<p><strong>6</strong> <strong>模型融合</strong></p>
+<p><strong>7</strong> <strong>上线运行</strong></p>
+<h2 id><a href="#" class="headerlink" title></a></h2>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">numpy</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">机器学习综述</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析//" class="article-tag-list-link color1">-数据分析</a>
+        			<a href="/categories/机器学习//" class="article-tag-list-link color1">-机器学习</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+  <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+  <p>扫一扫，分享到微信</p>
+  <div class="wx-qrcode">
+    <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://jpf-hash.github.io/2020/08/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A6%82%E8%BF%B0/" alt="微信分享二维码">
+  </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/08/11/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%EF%BC%88KNN%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          K-近邻算法（KNN）
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2020/08/10/pandas/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">pandas</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#机器学习"><span class="toc-number">1.</span> <span class="toc-text">机器学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#人工智能、机器学习、深度学习的关系"><span class="toc-number">1.1.</span> <span class="toc-text">人工智能、机器学习、深度学习的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#人工智能的分支"><span class="toc-number">1.2.</span> <span class="toc-text">人工智能的分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#人工智能发展必备三要素"><span class="toc-number">1.3.</span> <span class="toc-text">人工智能发展必备三要素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#机器学习的工作流程"><span class="toc-number">1.4.</span> <span class="toc-text">机器学习的工作流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-获取数据"><span class="toc-number">1.4.1.</span> <span class="toc-text">1.获取数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-数据处理"><span class="toc-number">1.4.2.</span> <span class="toc-text">2.数据处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-特征工程"><span class="toc-number">1.4.3.</span> <span class="toc-text">3.特征工程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#特征工程是什么："><span class="toc-number">1.4.3.1.</span> <span class="toc-text">特征工程是什么：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#特征工程包括："><span class="toc-number">1.4.3.2.</span> <span class="toc-text">特征工程包括：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-机器学习"><span class="toc-number">1.4.4.</span> <span class="toc-text">4.机器学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-模型评估"><span class="toc-number">1.4.5.</span> <span class="toc-text">5.模型评估</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#机器学习算法分类"><span class="toc-number">1.5.</span> <span class="toc-text">机器学习算法分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模型评估"><span class="toc-number">1.6.</span> <span class="toc-text">模型评估</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完整机器学习项目的流程"><span class="toc-number">1.7.</span> <span class="toc-text">完整机器学习项目的流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.8.</span> <span class="toc-text"></span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -249,9 +483,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
