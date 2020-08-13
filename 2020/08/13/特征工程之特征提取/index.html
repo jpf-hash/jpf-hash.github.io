@@ -6,33 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>K-近邻算法（KNN） | jpf_blog</title>
+  <title>特征工程之特征提取 | jpf_blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="K-近邻算法（KNN）">
+  <meta name="description" content="特征工程之特征提取">
 <meta property="og:type" content="article">
-<meta property="og:title" content="K-近邻算法（KNN）">
-<meta property="og:url" content="http://yoursite.com/2020/08/11/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%EF%BC%88KNN%EF%BC%89/index.html">
+<meta property="og:title" content="特征工程之特征提取">
+<meta property="og:url" content="http://yoursite.com/2020/08/13/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B%E4%B9%8B%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96/index.html">
 <meta property="og:site_name" content="jpf_blog">
-<meta property="og:description" content="K-近邻算法（KNN）">
+<meta property="og:description" content="特征工程之特征提取">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2020/08/11/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%EF%BC%88KNN%EF%BC%89/1.png">
-<meta property="og:image" content="http://yoursite.com/2020/08/11/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%EF%BC%88KNN%EF%BC%89/2.png">
-<meta property="og:image" content="http://yoursite.com/2020/08/11/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%EF%BC%88KNN%EF%BC%89/3.png">
-<meta property="og:image" content="http://yoursite.com/2020/08/11/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%EF%BC%88KNN%EF%BC%89/4.png">
-<meta property="og:image" content="http://yoursite.com/2020/08/11/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%EF%BC%88KNN%EF%BC%89/5.png">
-<meta property="og:image" content="http://yoursite.com/2020/08/11/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%EF%BC%88KNN%EF%BC%89/6.png">
-<meta property="og:image" content="http://yoursite.com/2020/08/11/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%EF%BC%88KNN%EF%BC%89/7.png">
-<meta property="og:image" content="http://yoursite.com/2020/08/11/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%EF%BC%88KNN%EF%BC%89/8.png">
-<meta property="og:image" content="http://yoursite.com/2020/08/11/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%EF%BC%88KNN%EF%BC%89/9.png">
-<meta property="og:image" content="http://yoursite.com/2020/08/11/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%EF%BC%88KNN%EF%BC%89/10.png">
-<meta property="og:image" content="http://yoursite.com/2020/08/11/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%EF%BC%88KNN%EF%BC%89/11.png">
-<meta property="og:image" content="http://yoursite.com/2020/08/11/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%EF%BC%88KNN%EF%BC%89/12.png">
-<meta property="article:published_time" content="2020-08-11T14:43:25.000Z">
-<meta property="article:modified_time" content="2020-08-12T17:24:02.858Z">
+<meta property="article:published_time" content="2020-08-13T14:03:42.000Z">
+<meta property="article:modified_time" content="2020-08-13T16:37:10.345Z">
 <meta property="article:author" content="斯乌">
-<meta property="article:tag" content="机器学习算法">
+<meta property="article:tag" content="特征工程">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/08/11/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%EF%BC%88KNN%EF%BC%89/1.png">
   
     <link rel="alternative" href="/atom.xml" title="jpf_blog" type="application/atom+xml">
   
@@ -175,113 +162,94 @@
           </div>
           <div id="js-content" class="content-ll">
             
-<article id="post-K-近邻算法（KNN）" class="article article-type-post " itemscope itemprop="blogPost">
+<article id="post-特征工程之特征提取" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      K-近邻算法（KNN）
+      特征工程之特征提取
     </h1>
   
 
         
-        <a href="/2020/08/11/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%EF%BC%88KNN%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-08-11T14:43:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-11</time>
+        <a href="/2020/08/13/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B%E4%B9%8B%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96/" class="archive-article-date">
+  	<time datetime="2020-08-13T14:03:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="K-近邻算法（KNN）"><a href="#K-近邻算法（KNN）" class="headerlink" title="K-近邻算法（KNN）"></a>K-近邻算法（KNN）</h1><a id="more"></a>
+        <h1 id="特征工程之特征提取"><a href="#特征工程之特征提取" class="headerlink" title="特征工程之特征提取"></a>特征工程之特征提取</h1><a id="more"></a>
 
-<p>KNN算法最早是由Cover和Hart提出的一种分类算法</p>
-<p><strong>定义：</strong>在特征空间中，如果一个样本附近的k个最近(即特征空间中最邻近)样本的大多数属于某一个类别，则该样本也属于这个类别。</p>
-<p>即是给定一个训练数据集，对新的输入实例，在训练数据集中找到与该实例最邻近的K个实例（也就是上面所说的K个邻居）， 这K个实例的多数属于某个类，就把该输入实例分类到这个类中。即根据邻居来判断自身是什么类别。</p>
-<p>计算自身到邻居的距离：</p>
-<p>一般使用欧氏距离：</p>
-<img src="/2020/08/11/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%EF%BC%88KNN%EF%BC%89/1.png" class>
+<p><strong>什么是特征提取？</strong></p>
+<p>特征提取就是将任意数据转换为可用于机器学习的数字特征</p>
+<p><strong>分类：</strong></p>
+<p>字典特征提取</p>
+<p>文本特征提取</p>
+<p>图像特征提取</p>
+<p><strong>特征提取API：</strong></p>
+<blockquote>
+<p>sklearn.feature_extraction</p>
+</blockquote>
+<h2 id="字典特征提取"><a href="#字典特征提取" class="headerlink" title="字典特征提取"></a>字典特征提取</h2><p>作用：对字典数据进行特征值化</p>
+<p>就是把类别型数据转化为01这种形式</p>
+<blockquote>
+<p>sklearn.feature_extraction.DictVectorizer(sparse=True,…)</p>
+<p>DictVectorizer.fit_transform(X)</p>
+<p>X:字典或者包含字典的迭代器返回值</p>
+<p>返回sparse矩阵，这个矩阵可以节省内存，提高读取效率</p>
+<p>DictVectorizer.get_feature_names() 返回类别名称</p>
+<p>对于特征当中存在类别信息的，做one-hot编码，比如性别中的男女进行编码，肤色中的颜色编码</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.feature_extraction <span class="keyword">import</span> DictVectorizer</span><br><span class="line"><span class="comment"># 作用：对字典数据进行特征值化</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dict_demo</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    字典特征提取</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    data = [&#123;<span class="string">'city'</span>: <span class="string">'北京'</span>, <span class="string">'temperature'</span>: <span class="number">100</span>&#125;,</span><br><span class="line">            &#123;<span class="string">'city'</span>: <span class="string">'上海'</span>, <span class="string">'temperature'</span>: <span class="number">60</span>&#125;,</span><br><span class="line">            &#123;<span class="string">'city'</span>: <span class="string">'广州'</span>, <span class="string">'temperature'</span>: <span class="number">30</span>&#125;]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 字典特征提取</span></span><br><span class="line">    <span class="comment"># 1.实例化</span></span><br><span class="line">    trans = DictVectorizer(sparse=<span class="literal">True</span>)</span><br><span class="line">    <span class="comment"># 调用fit_transform(data)</span></span><br><span class="line">    trans_data = trans.fit_transform(data)</span><br><span class="line">    print(<span class="string">"特征名字是：\n"</span>, trans.get_feature_names())</span><br><span class="line">    print(trans_data)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    dict_demo()</span><br><span class="line">    </span><br><span class="line">输出结果：</span><br><span class="line">特征名字是：</span><br><span class="line"> [<span class="string">'city=上海'</span>, <span class="string">'city=北京'</span>, <span class="string">'city=广州'</span>, <span class="string">'temperature'</span>]</span><br><span class="line">  (<span class="number">0</span>, <span class="number">1</span>)	<span class="number">1.0</span></span><br><span class="line">  (<span class="number">0</span>, <span class="number">3</span>)	<span class="number">100.0</span></span><br><span class="line">  (<span class="number">1</span>, <span class="number">0</span>)	<span class="number">1.0</span></span><br><span class="line">  (<span class="number">1</span>, <span class="number">3</span>)	<span class="number">60.0</span></span><br><span class="line">  (<span class="number">2</span>, <span class="number">2</span>)	<span class="number">1.0</span></span><br><span class="line">  (<span class="number">2</span>, <span class="number">3</span>)	<span class="number">30.0</span></span><br></pre></td></tr></table></figure>
 
-<p>例子：</p>
-<img src="/2020/08/11/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%EF%BC%88KNN%EF%BC%89/2.png" class>
+<h2 id="文本特征提取"><a href="#文本特征提取" class="headerlink" title="文本特征提取"></a>文本特征提取</h2><p>作用：对文本数据进行特征值化</p>
+<p><strong>英文文本提取：</strong></p>
+<blockquote>
+<ul>
+<li><strong>sklearn.feature_extraction.text.CountVectorizer(stop_words=[])</strong><ul>
+<li>返回词频矩阵</li>
+<li>CountVectorizer.fit_transform(X)<ul>
+<li>X:文本或者包含文本字符串的可迭代对象</li>
+<li>返回值:返回sparse矩阵</li>
+</ul>
+</li>
+<li>CountVectorizer.get_feature_names() 返回值:单词列表</li>
+</ul>
+</li>
+<li><strong>sklearn.feature_extraction.text.TfidfVectorizer</strong></li>
+</ul>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> CountVectorizer</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">E_count_test_demo</span><span class="params">()</span>:</span></span><br><span class="line">    data = [<span class="string">"life is hard is"</span>, <span class="string">"life is easy"</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 实例化</span></span><br><span class="line">    <span class="comment"># trans = CountVectorizer(sparse=False) # 没有sparse这个参数</span></span><br><span class="line">    trans = CountVectorizer(stop_words=[<span class="string">"is"</span>])  <span class="comment"># stop_words表示不统计谁</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 调用fit_transfrom方法</span></span><br><span class="line">    trans_data = trans.fit_transform(data)</span><br><span class="line">    print(trans.get_feature_names())</span><br><span class="line">    print(trans_data.toarray()) <span class="comment"># toarray查看因为没有sparse参数</span></span><br><span class="line">    print(trans_data)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    E_count_test_demo()</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">[<span class="string">'easy'</span>, <span class="string">'hard'</span>, <span class="string">'life'</span>]  <span class="comment"># 单个字母标点符号不做统计</span></span><br><span class="line">[[<span class="number">0</span> <span class="number">1</span> <span class="number">1</span>]</span><br><span class="line"> [<span class="number">1</span> <span class="number">0</span> <span class="number">1</span>]]</span><br><span class="line">  (<span class="number">0</span>, <span class="number">2</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">0</span>, <span class="number">1</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">1</span>, <span class="number">2</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">1</span>, <span class="number">0</span>)	<span class="number">1</span></span><br></pre></td></tr></table></figure>
 
-<img src="/2020/08/11/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%EF%BC%88KNN%EF%BC%89/3.png" class>
+<p><strong>中文文本提取</strong>：</p>
+<p>jieba.cut()</p>
+<ul>
+<li>返回词语组成的生成器</li>
+</ul>
+<blockquote>
+<p>pip install jieba </p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> CountVectorizer</span><br><span class="line"><span class="keyword">import</span> jieba</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">C_count_test_demo</span><span class="params">()</span>:</span></span><br><span class="line">    data = [<span class="string">"如果只用一种方式了解某样事物，你就不会真正了解它。"</span>,</span><br><span class="line">            <span class="string">"了解事物真正含义的秘密取决于如何将其与我们所了解的事物相联系。"</span>]</span><br><span class="line"></span><br><span class="line">    text_list = []</span><br><span class="line">    <span class="keyword">for</span> sent <span class="keyword">in</span> data:</span><br><span class="line">        text_list.append(cut_word(sent))</span><br><span class="line">    print(text_list)</span><br><span class="line">    <span class="comment"># 实例化</span></span><br><span class="line">    <span class="comment"># trans = CountVectorizer(sparse=False) # 没有sparse这个参数</span></span><br><span class="line">    trans = CountVectorizer()  <span class="comment"># stop_words表示不统计谁</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 调用fit_transfrom方法</span></span><br><span class="line">    trans_data = trans.fit_transform(text_list)</span><br><span class="line">    print(trans.get_feature_names())</span><br><span class="line">    print(trans_data.toarray())</span><br><span class="line">    print(trans_data)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cut_word</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    中文分词</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">" "</span>.join(list(jieba.cut(s)))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    C_count_test_demo()</span><br><span class="line">输出结果：</span><br><span class="line">[<span class="string">'如果 只用 一种 方式 了解 某样 事物 ， 你 就 不会 真正 了解 它 。'</span>, <span class="string">'了解 事物 真正 含义 的 秘密 取决于 如何 将 其 与 我们 所 了解 的 事物 相 联系 。'</span>]</span><br><span class="line">[<span class="string">'一种'</span>, <span class="string">'不会'</span>, <span class="string">'了解'</span>, <span class="string">'事物'</span>, <span class="string">'取决于'</span>, <span class="string">'只用'</span>, <span class="string">'含义'</span>, <span class="string">'如何'</span>, <span class="string">'如果'</span>, <span class="string">'我们'</span>, <span class="string">'方式'</span>, <span class="string">'某样'</span>, <span class="string">'真正'</span>, <span class="string">'秘密'</span>, <span class="string">'联系'</span>]</span><br><span class="line">[[<span class="number">1</span> <span class="number">1</span> <span class="number">2</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">0</span> <span class="number">2</span> <span class="number">2</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span>]]</span><br><span class="line">  (<span class="number">0</span>, <span class="number">8</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">0</span>, <span class="number">5</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">0</span>, <span class="number">0</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">0</span>, <span class="number">10</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">0</span>, <span class="number">2</span>)	<span class="number">2</span></span><br><span class="line">  (<span class="number">0</span>, <span class="number">11</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">0</span>, <span class="number">3</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">0</span>, <span class="number">1</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">0</span>, <span class="number">12</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">1</span>, <span class="number">2</span>)	<span class="number">2</span></span><br><span class="line">  (<span class="number">1</span>, <span class="number">3</span>)	<span class="number">2</span></span><br><span class="line">  (<span class="number">1</span>, <span class="number">12</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">1</span>, <span class="number">6</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">1</span>, <span class="number">13</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">1</span>, <span class="number">4</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">1</span>, <span class="number">7</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">1</span>, <span class="number">9</span>)	<span class="number">1</span></span><br><span class="line">  (<span class="number">1</span>, <span class="number">14</span>)	<span class="number">1</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="k近邻算法api使用"><a href="#k近邻算法api使用" class="headerlink" title="k近邻算法api使用"></a>k近邻算法api使用</h2><p>Scikit-learn：安装pip install scikit-learn（==可以选择版本）</p>
-<h3 id="sklearn："><a href="#sklearn：" class="headerlink" title="sklearn："></a>sklearn：</h3><p>优点：文档完善，容易上手，丰富的API，包括许多知名的机器学习算法的实现</p>
-<p>sklearn包含：Classification(分类)、Regression（回归）、Clustering（聚类）、Dimensionality reduction（维度缩小）、Model selcetion（模型选择）、Preprocessing（特征预处理）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取数据</span></span><br><span class="line"></span><br><span class="line">x = [[<span class="number">1</span>], [<span class="number">2</span>], [<span class="number">0</span>], [<span class="number">0</span>]]</span><br><span class="line">y = [<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>]  <span class="comment"># 1,2代表两个类别</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 机器学习过程</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 实例化一个训练模型</span></span><br><span class="line">estimator = KNeighborsClassifier(n_neighbors=<span class="number">2</span>)</span><br><span class="line"><span class="comment"># 调用fit方法进行训练</span></span><br><span class="line">estimator.fit(x, y)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 预测输入的其他值</span></span><br><span class="line">ret = estimator.predict([[<span class="number">-1</span>]])</span><br><span class="line">print(ret)</span><br><span class="line">输出结果：</span><br><span class="line">[<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">可以看出输出了<span class="number">2</span>类别</span><br></pre></td></tr></table></figure>
-
-<p>这是一个简单的例子，理解机器学习过程</p>
-<p>但是实际过程中，又会有这样几个问题，距离公式除了欧式距离还有其他的吗，k值是怎样选择的，选择又有怎样的结果，api中的其他参数含义</p>
-<h2 id="距离度量"><a href="#距离度量" class="headerlink" title="距离度量"></a>距离度量</h2><h3 id="1-曼哈顿距离"><a href="#1-曼哈顿距离" class="headerlink" title="1.曼哈顿距离"></a>1.曼哈顿距离</h3><p>曼哈顿距离也称为<strong>城市街区距离(City Block distance)</strong></p>
-<img src="/2020/08/11/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%EF%BC%88KNN%EF%BC%89/4.png" class>
-
-<img src="/2020/08/11/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%EF%BC%88KNN%EF%BC%89/5.png" class>
-
-<h3 id="2-切比雪夫距离"><a href="#2-切比雪夫距离" class="headerlink" title="2.切比雪夫距离"></a>2.切比雪夫距离</h3><p>国王走一步能够移动到相邻的8个方格中的任意一个。那么国王从格子(x1,y1)走到格子(x2,y2)最少需要多少步？自己走走试试。 你会发现最少步数总是max( | x2-x1 | , | y2-y1 | ) 步 。有一种类似的一种距离度量方法叫切比雪夫距离。</p>
-<img src="/2020/08/11/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%EF%BC%88KNN%EF%BC%89/6.png" class>
-
-<h3 id="3-闵可夫斯基距离"><a href="#3-闵可夫斯基距离" class="headerlink" title="3.闵可夫斯基距离"></a>3.闵可夫斯基距离</h3><p>闵氏距离不是一种距离，而是一组距离的定义，是对多个距离度量公式的概括性的表述。</p>
-<p>两个n维变量a(x11,x12,…,x1n)与b(x21,x22,…,x2n)间的闵可夫斯基距离定义为：</p>
-<img src="/2020/08/11/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%EF%BC%88KNN%EF%BC%89/7.png" class>
-
-<p>其中p是一个变参数：</p>
-<p>当p=1时，就是曼哈顿距离；</p>
-<p>当p=2时，就是欧氏距离；</p>
-<p>当p→∞时，就是切比雪夫距离。</p>
-<p>根据p的不同，闵氏距离可以表示某一类的距离</p>
-<p>闵氏距离，包括曼哈顿距离、欧氏距离和切比雪夫距离都存在明显的缺点。</p>
-<p>　　举个例子：二维样本(身高,体重)，其中身高范围是150<del>190，体重范围是50</del>60，有三个样 本：a(180,50)，b(190,50)，c(180,60)。那么a与b之间的闵氏距离（无论是曼哈顿距离、欧氏距离或切比雪夫距离）等于a与c之 间的闵氏距离，但是身高的10cm真的等价于体重的10kg么？因此用闵氏距离来衡量这些样本间的相似度很有问题。</p>
-<p>​    简单说来，闵氏距离的缺点主要有两个：(1)将各个分量的量纲(scale)，也就是“单位”当作相同的看待了。(2)没有考虑各个分量的分布（期望，方差等)可能是不同的。</p>
-<h3 id="4-标准化欧氏距离-Standardized-Euclidean-distance"><a href="#4-标准化欧氏距离-Standardized-Euclidean-distance" class="headerlink" title="4.标准化欧氏距离 (Standardized Euclidean distance )"></a>4.标准化欧氏距离 (Standardized Euclidean distance )</h3><p>标准化欧式距离是对欧氏距离的一种改进方案，既然数据各维分量的分布不一样，那先将各个分量都“标准化”到均值、方差相等</p>
-<p>假设样本集X的均值(mean)为m，标准差(standard deviation)为s，X的“标准化变量”表示为：</p>
-<img src="/2020/08/11/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%EF%BC%88KNN%EF%BC%89/8.png" class>
-
-<p>sk为对应的标准差</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 例如</span></span><br><span class="line">X=[[<span class="number">1</span>,<span class="number">1</span>],[<span class="number">2</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">4</span>]];（假设两个分量的标准差分别为<span class="number">0.5</span>和<span class="number">1</span>）</span><br><span class="line">经计算得:</span><br><span class="line">d =   <span class="number">2.2361</span>    <span class="number">4.4721</span>    <span class="number">6.7082</span>    <span class="number">2.2361</span>    <span class="number">4.4721</span>    <span class="number">2.2361</span></span><br></pre></td></tr></table></figure>
+<h3 id="Tf-idf文本特征提取"><a href="#Tf-idf文本特征提取" class="headerlink" title="Tf-idf文本特征提取"></a>Tf-idf文本特征提取</h3><ul>
+<li><p>TF-IDF的主要思想是：如果<strong>某个词或短语在一篇文章中出现的概率高，并且在其他文章中很少出现</strong>，则认为此词或者短语具有很好的类别区分能力，适合用来分类。</p>
+</li>
+<li><p><strong>TF-IDF作用：用以评估一字词对于一个文件集或一个语料库中的其中一份文件的重要程度。</strong></p>
+</li>
+<li><p>词频（term frequency，tf）指的是某一个给定的词语在该文件中出现的频率</p>
+</li>
+<li><p>逆向文档频率（inverse document frequency，idf）是一个词语普遍重要性的度量。某一特定词语的idf，可以<strong>由总文件数目除以包含该词语之文件的数目，再将得到的商取以10为底的对数得到</strong></p>
+</li>
+</ul>
+<p><strong>tf*idf=tf-idf的分数</strong></p>
+<p>代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> CountVectorizer, TfidfVectorizer</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tfidf_test_demo</span><span class="params">()</span>:</span></span><br><span class="line">   </span><br><span class="line">    data = [<span class="string">"如果只用一种方式了解某样事物，你就不会真正了解它。"</span>,</span><br><span class="line">            <span class="string">"了解事物真正含义的秘密取决于如何将其与我们所了解的事物相联系。"</span>]</span><br><span class="line"></span><br><span class="line">    text_list = []</span><br><span class="line">    <span class="keyword">for</span> sent <span class="keyword">in</span> data:</span><br><span class="line">        text_list.append(cut_word(sent))</span><br><span class="line">    print(text_list)</span><br><span class="line">    <span class="comment"># 实例化</span></span><br><span class="line">    trans = TfidfVectorizer()</span><br><span class="line">    <span class="comment"># 调用fit_transfrom方法</span></span><br><span class="line">    trans_data = trans.fit_transform(text_list)</span><br><span class="line">    print(trans.get_feature_names())</span><br><span class="line">    print(trans_data.toarray())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    tfidf_test_demo()</span><br><span class="line">  </span><br><span class="line">输出结果:</span><br><span class="line">[<span class="string">'如果 只用 一种 方式 了解 某样 事物 ， 你 就 不会 真正 了解 它 。'</span>, <span class="string">'了解 事物 真正 含义 的 秘密 取决于 如何 将 其 与 我们 所 了解 的 事物 相 联系 。'</span>]</span><br><span class="line">[<span class="string">'一种'</span>, <span class="string">'不会'</span>, <span class="string">'了解'</span>, <span class="string">'事物'</span>, <span class="string">'取决于'</span>, <span class="string">'只用'</span>, <span class="string">'含义'</span>, <span class="string">'如何'</span>, <span class="string">'如果'</span>, <span class="string">'我们'</span>, <span class="string">'方式'</span>, <span class="string">'某样'</span>, <span class="string">'真正'</span>, <span class="string">'秘密'</span>, <span class="string">'联系'</span>]</span><br><span class="line">[[<span class="number">0.33264172</span> <span class="number">0.33264172</span> <span class="number">0.47335464</span> <span class="number">0.23667732</span> <span class="number">0.</span>         <span class="number">0.33264172</span></span><br><span class="line">  <span class="number">0.</span>         <span class="number">0.</span>         <span class="number">0.33264172</span> <span class="number">0.</span>         <span class="number">0.33264172</span> <span class="number">0.33264172</span></span><br><span class="line">  <span class="number">0.23667732</span> <span class="number">0.</span>         <span class="number">0.</span>        ]</span><br><span class="line"> [<span class="number">0.</span>         <span class="number">0.</span>         <span class="number">0.43798195</span> <span class="number">0.43798195</span> <span class="number">0.30778417</span> <span class="number">0.</span></span><br><span class="line">  <span class="number">0.30778417</span> <span class="number">0.30778417</span> <span class="number">0.</span>         <span class="number">0.30778417</span> <span class="number">0.</span>         <span class="number">0.</span></span><br><span class="line">  <span class="number">0.21899097</span> <span class="number">0.30778417</span> <span class="number">0.30778417</span>]]</span><br></pre></td></tr></table></figure>
 
 
-
-<h3 id="5-夹角余弦-Cosine"><a href="#5-夹角余弦-Cosine" class="headerlink" title="5.夹角余弦(Cosine)"></a>5.<strong>夹角余弦(Cosine)</strong></h3><p>几何中夹角余弦可用来衡量两个向量方向的差异，<a href="http://lib.csdn.net/base/machinelearning" target="_blank" rel="noopener">机器学习</a>中借用这一概念来衡量样本向量之间的差异。</p>
-<img src="/2020/08/11/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%EF%BC%88KNN%EF%BC%89/9.png" class>
-
-<h3 id="6-汉明距离-Hamming-distance"><a href="#6-汉明距离-Hamming-distance" class="headerlink" title="6. 汉明距离(Hamming distance)"></a>6. 汉明距离(Hamming distance)</h3><p>两个等长字符串s1与s2之间的汉明距离定义为将其中一个变为另外一个所需要作的最小替换次数。例如字符串“1111”与“1001”之间的汉明距离为2。</p>
-<h3 id="7-杰卡德距离-Jaccard-Distance"><a href="#7-杰卡德距离-Jaccard-Distance" class="headerlink" title="7.杰卡德距离(Jaccard Distance)"></a>7.杰卡德距离(Jaccard Distance)</h3><p>杰卡德相似系数(Jaccard similarity coefficient)：两个集合A和B的交集元素在A，B的并集中所占的比例，称为两个集合的杰卡德相似系数，用符号J(A,B)表示：</p>
-<img src="/2020/08/11/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%EF%BC%88KNN%EF%BC%89/10.png" class>
-
-<p>杰卡德距离(Jaccard Distance)：与杰卡德相似系数相反，用两个集合中不同元素占所有元素的比例来衡量两个集合的区分度：</p>
-<img src="/2020/08/11/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%EF%BC%88KNN%EF%BC%89/11.png" class>
-
-<h3 id="8-马氏距离-Mahalanobis-Distance"><a href="#8-马氏距离-Mahalanobis-Distance" class="headerlink" title="8.马氏距离(Mahalanobis Distance)"></a>8.马氏距离(Mahalanobis Distance)</h3><img src="/2020/08/11/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%EF%BC%88KNN%EF%BC%89/12.png" class>
-
-<p><a href="https://www.cnblogs.com/soyo/p/6893551.html" target="_blank" rel="noopener">https://www.cnblogs.com/soyo/p/6893551.html</a> 距离度量可以参考这里</p>
-<h2 id="k值的选择"><a href="#k值的选择" class="headerlink" title="k值的选择"></a>k值的选择</h2><p>K值较小,模型复杂度就会较高,容易过拟合,学习的估计误差会增大,预测结果对近邻的实例点会比较敏感.</p>
-<p>K值较大,模型复杂度较低,容易导致欠拟合,但可以减少学习的估计误差,会增大学习的近似误差,因为与输入实例较远的训练实例也会对预测起作用,从而使预测错误.</p>
-<p><strong>近似误差</strong>：对现有训练集的训练误差，关注训练集，如果近似误差过小可能会出现过拟合的现象，对现有的训练集能有很好的预测，但是对未知的测试样本将会出现较大偏差的预测。模型本身不是最接近最佳模型。</p>
-<p><strong>估计误差</strong>：可以理解为对测试集的测试误差，关注测试集，估计误差小说明对未知数据的预测能力好，模型本身最接近最佳模型。</p>
-<p>通常采用交叉验证的方法进行选择K值，</p>
-<p><strong>K折交叉验证：</strong></p>
-<p>所谓<strong>K折交叉验证</strong>，就是将数据集<strong>等比例划分成K份</strong>，以其中的<strong>一份</strong>作为测试数据，其他的<strong>K-1份</strong>数据作为训练数据。然后，这样算是<strong>一次实验</strong>，而K折交叉验证只有<strong>实验K次</strong>才算完成完整的一次，也就是说交叉验证实际是<strong>把实验重复做了K次，每次实验都是从K个部分选取一份不同的数据部分作为测试数据（保证K个部分的数据都分别做过测试数据），剩下的K-1个当作训练数据，最后把得到的K个实验结果进行平分</strong></p>
-<p>就是数据分成K份，每一份都当一次测试集。</p>
-<h2 id="knn的优缺点："><a href="#knn的优缺点：" class="headerlink" title="knn的优缺点："></a>knn的优缺点：</h2><p><strong>优点：</strong></p>
-<ol>
-<li>简单，易于理解，易于实现，无需估计参数。</li>
-<li>KNN可以处理分类问题，同时天然可以处理多分类问题，适合对稀有事件进行分类</li>
-<li>特别适合于多分类问题(multi-modal,对象具有多个类别标签)， KNN比SVM的表现要好。</li>
-<li>训练时间为零。它没有显示的训练，不像其它有监督的算法会用训练集train一个模型（也就是拟合一个函数），然后验证集或测试集用该模型分类。KNN只是把样本保存起来，收到测试数据时再处理，所以KNN训练时间为零。</li>
-</ol>
-<p><strong>缺点</strong>：</p>
-<ol>
-<li>计算量太大，尤其是特征数非常多的时候。每一个待分类文本都要计算它到全体已知样本的距离，才能得到它的第K个最近邻点。</li>
-<li>是慵懒散学习方法，基本上不学习，导致预测时速度比起逻辑回归之类的算法慢</li>
-<li>样本不平衡的时候，对稀有类别的预测准确率低。当样本不平衡时，如一个类的样本容量很大，而其他类样本容量很小时，有可能导致当输入一个新样本时，该样本的K个邻居中大容量类的样本占多数。 </li>
-<li>对训练数据依赖度特别大，对训练数据的容错性太差。如果训练数据集中，有一两个数据是错误的，刚刚好又在需要分类的数值的旁边，这样就会直接导致预测的数据的不准确。</li>
-</ol>
-<p>优缺点还有很多可以自行查资料，这里整理了一些</p>
-<h2 id><a href="#" class="headerlink" title></a></h2>
       
 
       
@@ -315,7 +283,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">机器学习算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">特征工程</a>
         		</li>
       		
 		</ul>
@@ -382,7 +350,7 @@
   <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
   <p>扫一扫，分享到微信</p>
   <div class="wx-qrcode">
-    <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://jpf-hash.github.io/2020/08/11/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%EF%BC%88KNN%EF%BC%89/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://jpf-hash.github.io/2020/08/13/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B%E4%B9%8B%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96/" alt="微信分享二维码">
   </div>
 </div>
 
@@ -396,18 +364,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/08/12/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B%E4%B9%8B%E7%89%B9%E5%BE%81%E9%A2%84%E5%A4%84%E7%90%86/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          特征工程之特征预处理
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/08/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A6%82%E8%BF%B0/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">机器学习概述</div>
+    <a href="/2020/08/13/%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81%E4%B8%8E%E7%BD%91%E6%A0%BC%E6%90%9C%E7%B4%A2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">交叉验证与网格搜索</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -434,7 +393,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#K-近邻算法（KNN）"><span class="toc-number">1.</span> <span class="toc-text">K-近邻算法（KNN）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#k近邻算法api使用"><span class="toc-number">1.1.</span> <span class="toc-text">k近邻算法api使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sklearn："><span class="toc-number">1.1.1.</span> <span class="toc-text">sklearn：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#距离度量"><span class="toc-number">1.2.</span> <span class="toc-text">距离度量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-曼哈顿距离"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.曼哈顿距离</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-切比雪夫距离"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.切比雪夫距离</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-闵可夫斯基距离"><span class="toc-number">1.2.3.</span> <span class="toc-text">3.闵可夫斯基距离</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-标准化欧氏距离-Standardized-Euclidean-distance"><span class="toc-number">1.2.4.</span> <span class="toc-text">4.标准化欧氏距离 (Standardized Euclidean distance )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-夹角余弦-Cosine"><span class="toc-number">1.2.5.</span> <span class="toc-text">5.夹角余弦(Cosine)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-汉明距离-Hamming-distance"><span class="toc-number">1.2.6.</span> <span class="toc-text">6. 汉明距离(Hamming distance)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-杰卡德距离-Jaccard-Distance"><span class="toc-number">1.2.7.</span> <span class="toc-text">7.杰卡德距离(Jaccard Distance)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-马氏距离-Mahalanobis-Distance"><span class="toc-number">1.2.8.</span> <span class="toc-text">8.马氏距离(Mahalanobis Distance)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#k值的选择"><span class="toc-number">1.3.</span> <span class="toc-text">k值的选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#knn的优缺点："><span class="toc-number">1.4.</span> <span class="toc-text">knn的优缺点：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.5.</span> <span class="toc-text"></span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#特征工程之特征提取"><span class="toc-number">1.</span> <span class="toc-text">特征工程之特征提取</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#字典特征提取"><span class="toc-number">1.1.</span> <span class="toc-text">字典特征提取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文本特征提取"><span class="toc-number">1.2.</span> <span class="toc-text">文本特征提取</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Tf-idf文本特征提取"><span class="toc-number">1.2.1.</span> <span class="toc-text">Tf-idf文本特征提取</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -550,11 +509,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">机器学习算法</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -566,15 +525,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">交叉验证与网格搜索</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -586,19 +545,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">特征工程</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">matplotlib</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">交叉验证与网格搜索</a>
               </li>
             
             <div class="clearfix"></div>
