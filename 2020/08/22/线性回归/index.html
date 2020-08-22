@@ -15,20 +15,20 @@
 <meta property="og:site_name" content="jpf_blog">
 <meta property="og:description" content="线性回归">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2020/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/D:%5Cblog%5Csource_posts%5C%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%5C1.png">
-<meta property="og:image" content="http://yoursite.com/2020/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/D:%5Cblog%5Csource_posts%5C%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%5C2.png">
-<meta property="og:image" content="http://yoursite.com/2020/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/D:%5Cblog%5Csource_posts%5C%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%5C3.png">
-<meta property="og:image" content="http://yoursite.com/2020/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/D:%5Cblog%5Csource_posts%5C%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%5C5.png">
-<meta property="og:image" content="http://yoursite.com/2020/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/D:%5Cblog%5Csource_posts%5C%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%5C6.png">
-<meta property="og:image" content="http://yoursite.com/2020/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/D:%5Cblog%5Csource_posts%5C%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%5C4.png">
-<meta property="og:image" content="http://yoursite.com/2020/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/D:%5Cblog%5Csource_posts%5C%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%5C7.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/1.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/2.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/3.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/5.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/6.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/4.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/7.png">
 <meta property="article:published_time" content="2020-08-22T09:46:42.000Z">
-<meta property="article:modified_time" content="2020-08-22T14:32:10.814Z">
+<meta property="article:modified_time" content="2020-08-22T14:39:33.841Z">
 <meta property="article:author" content="斯乌">
 <meta property="article:tag" content="机器学习算法">
 <meta property="article:tag" content="线性回归">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/D:%5Cblog%5Csource_posts%5C%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%5C1.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/1.png">
   
     <link rel="alternative" href="/atom.xml" title="jpf_blog" type="application/atom+xml">
   
@@ -211,25 +211,31 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"></span><br><span class="line"><span class="comment"># x为平时成绩，y为期末成绩  预测最终成绩</span></span><br><span class="line">x = [[<span class="number">80</span>, <span class="number">86</span>],</span><br><span class="line">[<span class="number">82</span>, <span class="number">80</span>],</span><br><span class="line">[<span class="number">85</span>, <span class="number">78</span>],</span><br><span class="line">[<span class="number">90</span>, <span class="number">90</span>],</span><br><span class="line">[<span class="number">86</span>, <span class="number">82</span>],</span><br><span class="line">[<span class="number">82</span>, <span class="number">90</span>],</span><br><span class="line">[<span class="number">78</span>, <span class="number">80</span>],</span><br><span class="line">[<span class="number">92</span>, <span class="number">94</span>]]</span><br><span class="line">y = [<span class="number">84.2</span>, <span class="number">80.6</span>, <span class="number">80.1</span>, <span class="number">90</span>, <span class="number">83.2</span>, <span class="number">87.6</span>, <span class="number">79.4</span>, <span class="number">93.4</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 模型训练</span></span><br><span class="line"><span class="comment">#sklearn.linear_model.LinearRegression()</span></span><br><span class="line">estimator=LinearRegression()</span><br><span class="line"></span><br><span class="line"><span class="comment"># fit调用 ，实现模型训练</span></span><br><span class="line">estimator.fit(x,y)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看系数值</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># LinearRegression.coef_：回归系数</span></span><br><span class="line">coef=estimator.coef_  <span class="comment">#注意下划线</span></span><br><span class="line">print(<span class="string">"系数："</span>,coef)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 预测</span></span><br><span class="line">print(<span class="string">"预测值："</span>,estimator.predict([[<span class="number">80</span>,<span class="number">90</span>]]))</span><br></pre></td></tr></table></figure>
 
 <p>从上方简单例子中可以看出，得到一个预测值那么预测值与真实值之间一定会存在误差，而影响这个误差就是对应的权重w和b，为了得到最佳参数，需要一个标准对结果进行衡量，针对任何模型求解问题，都是最终都是可以得到一组预测值y，对比已有的真实值 y ，数据行数为 n ，可以将损失函数定义如下：</p>
-<p><img src="/2020/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/D:%5Cblog%5Csource_posts%5C%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%5C1.png" alt="img"></p>
-<p><img src="/2020/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/D:%5Cblog%5Csource_posts%5C%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%5C2.png" alt="img"></p>
+<img src="/2020/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/1.png" class>
+
+<img src="/2020/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/2.png" class>
+
 <p>这是预测值与真实值的平方距离，也称均方误差</p>
 <p>即就是</p>
 <p>目标优化式为</p>
-<p><img src="/2020/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/D:%5Cblog%5Csource_posts%5C%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%5C3.png" alt="img"></p>
+<img src="/2020/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/3.png" class>
+
 <p>找到该式的最小值</p>
 <h2 id="优化算法："><a href="#优化算法：" class="headerlink" title="优化算法："></a>优化算法：</h2><ul>
 <li><strong>最小二乘法</strong></li>
 </ul>
 <p>对w，b分别求导</p>
-<p><img src="/2020/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/D:%5Cblog%5Csource_posts%5C%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%5C5.png" alt="img"></p>
+<img src="/2020/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/5.png" class>
+
 <p>令上述两式子为0，可得到最优解的闭式解：</p>
-<p><img src="/2020/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/D:%5Cblog%5Csource_posts%5C%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%5C6.png" alt="img"></p>
+<img src="/2020/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/6.png" class>
+
 <p><strong>另一种：</strong></p>
 <ul>
 <li><strong>矩阵求导</strong></li>
 </ul>
-<p><img src="/2020/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/D:%5Cblog%5Csource_posts%5C%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%5C4.png" alt="img"></p>
+<img src="/2020/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/4.png" class>
+
 <p>X为特征值矩阵，y为目标值矩阵，直接求到最好的结果（推导过程涉及矩阵求导）</p>
 <p>这种方法对于特征过多时，速度太慢且很难得结果。</p>
 <ul>
@@ -237,7 +243,8 @@
 </ul>
 <p>梯度下降核心内容是对自变量进行不断的更新（针对w和b求偏导），使得目标函数不断逼近最小值的过程</p>
 <p>梯度是微积分中的概念，单变量中就是切线的斜率，多变量中，梯度是一个向量，向量有方向，梯度的方向就指出了函数在给点的上升最快的方向，这也就说明了为什我们需要千方百计的求梯度，梯度的反方向就是给定点下降最快的方向，这样我们沿着梯度反方向走就能走到局部的最低点</p>
-<p><img src="/2020/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/D:%5Cblog%5Csource_posts%5C%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%5C7.png" alt="img"></p>
+<img src="/2020/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/7.png" class>
+
 <p>α是学习率，设置太大可能会错过最低点，太小又导致迟迟走不到最低点</p>
 <p>向着梯度反方向走，所以要加负号</p>
 <table>
