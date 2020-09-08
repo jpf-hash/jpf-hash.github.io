@@ -1,6 +1,6 @@
 window.onload = function(){
     //获取画布对象
-    var canvas = document.getElementById("code_rain_canvas");
+    var canvas = document.getElementById("canvas");
     //获取画布的上下文
     var context =canvas.getContext("2d");
     var s = window.screen;
@@ -15,7 +15,7 @@ window.onload = function(){
     //每个文字的字体大小
     var fontSize = 12;
     //计算列
-    var colunms = Math.floor(W /fontSize);	
+    var colunms = Math.floor(W /fontSize);  
     //记录每列文字的y轴坐标
     var drops = [];
     //给每一个文字初始化一个起始点的位置
