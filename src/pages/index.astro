@@ -33,33 +33,44 @@ const homePath = getRelativeLocaleUrl(locale, "");
     data-home-path={homePath}
     class="app-layout"
   >
-    <section id="hero" class="border-border border-b pt-8 pb-6">
-      <h1 class="my-4 inline-block text-4xl font-bold sm:my-8 sm:text-5xl">
-        你好，我是 jpf-hash 👋
+    <section id="hero" class="relative py-12 overflow-hidden">
+      <!-- Gradient background -->
+      <div class="absolute inset-0 -z-10 bg-gradient-to-b from-accent/5 via-transparent to-transparent"></div>
+      <div class="absolute top-0 right-0 -z-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
+
+      <h1 class="my-4 inline-block text-4xl font-extrabold tracking-tight sm:my-6 sm:text-5xl lg:text-6xl">
+        你好，我是
+        <span class="bg-gradient-to-r from-accent to-cyan-400 bg-clip-text text-transparent">
+          jpf-hash
+        </span>
+        👋
       </h1>
       <a
         target="_blank"
         href={`${import.meta.env.BASE_URL.replace(/\/?$/, "/")}rss.xml`}
-        class="inline-block"
+        class="inline-block ml-2"
         aria-label="RSS Feed"
         title="RSS Feed"
       >
         <IconRss
           width={20}
           height={20}
-          class="stroke-accent scale-125 stroke-3 rtl:-rotate-90"
+          class="stroke-accent scale-125 stroke-3 rtl:-rotate-90 hover:scale-150 transition-transform"
         />
         <span class="sr-only">RSS Feed</span>
       </a>
 
-      <p>
-        这里是我的技术博客，专注于机器学习、Python 编程和数据科学领域。
+      <p class="text-lg text-muted-foreground max-w-2xl leading-relaxed">
+        这里是我的技术博客，专注于
+        <span class="text-foreground font-medium">机器学习</span>、
+        <span class="text-foreground font-medium">Python 编程</span> 和
+        <span class="text-foreground font-medium">数据科学</span> 领域。
         我在这里记录学习笔记、分享技术见解、探索数据的奥秘。
       </p>
-      <p class="mt-2">
+      <p class="mt-4 text-muted-foreground">
         欢迎阅读我的文章，或在
         <LinkButton
-          class="hover:text-accent underline decoration-dashed underline-offset-4"
+          class="text-accent hover:text-accent/80 underline decoration-wavy underline-offset-4 font-medium"
           href="https://github.com/jpf-hash"
         >
           GitHub
@@ -67,8 +78,8 @@ const homePath = getRelativeLocaleUrl(locale, "");
       </p>
       {
         socials.length > 0 && (
-          <div class="mt-4 flex max-sm:flex-col sm:items-center">
-            <div class="me-2 mb-1 whitespace-nowrap sm:mb-0">
+          <div class="mt-6 flex max-sm:flex-col sm:items-center gap-2">
+            <div class="text-muted-foreground text-sm font-medium">
               {t.home.socialLinks}:
             </div>
             <Socials />
@@ -79,17 +90,12 @@ const homePath = getRelativeLocaleUrl(locale, "");
 
     {
       featuredPosts.length > 0 && (
-        <section
-          id="featured"
-          class:list={[
-            "pt-12 pb-6",
-            { "border-border border-b": recentPosts.length > 0 },
-          ]}
-        >
-          <h2 class="text-2xl font-semibold tracking-wide">
+        <section id="featured" class="pt-8 pb-6">
+          <h2 class="text-2xl font-bold tracking-tight mb-4 flex items-center gap-2">
+            <span class="inline-block w-1.5 h-6 bg-accent rounded-full"></span>
             {t.home.featured}
           </h2>
-          <ul>
+          <ul class="stagger">
             {featuredPosts.map(data => (
               <Card variant="h3" {...data} />
             ))}
@@ -100,11 +106,12 @@ const homePath = getRelativeLocaleUrl(locale, "");
 
     {
       recentPosts.length > 0 && (
-        <section id="recent-posts" class="pt-12 pb-6">
-          <h2 class="text-2xl font-semibold tracking-wide">
+        <section id="recent-posts" class="pt-8 pb-6">
+          <h2 class="text-2xl font-bold tracking-tight mb-4 flex items-center gap-2">
+            <span class="inline-block w-1.5 h-6 bg-accent rounded-full"></span>
             {t.home.recentPosts}
           </h2>
-          <ul>
+          <ul class="stagger">
             {recentPosts.slice(0, postsConfig.perIndex).map(data => (
               <Card variant="h3" {...data} />
             ))}
@@ -114,7 +121,10 @@ const homePath = getRelativeLocaleUrl(locale, "");
     }
 
     <div class="my-8 text-center">
-      <LinkButton href={getRelativeLocaleUrl(locale, "posts")}>
+      <LinkButton
+        href={getRelativeLocaleUrl(locale, "posts")}
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent/10 text-accent hover:bg-accent hover:text-accent-foreground transition-all duration-300 font-medium"
+      >
         {t.home.allPosts}
         <IconArrowRight class="inline-block rtl:-rotate-180" />
       </LinkButton>

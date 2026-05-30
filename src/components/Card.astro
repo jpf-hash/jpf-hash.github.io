@@ -15,19 +15,22 @@ const { title, description, ...props } = data;
 const readingTime = getReadingTime(body ?? "");
 ---
 
-<li class="my-6">
+<li
+  class="group my-4 rounded-xl border border-card-border bg-card p-5 transition-all duration-300 hover:border-accent/50 hover:shadow-lg hover:shadow-accent/5 hover:-translate-y-0.5"
+>
   <a
     href={getPostUrl(id, filePath, Astro.currentLocale)}
-    class:list={[
-      "text-accent inline-block text-lg font-medium",
-      "decoration-dashed underline-offset-4 hover:underline",
-      "focus-visible:no-underline focus-visible:underline-offset-0",
-    ]}
+    class="block"
   >
-    <Heading transition:name={slugifyStr(title.replaceAll(".", "-"))}>
+    <Heading
+      transition:name={slugifyStr(title.replaceAll(".", "-"))}
+      class="text-accent mb-2 inline-block text-lg font-semibold tracking-tight group-hover:text-accent/80 transition-colors"
+    >
       {title}
     </Heading>
   </a>
   <Datetime {...props} {readingTime} />
-  <p>{description}</p>
+  <p class="text-muted-foreground mt-2 line-clamp-2 text-sm leading-relaxed">
+    {description}
+  </p>
 </li>

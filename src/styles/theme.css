@@ -7,6 +7,9 @@
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-card-border: var(--card-border);
   --font-app: var(--font-system);
 }
 
@@ -25,6 +28,9 @@
   --muted: #e2e8f0;
   --muted-foreground: #64748b;
   --border: #e2e8f0;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --card-border: #e2e8f0;
 }
 
 /* Dark theme — deep blue-black, cyan accent */
@@ -36,4 +42,7 @@
   --muted: #1e293b;
   --muted-foreground: #94a3b8;
   --border: #1e3a5f;
+  --card: #1e293b;
+  --card-foreground: #e2e8f0;
+  --card-border: #334155;
 }
