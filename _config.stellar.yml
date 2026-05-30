@@ -1,0 +1,171 @@
+# Stellar Theme Configuration
+# Docs: https://xaoxuu.com/wiki/stellar/
+
+# Site Info
+site:
+  title: jpf-hash's Blog
+  subtitle: 学习记录与技术分享
+  description: 一个关于机器学习、Python和数据科学的技术博客
+  author: jpf-hash
+  logo: /img/logo.png
+  favicon: /img/favicon.png
+
+# Navigation
+nav:
+  logo:
+  display_title: true
+  fixed: false
+
+# Social Links
+social:
+  github: https://github.com/jpf-hash
+
+# Main Menu
+menu:
+  Home: /
+  Archives: /archives
+  Categories: /categories
+  Tags: /tags
+
+# Sidebar
+sidebar:
+  logo:
+  avatar:
+    img: /img/avatar.png
+    effect: false
+  menu:
+    Home: /
+    Archives: /archives
+    Categories: /categories
+    Tags: /tags
+  announcement:
+    content: 欢迎来到我的博客！这里记录了我的学习笔记和技术分享。
+
+# Article Meta
+meta:
+  post:
+    date_type: both
+    date_format: relative
+    categories: true
+    tags: true
+  page:
+    date_type: created
+    date_format: date
+    categories: true
+    tags: true
+
+# Comments
+comments:
+  service:
+  # waline:
+  #   serverURL:
+  #   locale:
+  #     placeholder:
+
+# Search
+search:
+  service: local
+  local:
+    field: post
+    content: true
+
+# Code Blocks
+code:
+  theme:
+    light: github-light
+    dark: github-dark
+  copy:
+    enable: true
+    style: mac
+
+# Table of Contents
+toc:
+  enable: true
+  list_number: true
+  max_depth: 3
+  min_depth: 1
+
+# Footer
+footer:
+  since: 2020
+  source:
+    enable: false
+  layout:
+    left: powered_by
+    right: copyright
+  custom_text:
+
+# Right Menu
+rightmenu:
+  enable: true
+  layout:
+    - reading
+    - darkmode
+    - print
+
+# Dark Mode
+darkmode:
+  enable: true
+  button: true
+  autoChangeMode: false
+
+# Reading Mode
+reading:
+  enable: true
+  width: 800
+
+# Article Layout
+article:
+  layout:
+    type: post
+    meta:
+      position: top
+      align: left
+    cover:
+      position: left
+      width: 300
+      ratio: 4:3
+    title:
+      position: left
+      align: left
+    content:
+      position: left
+    footer:
+      position: left
+
+# Index Layout
+index:
+  layout:
+    type: post
+    meta:
+      position: top
+      align: left
+    cover:
+      position: left
+      width: 300
+      ratio: 4:3
+    title:
+      position: left
+      align: left
+    excerpt:
+      position: left
+    footer:
+      position: left
+
+# Tag Plugins
+tag-plugins:
+  note:
+    style: simple
+    icons: false
+  mermaid:
+    enable: false
+  timeline:
+    enable: true
+  checkbox:
+    enable: true
+  gallery:
+    enable: true
+
+# CDN
+cdn:
+  # Custom CDN
