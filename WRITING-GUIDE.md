@@ -85,6 +85,21 @@ frontmatter...
 相关链接
 ```
 
+## 可选模板
+
+文章目录里还放了几个以下划线开头的模板文件，它们不会被发布：
+
+- `src/content/posts/_technical-note-template.md`：技术笔记
+- `src/content/posts/_project-review-template.md`：项目复盘
+- `src/content/posts/_debug-note-template.md`：踩坑记录
+- `src/content/posts/_paper-reading-template.md`：论文阅读
+
+使用方式：
+
+```bash
+cp src/content/posts/_project-review-template.md src/content/posts/my-project-review.md
+```
+
 ## 代码块
 
 支持语法高亮和复制按钮：

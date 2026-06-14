@@ -11,7 +11,7 @@ type Props = {
 
 const { variant: Heading = "h2", id, data, filePath, body } = Astro.props;
 
-const { title, description, ...props } = data;
+const { title, description, category, featured, tags, ...props } = data;
 const readingTime = getReadingTime(body ?? "");
 ---
 
@@ -29,6 +29,23 @@ const readingTime = getReadingTime(body ?? "");
       {title}
     </Heading>
   </a>
+  <div class="mb-3 flex flex-wrap items-center gap-2">
+    <span class="rounded-full bg-accent/10 px-2.5 py-1 text-xs font-semibold text-accent">
+      {category}
+    </span>
+    {
+      featured && (
+        <span class="rounded-full border border-accent/20 px-2.5 py-1 text-xs font-semibold text-accent">
+          精选
+        </span>
+      )
+    }
+    {tags.slice(0, 2).map(tag => (
+      <span class="rounded-full border border-card-border px-2.5 py-1 text-xs text-muted-foreground">
+        {tag}
+      </span>
+    ))}
+  </div>
   <Datetime {...props} {readingTime} />
   <p class="text-muted-foreground mt-2 line-clamp-2 text-sm leading-relaxed">
     {description}

@@ -1,0 +1,69 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import Main from "@/components/Main.astro";
+
+const roadmap = [
+  {
+    stage: "Python 基础",
+    goal: "写出清晰、可调试、可复用的代码。",
+    items: ["语法与数据结构", "函数与模块", "文件处理", "异常处理"],
+  },
+  {
+    stage: "数据科学工具",
+    goal: "能独立完成数据清洗、分析和可视化。",
+    items: ["NumPy", "Pandas", "Matplotlib", "实验记录"],
+  },
+  {
+    stage: "机器学习基础",
+    goal: "理解经典算法的适用场景和评估方式。",
+    items: ["KNN", "决策树", "随机森林", "模型评估"],
+  },
+  {
+    stage: "深度学习",
+    goal: "把模型训练过程拆解为可观察、可复现的 pipeline。",
+    items: ["PyTorch", "训练循环", "调参", "实验对比"],
+  },
+  {
+    stage: "图神经网络",
+    goal: "围绕图数据建模、鲁棒性和泛化能力形成专题积累。",
+    items: ["图表示学习", "节点分类", "OOD 检测", "图推荐"],
+  },
+  {
+    stage: "项目复盘",
+    goal: "把结果、失败原因和下一步计划写清楚。",
+    items: ["问题定义", "实验设置", "结果分析", "改进计划"],
+  },
+];
+---
+
+<Layout title="学习路线 | jpf-hash's Blog" description="Python、机器学习与图神经网络学习路线">
+  <Header />
+  <Main
+    pageTitle="学习路线"
+    pageDesc="把学习路径拆成阶段：每一段都能对应文章、实验和复盘。"
+  >
+    <ol class="relative space-y-5 border-s border-card-border ps-5">
+      {roadmap.map((node, index) => (
+        <li class="relative rounded-xl border border-card-border bg-card p-5">
+          <span class="absolute -start-[1.85rem] top-5 flex size-8 items-center justify-center rounded-full border border-accent/30 bg-background text-sm font-bold text-accent">
+            {index + 1}
+          </span>
+          <h2 class="text-xl font-bold">{node.stage}</h2>
+          <p class="mt-2 text-sm leading-relaxed text-muted-foreground">
+            {node.goal}
+          </p>
+          <ul class="mt-4 flex flex-wrap gap-2">
+            {node.items.map(item => (
+              <li class="rounded-full bg-accent/10 px-3 py-1 text-sm text-accent">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ol>
+  </Main>
+  <Footer />
+</Layout>
