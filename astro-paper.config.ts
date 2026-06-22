@@ -3,8 +3,8 @@ import { defineAstroPaperConfig } from "./src/types/config";
 export default defineAstroPaperConfig({
   site: {
     url: "https://jpf-hash.github.io/",
-    title: "jpf-hash's Blog",
-    description: "一个关于机器学习、Python 和数据科学的技术博客",
+    title: "jpf-hash 的笔记本",
+    description: "Python、机器学习、图神经网络。记录学习路线、实验复盘和踩坑经验。",
     author: "jpf-hash",
     profile: "https://github.com/jpf-hash",
     ogImage: "default-og.jpg",
