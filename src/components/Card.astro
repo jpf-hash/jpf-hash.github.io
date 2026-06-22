@@ -16,38 +16,43 @@ const readingTime = getReadingTime(body ?? "");
 ---
 
 <li
-  class="group my-4 rounded-xl border border-card-border bg-card p-5 transition-all duration-300 hover:border-accent/50 hover:shadow-lg hover:shadow-accent/5 hover:-translate-y-0.5"
+  class="group border-card-border bg-card hover:border-accent/50 hover:shadow-accent/5 my-4 flex min-h-44 flex-col rounded-xl border p-5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
 >
-  <a
-    href={getPostUrl(id, filePath, Astro.currentLocale)}
-    class="block"
-  >
+  <a href={getPostUrl(id, filePath, Astro.currentLocale)} class="block">
     <Heading
       transition:name={slugifyStr(title.replaceAll(".", "-"))}
-      class="text-accent mb-2 inline-block text-lg font-semibold tracking-tight group-hover:text-accent/80 transition-colors"
+      class="text-foreground group-hover:text-accent mb-3 inline-block text-lg font-bold tracking-tight transition-colors"
     >
       {title}
     </Heading>
   </a>
   <div class="mb-3 flex flex-wrap items-center gap-2">
-    <span class="rounded-full bg-accent/10 px-2.5 py-1 text-xs font-semibold text-accent">
+    <span
+      class="bg-accent/10 text-accent rounded-full px-2.5 py-1 text-xs font-semibold"
+    >
       {category}
     </span>
     {
       featured && (
-        <span class="rounded-full border border-accent/20 px-2.5 py-1 text-xs font-semibold text-accent">
+        <span class="border-accent/20 text-accent rounded-full border px-2.5 py-1 text-xs font-semibold">
           精选
         </span>
       )
     }
-    {tags.slice(0, 2).map(tag => (
-      <span class="rounded-full border border-card-border px-2.5 py-1 text-xs text-muted-foreground">
-        {tag}
-      </span>
-    ))}
+    {
+      tags
+        .slice(0, 2)
+        .map(tag => (
+          <span class="border-card-border text-muted-foreground rounded-full border px-2.5 py-1 text-xs">
+            {tag}
+          </span>
+        ))
+    }
   </div>
-  <Datetime {...props} {readingTime} />
-  <p class="text-muted-foreground mt-2 line-clamp-2 text-sm leading-relaxed">
+  <p class="text-muted-foreground line-clamp-2 text-sm leading-relaxed">
     {description}
   </p>
+  <div class="mt-auto pt-4">
+    <Datetime {...props} {readingTime} />
+  </div>
 </li>

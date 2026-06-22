@@ -22,6 +22,9 @@ const sortedPosts = getSortedPosts(posts);
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 const homePath = getRelativeLocaleUrl(locale, "");
+const totalTags = new Set(sortedPosts.flatMap(({ data }) => data.tags)).size;
+const totalCategories = new Set(sortedPosts.map(({ data }) => data.category))
+  .size;
 
 const focusAreas = [
   {
@@ -39,6 +42,33 @@ const focusAreas = [
 ];
 
 const stack = ["Python", "PyTorch", "Pandas", "NumPy", "GNN", "Astro"];
+
+const stats = [
+  { label: "文章", value: sortedPosts.length },
+  { label: "标签", value: totalTags },
+  { label: "分类", value: totalCategories },
+];
+
+const writingPaths = [
+  {
+    label: "学习路线",
+    title: "把知识拆成阶段",
+    desc: "从 Python 到图神经网络，保持一个可追踪的成长路线。",
+    href: getRelativeLocaleUrl(locale, "roadmap"),
+  },
+  {
+    label: "项目复盘",
+    title: "记录实验和结果",
+    desc: "项目页沉淀研究方向、实验状态和下一步计划。",
+    href: getRelativeLocaleUrl(locale, "projects"),
+  },
+  {
+    label: "文章归档",
+    title: "让笔记能被找回",
+    desc: "用标签、分类、搜索和归档组织长期积累的内容。",
+    href: getRelativeLocaleUrl(locale, "archives"),
+  },
+];
 ---
 
 <Layout>
@@ -50,48 +80,62 @@ const stack = ["Python", "PyTorch", "Pandas", "NumPy", "GNN", "Astro"];
     class="app-layout"
   >
     <section id="hero" class="relative overflow-hidden py-14 sm:py-18">
-      <div class="absolute inset-0 -z-10 rounded-3xl border border-card-border bg-card/70 shadow-xl shadow-accent/5"></div>
-      <div class="absolute -top-24 right-0 -z-10 size-72 rounded-full bg-accent/15 blur-3xl"></div>
-      <div class="absolute -bottom-28 left-8 -z-10 size-72 rounded-full bg-cyan-400/10 blur-3xl"></div>
+      <div
+        class="border-card-border bg-card/70 shadow-accent/5 absolute inset-0 -z-10 rounded-3xl border shadow-xl"
+      >
+      </div>
+      <div
+        class="bg-accent/15 absolute -top-24 right-0 -z-10 size-72 rounded-full blur-3xl"
+      >
+      </div>
+      <div
+        class="absolute -bottom-28 left-8 -z-10 size-72 rounded-full bg-cyan-400/10 blur-3xl"
+      >
+      </div>
 
       <div class="px-5 sm:px-8">
-        <p class="mb-4 inline-flex rounded-full border border-accent/20 bg-accent/10 px-3 py-1 text-sm font-medium text-accent">
+        <p
+          class="border-accent/20 bg-accent/10 text-accent mb-4 inline-flex rounded-full border px-3 py-1 text-sm font-medium"
+        >
           AI 学习记录 / Python 实践 / 图机器学习
         </p>
 
-        <h1 class="max-w-3xl text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+        <h1
+          class="max-w-3xl text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl"
+        >
           把机器学习、图神经网络和工程实践，写成可复用的笔记。
         </h1>
 
-        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          我是 jpf-hash。这里记录 Python、机器学习、数据科学和图神经网络相关的学习路线、实验复盘与踩坑经验。
+        <p class="text-muted-foreground mt-6 max-w-2xl text-lg leading-relaxed">
+          我是 jpf-hash。这里记录
+          Python、机器学习、数据科学和图神经网络相关的学习路线、实验复盘与踩坑经验。
           目标不是堆文章，而是把每次学习变成能回头查、能继续长出来的知识资产。
         </p>
 
         <div class="mt-7 flex flex-wrap gap-3">
           <LinkButton
             href={getRelativeLocaleUrl(locale, "posts")}
-            class="rounded-full bg-accent px-5 py-2.5 font-semibold text-accent-foreground shadow-lg shadow-accent/20 transition-transform hover:-translate-y-0.5"
+            class="bg-accent text-accent-foreground shadow-accent/20 rounded-full px-5 py-2.5 font-semibold shadow-lg transition-transform hover:-translate-y-0.5"
           >
             阅读文章
             <IconArrowRight class="inline-block rtl:-rotate-180" />
           </LinkButton>
           <LinkButton
             href={getRelativeLocaleUrl(locale, "projects")}
-            class="rounded-full border border-card-border bg-background/70 px-5 py-2.5 font-semibold hover:border-accent/50"
+            class="border-card-border bg-background/70 hover:border-accent/50 rounded-full border px-5 py-2.5 font-semibold"
           >
             查看项目
           </LinkButton>
           <LinkButton
             href={getRelativeLocaleUrl(locale, "roadmap")}
-            class="rounded-full border border-card-border bg-background/70 px-5 py-2.5 font-semibold hover:border-accent/50"
+            class="border-card-border bg-background/70 hover:border-accent/50 rounded-full border px-5 py-2.5 font-semibold"
           >
             学习路线
           </LinkButton>
           <a
             target="_blank"
             href={`${import.meta.env.BASE_URL.replace(/\/?$/, "/")}rss.xml`}
-            class="inline-flex size-11 items-center justify-center rounded-full border border-card-border bg-background/70 hover:border-accent/50"
+            class="border-card-border bg-background/70 hover:border-accent/50 inline-flex size-11 items-center justify-center rounded-full border"
             aria-label="RSS Feed"
             title="RSS Feed"
           >
@@ -100,32 +144,89 @@ const stack = ["Python", "PyTorch", "Pandas", "NumPy", "GNN", "Astro"];
           </a>
         </div>
 
-        <ul class="mt-8 flex flex-wrap gap-2">
-          {stack.map(item => (
-            <li class="rounded-full border border-card-border bg-background/60 px-3 py-1 text-sm text-muted-foreground">
-              {item}
-            </li>
-          ))}
-        </ul>
+        <div class="mt-8 grid gap-5 lg:grid-cols-[1fr_220px] lg:items-end">
+          <ul class="flex flex-wrap gap-2">
+            {
+              stack.map(item => (
+                <li class="border-card-border bg-background/60 text-muted-foreground rounded-full border px-3 py-1 text-sm">
+                  {item}
+                </li>
+              ))
+            }
+          </ul>
+
+          <dl
+            class="border-card-border bg-background/60 grid grid-cols-3 rounded-2xl border p-2 text-center"
+          >
+            {
+              stats.map(stat => (
+                <div class="rounded-xl px-2 py-3">
+                  <dt class="text-muted-foreground text-xs">{stat.label}</dt>
+                  <dd class="text-accent mt-1 text-xl font-extrabold">
+                    {stat.value}
+                  </dd>
+                </div>
+              ))
+            }
+          </dl>
+        </div>
       </div>
     </section>
 
     <section class="grid gap-4 py-8 sm:grid-cols-3">
-      {focusAreas.map(area => (
-        <article class="rounded-xl border border-card-border bg-card p-5">
-          <h2 class="text-lg font-bold">{area.title}</h2>
-          <p class="mt-2 text-sm leading-relaxed text-muted-foreground">
-            {area.desc}
-          </p>
-        </article>
-      ))}
+      {
+        focusAreas.map(area => (
+          <article class="border-card-border bg-card rounded-xl border p-5">
+            <h2 class="text-lg font-bold">{area.title}</h2>
+            <p class="text-muted-foreground mt-2 text-sm leading-relaxed">
+              {area.desc}
+            </p>
+          </article>
+        ))
+      }
+    </section>
+
+    <section class="py-6">
+      <div class="mb-4 flex items-end justify-between gap-4">
+        <div>
+          <p class="text-accent text-sm font-semibold">Writing System</p>
+          <h2 class="mt-1 text-2xl font-bold tracking-tight">写作结构</h2>
+        </div>
+        <LinkButton
+          href={getRelativeLocaleUrl(locale, "search")}
+          class="text-muted-foreground hover:text-accent hidden text-sm font-medium sm:inline-flex"
+        >
+          搜索笔记
+          <IconArrowRight class="inline-block size-4 rtl:-rotate-180" />
+        </LinkButton>
+      </div>
+      <div class="grid gap-4 md:grid-cols-3">
+        {
+          writingPaths.map((path, index) => (
+            <a
+              href={path.href}
+              class="group border-card-border bg-card hover:border-accent/50 hover:shadow-accent/5 rounded-xl border p-5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+            >
+              <span class="text-accent text-xs font-bold">
+                {(index + 1).toString().padStart(2, "0")} / {path.label}
+              </span>
+              <h3 class="group-hover:text-accent mt-3 text-lg font-bold">
+                {path.title}
+              </h3>
+              <p class="text-muted-foreground mt-2 text-sm leading-relaxed">
+                {path.desc}
+              </p>
+            </a>
+          ))
+        }
+      </div>
     </section>
 
     {
       featuredPosts.length > 0 && (
         <section id="featured" class="pt-8 pb-6">
-          <h2 class="text-2xl font-bold tracking-tight mb-4 flex items-center gap-2">
-            <span class="inline-block w-1.5 h-6 bg-accent rounded-full"></span>
+          <h2 class="mb-4 flex items-center gap-2 text-2xl font-bold tracking-tight">
+            <span class="bg-accent inline-block h-6 w-1.5 rounded-full" />
             {t.home.featured}
           </h2>
           <ul class="stagger">
@@ -140,8 +241,8 @@ const stack = ["Python", "PyTorch", "Pandas", "NumPy", "GNN", "Astro"];
     {
       recentPosts.length > 0 && (
         <section id="recent-posts" class="pt-8 pb-6">
-          <h2 class="text-2xl font-bold tracking-tight mb-4 flex items-center gap-2">
-            <span class="inline-block w-1.5 h-6 bg-accent rounded-full"></span>
+          <h2 class="mb-4 flex items-center gap-2 text-2xl font-bold tracking-tight">
+            <span class="bg-accent inline-block h-6 w-1.5 rounded-full" />
             {t.home.recentPosts}
           </h2>
           <ul class="stagger">
@@ -156,7 +257,7 @@ const stack = ["Python", "PyTorch", "Pandas", "NumPy", "GNN", "Astro"];
     <div class="my-8 text-center">
       <LinkButton
         href={getRelativeLocaleUrl(locale, "posts")}
-        class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent/10 text-accent hover:bg-accent hover:text-accent-foreground transition-all duration-300 font-medium"
+        class="bg-accent/10 text-accent hover:bg-accent hover:text-accent-foreground inline-flex items-center gap-2 rounded-full px-6 py-3 font-medium transition-all duration-300"
       >
         {t.home.allPosts}
         <IconArrowRight class="inline-block rtl:-rotate-180" />
