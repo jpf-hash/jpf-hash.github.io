@@ -1,0 +1,85 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+
+const directions = [
+  {
+    title: "Graph Neural Networks",
+    summary:
+      "Study graph representation learning, node classification, and how graph structure changes model behavior.",
+    keywords: ["GNN", "node classification", "representation learning"],
+  },
+  {
+    title: "Out-of-distribution Detection",
+    summary:
+      "Track robustness questions around distribution shifts, graph OOD benchmarks, and evaluation protocols.",
+    keywords: ["OOD", "robustness", "evaluation"],
+  },
+  {
+    title: "Recommendation with Graphs",
+    summary:
+      "Connect graph learning with recommendation settings, focusing on reproducible experiments and practical metrics.",
+    keywords: ["recommendation", "graph learning", "ranking"],
+  },
+  {
+    title: "Python Data Systems",
+    summary:
+      "Build small, reliable workflows for cleaning data, recording experiments, and turning results into notes.",
+    keywords: ["Python", "Pandas", "experiment logs"],
+  },
+];
+---
+
+<Layout
+  title="Research | jpf-hash 的笔记本"
+  description="jpf-hash 的研究方向：图神经网络、OOD 检测、图推荐和 Python 数据系统。"
+>
+  <Header />
+  <main id="main-content" class="app-layout">
+    <section class="border-border border-b py-16 md:py-20">
+      <p class="text-accent text-xs font-semibold tracking-[0.24em] uppercase">
+        Research
+      </p>
+      <h1
+        class="mt-5 max-w-3xl text-5xl leading-none font-semibold tracking-[-0.04em] sm:text-6xl"
+      >
+        Research interests and experiment notes.
+      </h1>
+      <p class="text-muted-foreground mt-7 max-w-2xl text-lg leading-8">
+        This page collects the topics I am currently organizing. It is meant to
+        be a map for notes, experiments, paper reading, and future projects.
+      </p>
+    </section>
+
+    <section class="divide-border divide-y">
+      {
+        directions.map((direction, index) => (
+          <article class="grid gap-6 py-9 md:grid-cols-[10rem_1fr]">
+            <div>
+              <span class="text-accent text-xs font-semibold tracking-widest">
+                {(index + 1).toString().padStart(2, "0")}
+              </span>
+            </div>
+            <div>
+              <h2 class="text-2xl font-semibold tracking-[-0.03em]">
+                {direction.title}
+              </h2>
+              <p class="text-muted-foreground mt-4 max-w-2xl text-sm leading-7">
+                {direction.summary}
+              </p>
+              <ul class="mt-5 flex flex-wrap gap-2">
+                {direction.keywords.map(keyword => (
+                  <li class="border-border text-muted-foreground border px-2 py-1 text-xs">
+                    {keyword}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        ))
+      }
+    </section>
+  </main>
+  <Footer />
+</Layout>
