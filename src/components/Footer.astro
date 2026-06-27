@@ -1,4 +1,4 @@
----
+﻿---
 import type { HTMLAttributes } from "astro/types";
 import Socials from "./Socials.astro";
 import { useTranslations } from "@/i18n";
@@ -14,21 +14,17 @@ const currentYear = new Date().getFullYear();
 ---
 
 <footer
-  class:list={[
-    "app-layout",
-    { "mt-auto": !noMarginTop },
-    className,
-  ]}
+  class:list={["app-layout", { "mt-auto": !noMarginTop }, className]}
   {...attrs}
 >
   <div
-    class="border-border flex flex-col items-center justify-between border-t py-8 sm:flex-row-reverse sm:py-6"
+    class="border-border flex flex-col items-start justify-between gap-4 border-t py-8 sm:flex-row sm:items-center"
   >
-    <Socials />
-    <div class="my-3 flex flex-col items-center whitespace-nowrap text-sm text-muted-foreground sm:flex-row">
+    <div class="text-muted-foreground text-sm">
       <span>&copy; {currentYear} jpf-hash</span>
-      <span class="hidden sm:inline mx-2">·</span>
+      <span class="mx-2">/</span>
       <span>{t.footer.allRightsReserved}</span>
     </div>
+    <Socials />
   </div>
 </footer>
