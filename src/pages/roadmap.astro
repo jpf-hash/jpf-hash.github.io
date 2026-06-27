@@ -12,41 +12,41 @@ const timeline = [
   },
   {
     period: "02",
-    title: "Data Science Workflow",
-    summary: "围绕数据清洗、分析、可视化和实验记录，形成稳定的数据处理流程。",
-    outputs: ["NumPy", "Pandas", "Matplotlib", "Experiment logs"],
+    title: "Tools & Workflow",
+    summary: "整理 Git、命令行、编辑器、环境配置和写作流程，让日常学习更稳定。",
+    outputs: ["Git", "CLI", "Editor", "Markdown"],
   },
   {
     period: "03",
-    title: "Machine Learning Basics",
-    summary: "理解经典模型的适用场景、评估方法和失败边界，而不是只记录公式。",
-    outputs: ["KNN", "Decision trees", "Random forest", "Evaluation"],
+    title: "Data Science Basics",
+    summary:
+      "围绕数据清洗、分析、可视化和记录方式，形成可以复用的数据处理流程。",
+    outputs: ["NumPy", "Pandas", "Visualization", "Data notes"],
   },
   {
     period: "04",
-    title: "Deep Learning Practice",
-    summary:
-      "把模型训练拆成可观察、可复现的 pipeline，重视对照实验和训练细节。",
-    outputs: ["PyTorch", "Training loops", "Ablations", "Reproducibility"],
+    title: "Machine Learning Basics",
+    summary: "学习经典模型、评估方法和实验过程，重点写清楚概念、代码和结果。",
+    outputs: ["Models", "Evaluation", "Experiments", "Metrics"],
   },
   {
     period: "05",
-    title: "Graph Neural Networks",
-    summary: "长期积累图表示学习、节点分类、OOD 检测和图推荐方向的研究笔记。",
-    outputs: ["Graph learning", "Node classification", "OOD", "Recommendation"],
+    title: "Projects & Practice",
+    summary: "把课程作业、小项目、部署过程和失败复盘写成以后能继续参考的记录。",
+    outputs: ["Projects", "Deployment", "Debugging", "Postmortems"],
   },
   {
     period: "06",
-    title: "Research Notes",
-    summary: "将论文阅读、实验结果和项目复盘转化为可追踪的个人知识库。",
-    outputs: ["Paper reading", "Result analysis", "Postmortems", "Next steps"],
+    title: "Reading & Reflection",
+    summary: "把技术文章、课程、书籍和论文阅读转化为自己的问题清单和理解记录。",
+    outputs: ["Courses", "Books", "Papers", "Question lists"],
   },
 ];
 ---
 
 <Layout
   title="Learning Timeline | jpf-hash 的笔记本"
-  description="Python、机器学习与图学习的学习轨迹"
+  description="Python、数据、机器学习与项目实践的学习轨迹"
 >
   <Header />
   <main id="main-content" class="mx-auto w-full max-w-5xl px-6 py-16 sm:py-20">
@@ -57,10 +57,10 @@ const timeline = [
       <h1
         class="text-foreground mt-5 font-serif text-4xl leading-tight font-semibold text-balance sm:text-5xl"
       >
-        From tools to research notes.
+        From tools to practice.
       </h1>
       <p class="text-muted-foreground mt-6 max-w-2xl text-base leading-8">
-        这不是一个完成后就停止的路线图，而是一条持续整理的学习轨迹：从工具能力到实验能力，再到围绕图学习和机器学习问题的长期记录。
+        这不是一个完成后就停止的路线图，而是一条持续整理的学习轨迹：从工具能力到数据和机器学习基础，再到项目实践、阅读笔记和阶段复盘。
       </p>
     </section>
 

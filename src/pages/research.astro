@@ -3,58 +3,57 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 
-const directions = [
+const topics = [
   {
-    title: "Graph Neural Networks",
+    title: "Programming & Tools",
     summary:
-      "Study graph representation learning, node classification, and how graph structure changes model behavior.",
-    keywords: ["GNN", "node classification", "representation learning"],
+      "记录 Python、Git、命令行、编辑器、环境配置和日常开发工具。重点不是罗列语法，而是把真正能复用的工作流沉淀下来。",
+    examples: ["Python 基础", "Git 使用", "命令行", "开发环境"],
   },
   {
-    title: "Out-of-distribution Detection",
+    title: "Data & Machine Learning",
     summary:
-      "Track robustness questions around distribution shifts, graph OOD benchmarks, and evaluation protocols.",
-    keywords: ["OOD", "robustness", "evaluation"],
+      "整理数据处理、机器学习基础、模型评估和实验记录。先写清楚概念、代码和结果，再逐步形成自己的判断。",
+    examples: ["数据清洗", "机器学习基础", "模型评估", "实验记录"],
   },
   {
-    title: "Recommendation with Graphs",
+    title: "Projects & Practice",
     summary:
-      "Connect graph learning with recommendation settings, focusing on reproducible experiments and practical metrics.",
-    keywords: ["recommendation", "graph learning", "ranking"],
+      "把课程作业、小项目、部署过程和失败复盘写下来。每篇文章尽量回答：做了什么，卡在哪里，最后学到了什么。",
+    examples: ["课程项目", "小工具", "部署记录", "项目复盘"],
   },
   {
-    title: "Python Data Systems",
+    title: "Reading Notes",
     summary:
-      "Build small, reliable workflows for cleaning data, recording experiments, and turning results into notes.",
-    keywords: ["Python", "Pandas", "experiment logs"],
+      "记录技术文章、书籍、课程和论文阅读。重点放在自己真正理解的部分，以及还没搞懂、值得继续追的问题。",
+    examples: ["课程笔记", "书籍摘记", "论文阅读", "问题清单"],
   },
 ];
 ---
 
 <Layout
-  title="Research | jpf-hash 的笔记本"
-  description="jpf-hash 的研究方向：图神经网络、OOD 检测、图推荐和 Python 数据系统。"
+  title="Topics | jpf-hash 的笔记本"
+  description="jpf-hash 可以长期写作的技术主题"
 >
   <Header />
   <main id="main-content" class="app-layout">
     <section class="border-border border-b py-16 md:py-20">
       <p class="text-accent text-xs font-semibold tracking-[0.24em] uppercase">
-        Research
+        Topics
       </p>
       <h1
         class="mt-5 max-w-3xl text-5xl leading-none font-semibold tracking-[-0.04em] sm:text-6xl"
       >
-        Research interests and experiment notes.
+        Things worth writing down.
       </h1>
       <p class="text-muted-foreground mt-7 max-w-2xl text-lg leading-8">
-        This page collects the topics I am currently organizing. It is meant to
-        be a map for notes, experiments, paper reading, and future projects.
+        这里不是固定的研究方向，而是一组可以长期积累的写作主题。等以后方向更明确，再把它们收敛成更具体的专题。
       </p>
     </section>
 
     <section class="divide-border divide-y">
       {
-        directions.map((direction, index) => (
+        topics.map((topic, index) => (
           <article class="grid gap-6 py-9 md:grid-cols-[10rem_1fr]">
             <div>
               <span class="text-accent text-xs font-semibold tracking-widest">
@@ -63,15 +62,15 @@ const directions = [
             </div>
             <div>
               <h2 class="text-2xl font-semibold tracking-[-0.03em]">
-                {direction.title}
+                {topic.title}
               </h2>
               <p class="text-muted-foreground mt-4 max-w-2xl text-sm leading-7">
-                {direction.summary}
+                {topic.summary}
               </p>
               <ul class="mt-5 flex flex-wrap gap-2">
-                {direction.keywords.map(keyword => (
+                {topic.examples.map(example => (
                   <li class="border-border text-muted-foreground border px-2 py-1 text-xs">
-                    {keyword}
+                    {example}
                   </li>
                 ))}
               </ul>

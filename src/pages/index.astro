@@ -23,29 +23,31 @@ const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 const homePath = getRelativeLocaleUrl(locale, "");
 const totalTags = new Set(sortedPosts.flatMap(({ data }) => data.tags)).size;
-const totalCategories = new Set(sortedPosts.map(({ data }) => data.category))
-  .size;
 
 const focusAreas = [
-  ["Machine Learning", "经典机器学习算法、评估方法、实验复盘与可解释记录。"],
-  ["Graph Learning", "图神经网络、图表示学习、OOD 检测与图推荐方向。"],
-  ["Python Data Systems", "面向实验的 Python 数据处理、自动化与可复现流程。"],
+  [
+    "Programming & Tools",
+    "Python、Git、命令行、开发工具，以及能反复用起来的工作流。",
+  ],
+  ["Data & Machine Learning", "数据处理、机器学习基础、模型评估和实验记录。"],
+  ["Projects & Practice", "课程作业、小项目、踩坑过程、部署记录和项目复盘。"],
+  ["Reading Notes", "技术文章、书籍、课程和论文阅读中真正理解下来的部分。"],
 ];
 
 const stats = [
   { label: "Notes", value: sortedPosts.length },
   { label: "Tags", value: totalTags },
-  { label: "Areas", value: totalCategories },
+  { label: "Topics", value: focusAreas.length },
 ];
 
 const news = [
   {
     date: "2026.06",
-    text: "Redesigned the site as a research-note homepage with a quieter academic layout.",
+    text: "Redesigned the site as a quieter personal knowledge base with an academic-style layout.",
   },
   {
     date: "2026.06",
-    text: "Started organizing notes around Python, machine learning, and graph learning.",
+    text: "Started organizing notes around programming tools, data work, machine learning basics, and project practice.",
   },
   {
     date: "2026.06",
@@ -55,8 +57,8 @@ const news = [
 
 const quickLinks = [
   {
-    title: "Research",
-    desc: "当前关注的研究与实验方向。",
+    title: "Topics",
+    desc: "长期可写的主题库，而不是固定研究标签。",
     href: getRelativeLocaleUrl(locale, "research"),
   },
   {
@@ -66,7 +68,7 @@ const quickLinks = [
   },
   {
     title: "Roadmap",
-    desc: "从基础工具到图学习的学习路径。",
+    desc: "从基础工具到项目复盘的学习路径。",
     href: getRelativeLocaleUrl(locale, "roadmap"),
   },
 ];
@@ -87,7 +89,7 @@ const quickLinks = [
         <p
           class="text-accent text-xs font-semibold tracking-[0.24em] uppercase"
         >
-          Personal Research Notes
+          Personal Knowledge Base
         </p>
         <h1
           class="mt-5 max-w-3xl text-5xl leading-[0.98] font-semibold tracking-[-0.04em] sm:text-7xl"
@@ -95,16 +97,16 @@ const quickLinks = [
           jpf-hash
         </h1>
         <p class="text-muted-foreground mt-7 max-w-2xl text-lg leading-8">
-          I keep notes on Python, machine learning, graph learning, and the
-          experiments behind them. This site is a compact research notebook:
-          concepts, implementations, failed attempts, and follow-up plans.
+          I keep notes on programming, data work, machine learning basics, and
+          the projects behind them. This site is a compact personal knowledge
+          base: concepts, implementations, failed attempts, and follow-up plans.
         </p>
         <div class="mt-9 flex flex-wrap items-center gap-3">
           <LinkButton
             href={getRelativeLocaleUrl(locale, "research")}
             class="bg-foreground text-background hover:bg-accent hover:text-accent-foreground rounded-none px-5 py-3 text-sm font-semibold transition-colors"
           >
-            Research interests
+            Writing topics
             <IconArrowRight class="inline-block size-4 rtl:-rotate-180" />
           </LinkButton>
           <LinkButton
@@ -134,8 +136,8 @@ const quickLinks = [
             Focus
           </h2>
           <p class="text-muted-foreground mt-4 text-sm leading-7">
-            Machine learning foundations, graph neural networks, OOD detection,
-            recommendation systems, and Python data workflows.
+            Programming tools, data workflows, machine learning basics, project
+            notes, reading notes, and debugging records.
           </p>
         </div>
         <dl
@@ -164,10 +166,10 @@ const quickLinks = [
         <p
           class="text-accent text-xs font-semibold tracking-[0.24em] uppercase"
         >
-          Research interests
+          Writing topics
         </p>
         <h2 class="mt-3 text-3xl font-semibold tracking-[-0.03em]">
-          Topics I am currently organizing.
+          Areas I can keep writing about.
         </h2>
       </div>
       <div class="divide-border divide-y">
