@@ -2,7 +2,7 @@
 
 @layer base {
   .app-prose {
-    @apply prose;
+    @apply prose min-w-0 wrap-break-word;
 
     h1,
     h2,
