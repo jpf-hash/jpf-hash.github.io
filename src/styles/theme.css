@@ -1,4 +1,4 @@
-/* Register design tokens for Tailwind v4 */
+﻿/* Register design tokens for Tailwind v4 */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -14,35 +14,35 @@
 }
 
 :root {
-  --font-system: system-ui, -apple-system, "Segoe UI", "PingFang SC",
-    "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  --font-system:
+    ui-serif, Georgia, "Times New Roman", "Noto Serif SC", "Songti SC", serif;
 }
 
-/* Light theme — clean, airy, tech-forward */
+/* Light theme — editorial minimal */
 :root,
 [data-theme="light"] {
-  --background: #f8fafc;
-  --foreground: #0f172a;
-  --accent: #0ea5e9;
-  --accent-foreground: #ffffff;
-  --muted: #e2e8f0;
-  --muted-foreground: #64748b;
-  --border: #e2e8f0;
-  --card: #ffffff;
-  --card-foreground: #0f172a;
-  --card-border: #e2e8f0;
+  --background: #fbfaf7;
+  --foreground: #171717;
+  --accent: #7c3f1d;
+  --accent-foreground: #fffaf3;
+  --muted: #ebe6dc;
+  --muted-foreground: #6f6a61;
+  --border: #ded8cc;
+  --card: #f4f0e8;
+  --card-foreground: #171717;
+  --card-border: #d8d0c2;
 }
 
-/* Dark theme — deep blue-black, cyan accent */
+/* Dark theme — ink and brass */
 [data-theme="dark"] {
-  --background: #0f172a;
-  --foreground: #e2e8f0;
-  --accent: #22d3ee;
-  --accent-foreground: #0f172a;
-  --muted: #1e293b;
-  --muted-foreground: #94a3b8;
-  --border: #1e3a5f;
-  --card: #1e293b;
-  --card-foreground: #e2e8f0;
-  --card-border: #334155;
+  --background: #12110f;
+  --foreground: #eee8dc;
+  --accent: #d6a15f;
+  --accent-foreground: #15110c;
+  --muted: #292621;
+  --muted-foreground: #aaa195;
+  --border: #373229;
+  --card: #1b1915;
+  --card-foreground: #eee8dc;
+  --card-border: #40392f;
 }

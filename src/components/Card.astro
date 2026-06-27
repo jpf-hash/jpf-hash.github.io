@@ -1,4 +1,4 @@
----
+﻿---
 import type { CollectionEntry } from "astro:content";
 import { getPostUrl } from "@/utils/getPostPaths";
 import { slugifyStr } from "@/utils/slugify";
@@ -16,43 +16,43 @@ const readingTime = getReadingTime(body ?? "");
 ---
 
 <li
-  class="group border-card-border bg-card hover:border-accent/50 hover:shadow-accent/5 my-4 flex min-h-44 flex-col rounded-xl border p-5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+  class="group border-border hover:border-accent/50 grid gap-4 border-b py-7 transition-colors sm:grid-cols-[9rem_1fr]"
 >
-  <a href={getPostUrl(id, filePath, Astro.currentLocale)} class="block">
-    <Heading
-      transition:name={slugifyStr(title.replaceAll(".", "-"))}
-      class="text-foreground group-hover:text-accent mb-3 inline-block text-lg font-bold tracking-tight transition-colors"
-    >
-      {title}
-    </Heading>
-  </a>
-  <div class="mb-3 flex flex-wrap items-center gap-2">
-    <span
-      class="bg-accent/10 text-accent rounded-full px-2.5 py-1 text-xs font-semibold"
-    >
-      {category}
-    </span>
-    {
-      featured && (
-        <span class="border-accent/20 text-accent rounded-full border px-2.5 py-1 text-xs font-semibold">
-          精选
-        </span>
-      )
-    }
-    {
-      tags
-        .slice(0, 2)
-        .map(tag => (
-          <span class="border-card-border text-muted-foreground rounded-full border px-2.5 py-1 text-xs">
-            {tag}
-          </span>
-        ))
-    }
+  <div class="text-muted-foreground text-xs leading-6 sm:pt-1">
+    <div class="flex flex-wrap gap-2 sm:block">
+      <span class="text-accent font-semibold">{category}</span>
+      {featured && <span class="sm:mt-2 sm:block">精选</span>}
+    </div>
+    <div class="mt-2 hidden sm:block">
+      <Datetime {...props} {readingTime} />
+    </div>
   </div>
-  <p class="text-muted-foreground line-clamp-2 text-sm leading-relaxed">
-    {description}
-  </p>
-  <div class="mt-auto pt-4">
-    <Datetime {...props} {readingTime} />
-  </div>
+
+  <article>
+    <a href={getPostUrl(id, filePath, Astro.currentLocale)} class="block">
+      <Heading
+        transition:name={slugifyStr(title.replaceAll(".", "-"))}
+        class="text-foreground group-hover:text-accent text-xl font-semibold tracking-[-0.02em] transition-colors"
+      >
+        {title}
+      </Heading>
+    </a>
+    <p class="text-muted-foreground mt-3 max-w-2xl text-sm leading-7">
+      {description}
+    </p>
+    <div class="mt-4 flex flex-wrap gap-2">
+      {
+        tags
+          .slice(0, 3)
+          .map(tag => (
+            <span class="text-muted-foreground border-border border px-2 py-0.5 text-xs">
+              {tag}
+            </span>
+          ))
+      }
+    </div>
+    <div class="mt-4 sm:hidden">
+      <Datetime {...props} {readingTime} />
+    </div>
+  </article>
 </li>
