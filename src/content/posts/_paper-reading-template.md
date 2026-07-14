@@ -4,6 +4,7 @@ description: "一句话概括论文解决的问题和主要贡献"
 pubDatetime: 2026-06-14T10:00:00+08:00
 tags: ["论文阅读", "机器学习"]
 category: "技术"
+topic: "reading"
 featured: false
 draft: true
 ---

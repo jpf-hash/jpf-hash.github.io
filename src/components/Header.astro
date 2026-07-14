@@ -74,15 +74,15 @@ const isActive = (path: string) => {
               href={getRelativeLocaleUrl(locale, "posts")}
               class:list={{ "active-nav": isActive("/posts") }}
             >
-              Notes
+              笔记
             </a>
           </li>
           <li>
             <a
-              href={getRelativeLocaleUrl(locale, "research")}
-              class:list={{ "active-nav": isActive("/research") }}
+              href={getRelativeLocaleUrl(locale, "topics")}
+              class:list={{ "active-nav": isActive("/topics") }}
             >
-              Topics
+              主题
             </a>
           </li>
           <li>
@@ -90,7 +90,7 @@ const isActive = (path: string) => {
               href={getRelativeLocaleUrl(locale, "roadmap")}
               class:list={{ "active-nav": isActive("/roadmap") }}
             >
-              Roadmap
+              路径
             </a>
           </li>
           <li class="sm:hidden lg:block">
@@ -98,7 +98,7 @@ const isActive = (path: string) => {
               href={getRelativeLocaleUrl(locale, "categories")}
               class:list={{ "active-nav": isActive("/categories") }}
             >
-              Categories
+              分类
             </a>
           </li>
           <li class="sm:hidden lg:block">
@@ -114,7 +114,7 @@ const isActive = (path: string) => {
               href={getRelativeLocaleUrl(locale, "about")}
               class:list={{ "active-nav": isActive("/about") }}
             >
-              About
+              关于
             </a>
           </li>
           {

@@ -1,84 +1,17 @@
 ---
+import { getRelativeLocaleUrl } from "astro:i18n";
 import Layout from "@/layouts/Layout.astro";
-import Header from "@/components/Header.astro";
-import Footer from "@/components/Footer.astro";
+import config from "@/config";
 
-const topics = [
-  {
-    title: "Programming & Tools",
-    summary:
-      "记录 Python、Git、命令行、编辑器、环境配置和日常开发工具。重点不是罗列语法，而是把真正能复用的工作流沉淀下来。",
-    examples: ["Python 基础", "Git 使用", "命令行", "开发环境"],
-  },
-  {
-    title: "Data & Machine Learning",
-    summary:
-      "整理数据处理、机器学习基础、模型评估和实验记录。先写清楚概念、代码和结果，再逐步形成自己的判断。",
-    examples: ["数据清洗", "机器学习基础", "模型评估", "实验记录"],
-  },
-  {
-    title: "Projects & Practice",
-    summary:
-      "把课程作业、小项目、部署过程和失败复盘写下来。每篇文章尽量回答：做了什么，卡在哪里，最后学到了什么。",
-    examples: ["课程项目", "小工具", "部署记录", "项目复盘"],
-  },
-  {
-    title: "Reading Notes",
-    summary:
-      "记录技术文章、书籍、课程和论文阅读。重点放在自己真正理解的部分，以及还没搞懂、值得继续追的问题。",
-    examples: ["课程笔记", "书籍摘记", "论文阅读", "问题清单"],
-  },
-];
+const locale = Astro.currentLocale ?? config.site.lang;
+const topicsUrl = getRelativeLocaleUrl(locale, "topics");
 ---
 
-<Layout
-  title="Topics | jpf-hash 的笔记本"
-  description="jpf-hash 可以长期写作的技术主题"
->
-  <Header />
-  <main id="main-content" class="app-layout">
-    <section class="border-border border-b py-16 md:py-20">
-      <p class="text-accent text-xs font-semibold tracking-[0.24em] uppercase">
-        Topics
-      </p>
-      <h1
-        class="mt-5 max-w-3xl text-5xl leading-none font-semibold tracking-[-0.04em] sm:text-6xl"
-      >
-        Things worth writing down.
-      </h1>
-      <p class="text-muted-foreground mt-7 max-w-2xl text-lg leading-8">
-        这里整理站点的主要写作主题：编程工具、数据与机器学习、项目实践和阅读笔记。后续内容会按这些主题持续归档。
-      </p>
-    </section>
-
-    <section class="divide-border divide-y">
-      {
-        topics.map((topic, index) => (
-          <article class="grid gap-6 py-9 md:grid-cols-[10rem_1fr]">
-            <div>
-              <span class="text-accent text-xs font-semibold tracking-widest">
-                {(index + 1).toString().padStart(2, "0")}
-              </span>
-            </div>
-            <div>
-              <h2 class="text-2xl font-semibold tracking-[-0.03em]">
-                {topic.title}
-              </h2>
-              <p class="text-muted-foreground mt-4 max-w-2xl text-sm leading-7">
-                {topic.summary}
-              </p>
-              <ul class="mt-5 flex flex-wrap gap-2">
-                {topic.examples.map(example => (
-                  <li class="border-border text-muted-foreground border px-2 py-1 text-xs">
-                    {example}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </article>
-        ))
-      }
-    </section>
+<Layout title="主题已迁移 | jpf-hash 的笔记本">
+  <meta slot="head" http-equiv="refresh" content={`0; url=${topicsUrl}`} />
+  <main class="app-layout py-20">
+    <p class="text-muted-foreground text-sm">
+      页面已迁移至 <a class="text-foreground underline" href={topicsUrl}>主题</a>。
+    </p>
   </main>
-  <Footer />
 </Layout>

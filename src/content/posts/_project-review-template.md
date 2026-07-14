@@ -4,6 +4,7 @@ description: "说明这个项目做了什么、结果如何、学到了什么"
 pubDatetime: 2026-06-14T10:00:00+08:00
 tags: ["项目复盘", "实验"]
 category: "技术"
+topic: "projects"
 featured: false
 draft: true
 ---

@@ -25,53 +25,34 @@ const homePath = getRelativeLocaleUrl(locale, "");
 const totalTags = new Set(sortedPosts.flatMap(({ data }) => data.tags)).size;
 
 const focusAreas = [
-  [
-    "Programming & Tools",
-    "Python、Git、命令行、开发工具，以及能反复用起来的工作流。",
-  ],
-  ["Data & Machine Learning", "数据处理、机器学习基础、模型评估和实验记录。"],
-  ["Projects & Practice", "课程作业、小项目、踩坑过程、部署记录和项目复盘。"],
-  ["Reading Notes", "技术文章、书籍、课程和论文阅读中真正理解下来的部分。"],
+  {
+    id: "programming",
+    title: "编程与工具",
+    desc: "Python、Git、命令行、开发工具，以及能反复用起来的工作流。",
+  },
+  {
+    id: "data-ml",
+    title: "数据与机器学习",
+    desc: "数据处理、机器学习基础、模型评估和实验记录。",
+  },
+  {
+    id: "projects",
+    title: "项目与实践",
+    desc: "课程作业、小项目、踩坑过程、部署记录和项目复盘。",
+  },
+  {
+    id: "reading",
+    title: "阅读笔记",
+    desc: "技术文章、书籍、课程和论文阅读中真正理解下来的部分。",
+  },
 ];
 
 const stats = [
-  { label: "Notes", value: sortedPosts.length },
-  { label: "Tags", value: totalTags },
-  { label: "Topics", value: focusAreas.length },
+  { label: "笔记", value: sortedPosts.length },
+  { label: "标签", value: totalTags },
+  { label: "主题", value: focusAreas.length },
 ];
 
-const news = [
-  {
-    date: "2026.06",
-    text: "Redesigned the site as a quieter personal knowledge base with an academic-style layout.",
-  },
-  {
-    date: "2026.06",
-    text: "Started organizing notes around programming tools, data work, machine learning basics, and project practice.",
-  },
-  {
-    date: "2026.06",
-    text: "Added writing templates for technical notes, project reviews, debugging notes, and paper reading.",
-  },
-];
-
-const quickLinks = [
-  {
-    title: "Topics",
-    desc: "编程、数据、项目和阅读笔记的主题索引。",
-    href: getRelativeLocaleUrl(locale, "research"),
-  },
-  {
-    title: "Notes",
-    desc: "技术笔记、论文阅读和踩坑记录。",
-    href: getRelativeLocaleUrl(locale, "posts"),
-  },
-  {
-    title: "Roadmap",
-    desc: "从基础工具到项目复盘的学习路径。",
-    href: getRelativeLocaleUrl(locale, "roadmap"),
-  },
-];
 ---
 
 <Layout>
@@ -89,31 +70,29 @@ const quickLinks = [
         <p
           class="text-accent text-xs font-semibold tracking-[0.24em] uppercase"
         >
-          Personal Knowledge Base
+          个人笔记本
         </p>
         <h1
           class="mt-5 max-w-3xl text-5xl leading-[0.98] font-semibold tracking-[-0.04em] sm:text-7xl"
         >
-          jpf-hash
+          jpf-hash 的笔记本
         </h1>
         <p class="text-muted-foreground mt-7 max-w-2xl text-lg leading-8">
-          I keep notes on programming, data work, machine learning basics, and
-          the projects behind them. This site is a compact personal knowledge
-          base: concepts, implementations, failed attempts, and follow-up plans.
+          记录编程、数据处理、机器学习、小项目和阅读过程中的问题、过程与结论。
         </p>
         <div class="mt-9 flex flex-wrap items-center gap-3">
           <LinkButton
-            href={getRelativeLocaleUrl(locale, "research")}
+            href={getRelativeLocaleUrl(locale, "topics")}
             class="bg-foreground text-background hover:bg-accent hover:text-accent-foreground rounded-none px-5 py-3 text-sm font-semibold transition-colors"
           >
-            Writing topics
+            浏览主题
             <IconArrowRight class="inline-block size-4 rtl:-rotate-180" />
           </LinkButton>
           <LinkButton
             href={getRelativeLocaleUrl(locale, "posts")}
             class="border-border hover:border-accent rounded-none border px-5 py-3 text-sm font-semibold transition-colors"
           >
-            Browse notes
+            查看笔记
           </LinkButton>
           <a
             target="_blank"
@@ -133,11 +112,10 @@ const quickLinks = [
       >
         <div>
           <h2 class="text-sm font-semibold tracking-[0.18em] uppercase">
-            Focus
+            目录
           </h2>
           <p class="text-muted-foreground mt-4 text-sm leading-7">
-            Programming tools, data workflows, machine learning basics, project
-            notes, reading notes, and debugging records.
+            文章按主题、分类和标签归档。每篇笔记尽量保留问题背景、解决过程和后续结论。
           </p>
         </div>
         <dl
@@ -166,67 +144,26 @@ const quickLinks = [
         <p
           class="text-accent text-xs font-semibold tracking-[0.24em] uppercase"
         >
-          Writing topics
+          写作主题
         </p>
         <h2 class="mt-3 text-3xl font-semibold tracking-[-0.03em]">
-          Areas I can keep writing about.
+          正在慢慢整理的内容。
         </h2>
       </div>
       <div class="divide-border divide-y">
         {
-          focusAreas.map(([title, desc]) => (
+          focusAreas.map(({ id, title, desc }) => (
             <article class="grid gap-3 py-5 sm:grid-cols-[12rem_1fr]">
-              <h3 class="font-semibold tracking-tight">{title}</h3>
+              <h3 class="font-semibold tracking-tight">
+                <a class="hover:text-accent transition-colors" href={`${getRelativeLocaleUrl(locale, "topics")}#${id}`}>
+                  {title}
+                </a>
+              </h3>
               <p class="text-muted-foreground text-sm leading-7">{desc}</p>
             </article>
           ))
         }
       </div>
-    </section>
-
-    <section
-      class="border-border grid gap-10 border-b py-12 md:grid-cols-[0.7fr_1.3fr]"
-    >
-      <div>
-        <p
-          class="text-accent text-xs font-semibold tracking-[0.24em] uppercase"
-        >
-          News
-        </p>
-        <h2 class="mt-3 text-3xl font-semibold tracking-[-0.03em]">
-          Recent updates.
-        </h2>
-      </div>
-      <ol class="divide-border divide-y">
-        {
-          news.map(item => (
-            <li class="grid gap-3 py-4 sm:grid-cols-[7rem_1fr]">
-              <time class="text-accent text-sm font-semibold">{item.date}</time>
-              <p class="text-muted-foreground text-sm leading-7">{item.text}</p>
-            </li>
-          ))
-        }
-      </ol>
-    </section>
-
-    <section
-      class="border-border bg-border grid gap-px border-b md:grid-cols-3"
-    >
-      {
-        quickLinks.map(link => (
-          <a
-            href={link.href}
-            class="group bg-background hover:bg-card p-6 transition-colors"
-          >
-            <h2 class="group-hover:text-accent text-xl font-semibold tracking-tight">
-              {link.title}
-            </h2>
-            <p class="text-muted-foreground mt-3 text-sm leading-7">
-              {link.desc}
-            </p>
-          </a>
-        ))
-      }
     </section>
 
     {
@@ -257,7 +194,7 @@ const quickLinks = [
           <div class="mb-6 flex items-end justify-between gap-4">
             <div>
               <p class="text-accent text-xs font-semibold tracking-[0.24em] uppercase">
-                Latest
+                最新笔记
               </p>
               <h2 class="mt-2 text-3xl font-semibold tracking-[-0.03em]">
                 {t.home.recentPosts}

@@ -1,0 +1,89 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import Card from "@/components/Card.astro";
+import { getSortedPosts } from "@/utils/getSortedPosts";
+
+const topics = [
+  {
+    id: "programming",
+    title: "编程与工具",
+    description: "Python、Git、命令行、编辑器、环境配置和日常开发工具。",
+  },
+  {
+    id: "data-ml",
+    title: "数据与机器学习",
+    description: "数据处理、模型评估、机器学习基础和实验记录。",
+  },
+  {
+    id: "projects",
+    title: "项目与实践",
+    description: "课程作业、小项目、部署过程和项目复盘。",
+  },
+  {
+    id: "reading",
+    title: "阅读笔记",
+    description: "技术文章、书籍、课程和论文阅读中的理解与问题。",
+  },
+];
+
+const posts = getSortedPosts(await getCollection("posts"));
+---
+
+<Layout
+  title="主题 | jpf-hash 的笔记本"
+  description="按编程、数据、项目和阅读主题整理的笔记。"
+>
+  <Header />
+  <main id="main-content" class="app-layout">
+    <section class="border-border border-b py-16 md:py-20">
+      <p class="text-accent text-xs font-semibold tracking-[0.24em] uppercase">
+        主题
+      </p>
+      <h1 class="mt-5 max-w-3xl text-5xl leading-none font-semibold tracking-[-0.04em] sm:text-6xl">
+        按主题整理笔记。
+      </h1>
+      <p class="text-muted-foreground mt-7 max-w-2xl text-lg leading-8">
+        写文章时在 frontmatter 中填写 topic，内容会自动出现在对应主题下。
+      </p>
+    </section>
+
+    <section class="divide-border divide-y">
+      {
+        topics.map((topic, index) => {
+          const topicPosts = posts.filter(post => post.data.topic === topic.id);
+
+          return (
+            <article id={topic.id} class="scroll-mt-24 py-10">
+              <div class="grid gap-5 md:grid-cols-[10rem_1fr]">
+                <div>
+                  <span class="text-accent text-xs font-semibold tracking-widest">
+                    {(index + 1).toString().padStart(2, "0")}
+                  </span>
+                </div>
+                <div>
+                  <h2 class="text-2xl font-semibold tracking-[-0.03em]">{topic.title}</h2>
+                  <p class="text-muted-foreground mt-3 max-w-2xl text-sm leading-7">
+                    {topic.description}
+                  </p>
+                  {
+                    topicPosts.length > 0 ? (
+                      <ul class="mt-6">
+                        {topicPosts.map(post => <Card variant="h3" {...post} />)}
+                      </ul>
+                    ) : (
+                      <p class="text-muted-foreground mt-6 text-sm">暂未收录文章。</p>
+                    )
+                  }
+                </div>
+              </div>
+            </article>
+          );
+        })
+      }
+    </section>
+  </main>
+  <Footer />
+</Layout>

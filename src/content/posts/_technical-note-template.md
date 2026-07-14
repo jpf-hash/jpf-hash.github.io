@@ -4,6 +4,7 @@ description: "用一句话说明这篇笔记解决什么问题"
 pubDatetime: 2026-06-14T10:00:00+08:00
 tags: ["python", "笔记"]
 category: "技术"
+topic: "programming"
 featured: false
 draft: true
 ---
