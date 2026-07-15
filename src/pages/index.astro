@@ -1,7 +1,6 @@
 ﻿---
 import { getCollection } from "astro:content";
 import { getRelativeLocaleUrl } from "astro:i18n";
-import IconRss from "@/assets/icons/IconRss.svg";
 import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
@@ -19,10 +18,14 @@ const t = useTranslations(locale);
 
 const posts = await getCollection("posts");
 const sortedPosts = getSortedPosts(posts);
-const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
-const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
+const projectPosts = sortedPosts.filter(({ data }) => data.category === "项目");
+const featuredPosts = sortedPosts.filter(
+  ({ data }) => data.featured && data.category !== "项目"
+);
+const recentPosts = sortedPosts.filter(
+  ({ data }) => data.category !== "项目" && !data.featured
+);
 const homePath = getRelativeLocaleUrl(locale, "");
-const totalTags = new Set(sortedPosts.flatMap(({ data }) => data.tags)).size;
 
 const focusAreas = [
   {
@@ -47,10 +50,13 @@ const focusAreas = [
   },
 ];
 
-const stats = [
-  { label: "笔记", value: sortedPosts.length },
-  { label: "标签", value: totalTags },
-  { label: "主题", value: focusAreas.length },
+const indexLinks = [
+  ...(projectPosts.length > 0
+    ? [{ label: "作品", href: getRelativeLocaleUrl(locale, "works") }]
+    : []),
+  { label: "笔记", href: getRelativeLocaleUrl(locale, "posts") },
+  { label: "主题", href: getRelativeLocaleUrl(locale, "topics") },
+  { label: "关于", href: getRelativeLocaleUrl(locale, "about") },
 ];
 
 ---
@@ -70,40 +76,30 @@ const stats = [
         <p
           class="text-accent text-xs font-semibold tracking-[0.24em] uppercase"
         >
-          个人笔记本
+          Personal archive
         </p>
         <h1
           class="mt-5 max-w-3xl text-5xl leading-[0.98] font-semibold tracking-[-0.04em] sm:text-7xl"
         >
-          jpf-hash 的笔记本
+          jpf-hash
         </h1>
         <p class="text-muted-foreground mt-7 max-w-2xl text-lg leading-8">
-          记录编程、数据处理、机器学习、小项目和阅读过程中的问题、过程与结论。
+          这里收录我做过的项目、解决过的问题，以及在学习和阅读过程中留下的笔记。
         </p>
         <div class="mt-9 flex flex-wrap items-center gap-3">
           <LinkButton
-            href={getRelativeLocaleUrl(locale, "topics")}
+            href={getRelativeLocaleUrl(locale, "posts")}
             class="bg-foreground text-background hover:bg-accent hover:text-accent-foreground rounded-none px-5 py-3 text-sm font-semibold transition-colors"
           >
-            浏览主题
+            浏览笔记
             <IconArrowRight class="inline-block size-4 rtl:-rotate-180" />
           </LinkButton>
           <LinkButton
-            href={getRelativeLocaleUrl(locale, "posts")}
+            href={getRelativeLocaleUrl(locale, "about")}
             class="border-border hover:border-accent rounded-none border px-5 py-3 text-sm font-semibold transition-colors"
           >
-            查看笔记
+            关于我
           </LinkButton>
-          <a
-            target="_blank"
-            href={`${import.meta.env.BASE_URL.replace(/\/?$/, "/")}rss.xml`}
-            class="border-border hover:border-accent inline-flex size-11 items-center justify-center border transition-colors"
-            aria-label="RSS Feed"
-            title="RSS Feed"
-          >
-            <IconRss class="text-accent size-5 stroke-3 rtl:-rotate-90" />
-            <span class="sr-only">RSS Feed</span>
-          </a>
         </div>
       </div>
 
@@ -112,30 +108,57 @@ const stats = [
       >
         <div>
           <h2 class="text-sm font-semibold tracking-[0.18em] uppercase">
-            目录
+            Index
           </h2>
           <p class="text-muted-foreground mt-4 text-sm leading-7">
-            文章按主题、分类和标签归档。每篇笔记尽量保留问题背景、解决过程和后续结论。
+            项目、技术记录、阅读笔记和随笔，都在这里持续归档。
           </p>
         </div>
-        <dl
-          class="border-border bg-border mt-10 grid grid-cols-3 gap-px border"
-        >
+        <nav class="divide-border border-border mt-10 divide-y border-y">
           {
-            stats.map(stat => (
-              <div class="bg-background p-4">
-                <dt class="text-muted-foreground text-xs tracking-wider uppercase">
-                  {stat.label}
-                </dt>
-                <dd class="mt-2 text-2xl font-semibold tracking-tight">
-                  {stat.value}
-                </dd>
-              </div>
+            indexLinks.map((link, index) => (
+              <a
+                href={link.href}
+                class="group grid grid-cols-[2.5rem_1fr_auto] items-center gap-3 py-3 text-sm"
+              >
+                <span class="text-accent text-xs font-semibold">
+                  {(index + 1).toString().padStart(2, "0")}
+                </span>
+                <span class="font-medium">{link.label}</span>
+                <IconArrowRight class="text-muted-foreground group-hover:text-accent size-4 transition-colors" />
+              </a>
             ))
           }
-        </dl>
+        </nav>
       </aside>
     </section>
+
+    {
+      projectPosts.length > 0 && (
+        <section class="border-border border-b py-12">
+          <div class="mb-6 flex items-end justify-between gap-4">
+            <div>
+              <p class="text-accent text-xs font-semibold tracking-[0.24em] uppercase">
+                Selected work
+              </p>
+              <h2 class="mt-2 text-3xl font-semibold tracking-[-0.03em]">
+                作品与项目
+              </h2>
+            </div>
+            <LinkButton
+              href={getRelativeLocaleUrl(locale, "works")}
+              class="text-muted-foreground hover:text-accent hidden text-sm font-semibold sm:inline-flex"
+            >
+              查看全部
+              <IconArrowRight class="inline-block size-4" />
+            </LinkButton>
+          </div>
+          <ul>
+            {projectPosts.slice(0, 3).map(data => <Card variant="h3" {...data} />)}
+          </ul>
+        </section>
+      )
+    }
 
     <section
       class="border-border grid gap-10 border-b py-12 md:grid-cols-[0.32fr_0.68fr]"
@@ -144,10 +167,10 @@ const stats = [
         <p
           class="text-accent text-xs font-semibold tracking-[0.24em] uppercase"
         >
-          写作主题
+          Content index
         </p>
         <h2 class="mt-3 text-3xl font-semibold tracking-[-0.03em]">
-          正在慢慢整理的内容。
+          可以长期写下去的内容。
         </h2>
       </div>
       <div class="divide-border divide-y">
@@ -172,7 +195,7 @@ const stats = [
           <div class="mb-6 flex items-end justify-between gap-4">
             <div>
               <p class="text-accent text-xs font-semibold tracking-[0.24em] uppercase">
-                Featured
+                Selected writing
               </p>
               <h2 class="mt-2 text-3xl font-semibold tracking-[-0.03em]">
                 {t.home.featured}
@@ -194,7 +217,7 @@ const stats = [
           <div class="mb-6 flex items-end justify-between gap-4">
             <div>
               <p class="text-accent text-xs font-semibold tracking-[0.24em] uppercase">
-                最新笔记
+                Latest notes
               </p>
               <h2 class="mt-2 text-3xl font-semibold tracking-[-0.03em]">
                 {t.home.recentPosts}

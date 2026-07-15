@@ -4,7 +4,7 @@ description: "说明这个技术笔记本的定位：编程工具、数据与机
 pubDatetime: 2026-06-27T17:20:00+08:00
 tags: ["随笔", "技术笔记", "学习路线"]
 category: "日记"
-featured: true
+featured: false
 status: "evergreen"
 draft: false
 ---

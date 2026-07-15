@@ -1,4 +1,5 @@
 ﻿---
+import { getCollection } from "astro:content";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import IconArchive from "@/assets/icons/IconArchive.svg";
 import IconSunHigh from "@/assets/icons/IconSunHigh.svg";
@@ -10,11 +11,15 @@ import LinkButton from "./LinkButton.astro";
 import { stripBase, stripLocale } from "@/utils/withBase";
 import { useTranslations } from "@/i18n";
 import config from "@/config";
+import { getSortedPosts } from "@/utils/getSortedPosts";
 
 const { site, features } = config;
 
 const locale = Astro.currentLocale ?? config.site.lang;
 const t = useTranslations(locale);
+const hasProjects = getSortedPosts(await getCollection("posts")).some(
+  post => post.data.category === "项目"
+);
 
 const relativePath = stripBase(Astro.url.pathname);
 const pathWithoutTrailingSlash =
@@ -69,6 +74,18 @@ const isActive = (path: string) => {
           id="menu-items"
           class="border-border bg-background [&>li>a]:text-muted-foreground [&>li>a]:hover:text-foreground absolute top-16 right-5 left-5 hidden grid-cols-2 gap-2 border p-4 shadow-xl sm:static sm:flex sm:w-auto sm:items-center sm:gap-5 sm:border-0 sm:bg-transparent sm:p-0 sm:shadow-none [&>li>a]:block [&>li>a]:py-2 [&>li>a]:text-sm [&>li>a]:font-medium [&>li>a]:transition-colors sm:[&>li>a]:py-0"
         >
+          {
+            hasProjects && (
+              <li>
+                <a
+                  href={getRelativeLocaleUrl(locale, "works")}
+                  class:list={{ "active-nav": isActive("/works") }}
+                >
+                  作品
+                </a>
+              </li>
+            )
+          }
           <li>
             <a
               href={getRelativeLocaleUrl(locale, "posts")}
@@ -83,30 +100,6 @@ const isActive = (path: string) => {
               class:list={{ "active-nav": isActive("/topics") }}
             >
               主题
-            </a>
-          </li>
-          <li>
-            <a
-              href={getRelativeLocaleUrl(locale, "roadmap")}
-              class:list={{ "active-nav": isActive("/roadmap") }}
-            >
-              路径
-            </a>
-          </li>
-          <li class="sm:hidden lg:block">
-            <a
-              href={getRelativeLocaleUrl(locale, "categories")}
-              class:list={{ "active-nav": isActive("/categories") }}
-            >
-              分类
-            </a>
-          </li>
-          <li class="sm:hidden lg:block">
-            <a
-              href={getRelativeLocaleUrl(locale, "tags")}
-              class:list={{ "active-nav": isActive("/tags") }}
-            >
-              {t.nav.tags}
             </a>
           </li>
           <li>

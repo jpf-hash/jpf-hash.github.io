@@ -1,0 +1,45 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import Card from "@/components/Card.astro";
+import { getSortedPosts } from "@/utils/getSortedPosts";
+
+const projects = getSortedPosts(await getCollection("posts")).filter(
+  post => post.data.category === "项目"
+);
+---
+
+<Layout
+  title="作品 | jpf-hash"
+  description="jpf-hash 的项目、实现过程与复盘记录。"
+>
+  <Header />
+  <main id="main-content" class="app-layout">
+    <section class="border-border border-b py-16 md:py-20">
+      <p class="text-accent text-xs font-semibold tracking-[0.24em] uppercase">
+        Work
+      </p>
+      <h1 class="mt-5 max-w-3xl text-5xl leading-none font-semibold tracking-[-0.04em] sm:text-6xl">
+        做过的项目，留下的过程。
+      </h1>
+      <p class="text-muted-foreground mt-7 max-w-2xl text-lg leading-8">
+        从问题、实现到结果和复盘。这里只展示已经公开的项目记录。
+      </p>
+    </section>
+
+    {
+      projects.length > 0 ? (
+        <section class="py-8">
+          <ul>
+            {projects.map(project => <Card variant="h2" {...project} />)}
+          </ul>
+        </section>
+      ) : (
+        <p class="text-muted-foreground py-16 text-sm">目前没有公开项目。</p>
+      )
+    }
+  </main>
+  <Footer />
+</Layout>
