@@ -3,13 +3,15 @@
 @layer base {
   .app-prose {
     @apply prose min-w-0 wrap-break-word;
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
 
     h1,
     h2,
     h3,
     h4,
     th {
-      @apply text-foreground font-semibold tracking-[-0.025em];
+      @apply font-display text-foreground font-semibold;
     }
 
     h1 {
@@ -80,6 +82,7 @@
 
     code {
       @apply bg-muted/70 text-foreground px-1.5 py-0.5 font-mono text-sm wrap-break-word before:content-none after:content-none;
+      font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
     }
 
     .astro-code code {

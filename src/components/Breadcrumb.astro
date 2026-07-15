@@ -57,15 +57,15 @@ if (breadcrumbList[0] === "tags" && !isNaN(Number(breadcrumbList[2]))) {
 }
 ---
 
-<nav class="app-layout mt-8 mb-1" aria-label="breadcrumb">
+<nav class="app-layout mt-6 mb-0" aria-label="breadcrumb">
   <ul
-    class="font-light [&>li]:inline [&>li:not(:last-child)>a]:hover:opacity-100"
+    class="text-muted-foreground text-xs font-semibold uppercase [&>li]:inline [&>li:not(:last-child)>a]:hover:text-accent"
   >
     <li>
       <a href={getRelativeLocaleUrl(locale, "")} class="opacity-80">
-        {t.nav.home}
+        Index
       </a>
-      <span aria-hidden="true" class="opacity-80">&raquo;</span>
+      <span aria-hidden="true" class="mx-2 opacity-50">/</span>
     </li>
     {
       breadcrumbList.map((breadcrumb, index) =>
@@ -87,8 +87,8 @@ if (breadcrumbList[0] === "tags" && !isNaN(Number(breadcrumbList[2]))) {
             >
               {navLabels[breadcrumb] ?? decodeSegment(breadcrumb)}
             </a>
-            <span aria-hidden="true" class="opacity-70">
-              &raquo;
+            <span aria-hidden="true" class="mx-2 opacity-50">
+              /
             </span>
           </li>
         )

@@ -64,22 +64,24 @@ const archiveLinks = [
 >
   <Header />
   <main id="main-content" class="app-layout">
-    <section class="border-border border-b py-16 md:py-20">
-      <p class="text-accent text-xs font-semibold tracking-[0.24em] uppercase">
+    <section class="border-border grid gap-8 border-b py-14 lg:grid-cols-[16rem_1fr] lg:py-20">
+      <p class="text-accent text-xs font-bold uppercase">
         Content index
       </p>
-      <h1 class="mt-5 max-w-3xl text-5xl leading-none font-semibold tracking-[-0.04em] sm:text-6xl">
-        按主题查找内容。
-      </h1>
-      <p class="text-muted-foreground mt-7 max-w-2xl text-lg leading-8">
-        技术、项目、阅读和零散记录，沿着各自的主题持续归档。
-      </p>
+      <div>
+        <h1 class="font-display max-w-4xl text-5xl leading-none font-semibold sm:text-7xl">
+          按主题查找内容。
+        </h1>
+        <p class="text-muted-foreground mt-6 max-w-2xl text-lg leading-8">
+          技术、项目、阅读和零散记录，沿着各自的主题持续归档。
+        </p>
+      </div>
     </section>
 
-    <section class="grid gap-10 py-10 md:grid-cols-[12rem_1fr] md:gap-14">
+    <section class="grid gap-10 py-10 lg:grid-cols-[16rem_1fr] lg:gap-14 lg:py-14">
       <aside>
         <div class="md:sticky md:top-24">
-          <p class="text-muted-foreground text-xs font-semibold tracking-[0.18em] uppercase">
+          <p class="text-muted-foreground text-xs font-bold uppercase">
             主题目录
           </p>
           <ol class="border-border mt-4 border-y">
@@ -117,7 +119,7 @@ const archiveLinks = [
         </div>
       </aside>
 
-      <div class="divide-border divide-y border-t border-border">
+      <div class="divide-border divide-y border-t-2 border-foreground">
         {
           sections.map((section, index) => (
             <article id={section.id} class="scroll-mt-24 py-9 first:pt-8">
@@ -126,7 +128,7 @@ const archiveLinks = [
                   {(index + 1).toString().padStart(2, "0")}
                 </span>
                 <div>
-                  <h2 class="text-2xl font-semibold tracking-[-0.03em]">
+                  <h2 class="font-display text-3xl font-semibold">
                     {section.title}
                   </h2>
                   <p class="text-muted-foreground mt-3 max-w-2xl text-sm leading-7">

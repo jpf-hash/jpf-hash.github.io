@@ -13,7 +13,7 @@ import { useTranslations } from "@/i18n";
 import config from "@/config";
 import { getSortedPosts } from "@/utils/getSortedPosts";
 
-const { site, features } = config;
+const { features } = config;
 
 const locale = Astro.currentLocale ?? config.site.lang;
 const t = useTranslations(locale);
@@ -45,21 +45,22 @@ const isActive = (path: string) => {
 </a>
 
 <header
-  class="glass bg-background/90 border-border fixed inset-x-0 top-0 z-40 border-b"
+  class="bg-background/95 border-border fixed inset-x-0 top-0 z-40 border-b backdrop-blur-md"
 >
   <div class="app-layout">
-    <div class="flex min-h-16 items-center justify-between gap-6">
+    <div class="flex min-h-18 items-center justify-between gap-6">
       <a
         href={getRelativeLocaleUrl(locale, "")}
-        class="text-foreground text-lg font-semibold tracking-[-0.02em]"
+        class="group flex items-baseline gap-3"
       >
-        {site.title}
+        <span class="font-display text-2xl font-semibold">jpf—hash</span>
+        <span class="text-muted-foreground hidden text-[10px] uppercase sm:inline">Archive 01</span>
       </a>
 
       <nav id="nav-menu" class="flex flex-1 justify-end">
         <button
           id="menu-btn"
-          class="focus-outline text-foreground p-2 sm:hidden"
+          class="focus-outline border-border text-foreground size-10 border p-2 sm:hidden"
           aria-label={t.a11y.openMenu}
           aria-expanded="false"
           aria-controls="menu-items"
@@ -72,7 +73,7 @@ const isActive = (path: string) => {
 
         <ul
           id="menu-items"
-          class="border-border bg-background [&>li>a]:text-muted-foreground [&>li>a]:hover:text-foreground absolute top-16 right-5 left-5 hidden grid-cols-2 gap-2 border p-4 shadow-xl sm:static sm:flex sm:w-auto sm:items-center sm:gap-5 sm:border-0 sm:bg-transparent sm:p-0 sm:shadow-none [&>li>a]:block [&>li>a]:py-2 [&>li>a]:text-sm [&>li>a]:font-medium [&>li>a]:transition-colors sm:[&>li>a]:py-0"
+          class="border-border bg-background [&>li>a]:text-muted-foreground [&>li>a]:hover:text-foreground absolute top-18 right-5 left-5 hidden grid-cols-2 gap-2 border p-4 shadow-xl sm:static sm:flex sm:w-auto sm:items-center sm:gap-6 sm:border-0 sm:bg-transparent sm:p-0 sm:shadow-none [&>li>a]:block [&>li>a]:py-2 [&>li>a]:text-xs [&>li>a]:font-semibold [&>li>a]:transition-colors sm:[&>li>a]:py-0"
         >
           {
             hasProjects && (
@@ -116,7 +117,7 @@ const isActive = (path: string) => {
                 <LinkButton
                   href={getRelativeLocaleUrl(locale, "archives")}
                   class:list={[
-                    "focus-outline text-muted-foreground hover:text-foreground p-2 sm:p-0",
+                    "focus-outline border-border text-muted-foreground hover:border-accent hover:text-foreground size-9 border p-2",
                     { "active-nav": isActive("/archives") },
                   ]}
                   title={t.nav.archives}
@@ -133,7 +134,7 @@ const isActive = (path: string) => {
               <li class="flex items-center">
                 <LinkButton
                   href={getRelativeLocaleUrl(locale, "search")}
-                  class="focus-outline text-muted-foreground hover:text-foreground p-2 sm:p-0"
+                  class="focus-outline border-border text-muted-foreground hover:border-accent hover:text-foreground size-9 border p-2"
                   title={t.nav.search}
                   aria-label={t.nav.search}
                 >
@@ -148,7 +149,7 @@ const isActive = (path: string) => {
               <li class="flex items-center">
                 <button
                   id="theme-btn"
-                  class="focus-outline hover:[&>svg]:stroke-accent relative size-9 p-2"
+                  class="focus-outline border-border hover:border-accent hover:[&>svg]:stroke-accent relative size-9 border p-2"
                   title={t.a11y.toggleTheme}
                   aria-label="auto"
                   aria-live="polite"
@@ -164,7 +165,7 @@ const isActive = (path: string) => {
     </div>
   </div>
 </header>
-<div class="h-16"></div>
+<div class="h-18"></div>
 
 <script>
   function toggleNav() {

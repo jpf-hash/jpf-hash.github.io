@@ -1,60 +1,57 @@
-﻿---
+---
 import type { CollectionEntry } from "astro:content";
+import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
 import { getPostUrl } from "@/utils/getPostPaths";
 import { slugifyStr } from "@/utils/slugify";
-import { getReadingTime } from "@/utils/getReadingTime";
 import { postStatusLabels } from "@/utils/postStatus";
-import Datetime from "./Datetime.astro";
 
 type Props = {
   variant?: "h2" | "h3";
 } & CollectionEntry<"posts">;
 
-const { variant: Heading = "h2", id, data, filePath, body } = Astro.props;
-
-const { title, description, category, featured, tags, status, ...props } = data;
-const readingTime = getReadingTime(body ?? "");
+const { variant: Heading = "h2", id, data, filePath } = Astro.props;
+const { title, description, category, featured, tags, status } = data;
+const displayDate = data.modDatetime ?? data.pubDatetime;
+const dateLabel = new Intl.DateTimeFormat("zh-CN", {
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+}).format(displayDate);
 ---
 
-<li
-  class="group border-border hover:border-accent/50 grid gap-4 border-b py-7 transition-colors sm:grid-cols-[9rem_1fr]"
->
-  <div class="text-muted-foreground text-xs leading-6 sm:pt-1">
-    <div class="flex flex-wrap gap-2 sm:block">
-      <span class="text-accent font-semibold">{category}</span>
-      <span>{postStatusLabels[status]}</span>
-      {featured && <span class="sm:mt-2 sm:block">精选</span>}
-    </div>
-    <div class="mt-2 hidden sm:block">
-      <Datetime {...props} {readingTime} />
-    </div>
-  </div>
-
+<li class="group border-border border-b">
   <article>
-    <a href={getPostUrl(id, filePath, Astro.currentLocale)} class="block">
-      <Heading
-        transition:name={slugifyStr(title.replaceAll(".", "-"))}
-        class="text-foreground group-hover:text-accent text-xl font-semibold tracking-[-0.02em] transition-colors"
-      >
-        {title}
-      </Heading>
+    <a
+      href={getPostUrl(id, filePath, Astro.currentLocale)}
+      class="grid gap-4 py-6 sm:grid-cols-[8rem_1fr_auto] sm:items-start sm:gap-7"
+    >
+      <div class="text-xs leading-6">
+        <p class="text-accent font-bold">{category}</p>
+        <p class="text-muted-foreground">{postStatusLabels[status]}</p>
+        {featured && <p class="text-muted-foreground">精选</p>}
+      </div>
+
+      <div>
+        <Heading
+          transition:name={slugifyStr(title.replaceAll(".", "-"))}
+          class="font-display text-foreground group-hover:text-accent text-2xl leading-tight font-semibold transition-colors sm:text-3xl"
+        >
+          {title}
+        </Heading>
+        <p class="text-muted-foreground mt-3 max-w-2xl text-sm leading-7">
+          {description}
+        </p>
+        <p class="text-muted-foreground mt-4 text-xs">
+          {tags.slice(0, 3).join(" / ")}
+        </p>
+      </div>
+
+      <div class="flex items-center justify-between gap-4 sm:block sm:text-right">
+        <time class="text-muted-foreground text-xs" datetime={displayDate.toISOString()}>
+          {dateLabel}
+        </time>
+        <IconArrowRight class="text-muted-foreground group-hover:text-accent mt-4 hidden size-5 transition-colors sm:ms-auto sm:block" />
+      </div>
     </a>
-    <p class="text-muted-foreground mt-3 max-w-2xl text-sm leading-7">
-      {description}
-    </p>
-    <div class="mt-4 flex flex-wrap gap-2">
-      {
-        tags
-          .slice(0, 3)
-          .map(tag => (
-            <span class="text-muted-foreground border-border border px-2 py-0.5 text-xs">
-              {tag}
-            </span>
-          ))
-      }
-    </div>
-    <div class="mt-4 sm:hidden">
-      <Datetime {...props} {readingTime} />
-    </div>
   </article>
 </li>

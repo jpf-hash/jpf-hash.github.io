@@ -120,16 +120,17 @@ const ogImage = ogImageUrl
     class:list={["app-layout", { "mt-8": !config.features.showBackButton }]}
     data-pagefind-body
   >
-    <h1
-      style={{ viewTransitionName: slugifyStr(title.replaceAll(".", "-")) }}
-      class="text-accent inline-block text-2xl font-bold sm:text-3xl"
-    >
-      {title}
-    </h1>
+    <header class="border-border max-w-5xl border-b pt-8 pb-10 sm:pt-12 sm:pb-14">
+      <p class="text-accent mb-4 text-xs font-bold uppercase">{post.data.category} / {postStatusLabels[status]}</p>
+      <h1
+        style={{ viewTransitionName: slugifyStr(title.replaceAll(".", "-")) }}
+        class="font-display text-foreground text-4xl leading-tight font-semibold sm:text-6xl"
+      >
+        {title}
+      </h1>
 
-    <div class="my-2 flex flex-wrap items-center gap-2">
-      <Datetime {pubDatetime} {modDatetime} {timezone} {readingTime} size="lg" />
-      <span class="text-accent text-sm font-medium">{postStatusLabels[status]}</span>
+      <div class="text-muted-foreground mt-6 flex flex-wrap items-center gap-2">
+        <Datetime {pubDatetime} {modDatetime} {timezone} {readingTime} size="lg" />
       <span
         aria-hidden="true"
         class:list={[
@@ -140,13 +141,14 @@ const ogImage = ogImageUrl
         |
       </span>
       <EditPost {hideEditPost} {post} class="max-sm:hidden" />
-    </div>
+      </div>
+    </header>
 
     <article
       id="article"
       class:list={[
-        "mt-8 w-full",
-        "app-prose max-w-app",
+        "mt-10 w-full",
+        "app-prose max-w-3xl",
         "prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg)",
       ]}
     >
@@ -155,7 +157,7 @@ const ogImage = ogImageUrl
 
     {
       afterword && (
-        <aside class="border-border mt-10 border-t pt-6">
+        <aside class="border-border mt-10 max-w-3xl border-t pt-6">
           <h2 class="text-accent text-sm font-semibold tracking-[0.18em] uppercase">
             后记
           </h2>
@@ -207,7 +209,7 @@ const ogImage = ogImageUrl
 
     {
       relatedPosts.length > 0 && (
-        <section class="mt-12">
+        <section class="mt-12 max-w-3xl">
           <h2 class="text-accent mb-4 text-xl font-semibold">相关文章</h2>
           <ul class="space-y-4">
             {relatedPosts.map(relatedPost => (
@@ -228,7 +230,7 @@ const ogImage = ogImageUrl
       )
     }
 
-    <Comments class="mt-12" />
+    <Comments class="mt-12 max-w-3xl" />
   </main>
   <Footer />
 </PostLayout>

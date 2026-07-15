@@ -1,4 +1,4 @@
-﻿---
+---
 import { getCollection } from "astro:content";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
@@ -8,49 +8,42 @@ import Footer from "@/components/Footer.astro";
 import Card from "@/components/Card.astro";
 import LinkButton from "@/components/LinkButton.astro";
 import { getSortedPosts } from "@/utils/getSortedPosts";
-import { useTranslations } from "@/i18n";
 import config from "@/config";
 
-const { posts: postsConfig } = config;
-
 const locale = Astro.currentLocale ?? config.site.lang;
-const t = useTranslations(locale);
-
-const posts = await getCollection("posts");
-const sortedPosts = getSortedPosts(posts);
+const sortedPosts = getSortedPosts(await getCollection("posts"));
 const projectPosts = sortedPosts.filter(({ data }) => data.category === "项目");
-const featuredPosts = sortedPosts.filter(
-  ({ data }) => data.featured && data.category !== "项目"
-);
-const recentPosts = sortedPosts.filter(
-  ({ data }) => data.category !== "项目" && !data.featured
-);
+const writingPosts = sortedPosts.filter(({ data }) => data.category !== "项目");
 const homePath = getRelativeLocaleUrl(locale, "");
 
-const focusAreas = [
+const sections = [
   {
     id: "programming",
+    no: "01",
     title: "编程与工具",
-    desc: "Python、Git、命令行、开发工具，以及能反复用起来的工作流。",
+    desc: "代码、环境、命令行和可以反复使用的工作流。",
   },
   {
     id: "data-ml",
+    no: "02",
     title: "数据与机器学习",
-    desc: "数据处理、机器学习基础、模型评估和实验记录。",
+    desc: "数据处理、模型评估、实验过程与结果。",
   },
   {
     id: "projects",
+    no: "03",
     title: "项目与实践",
-    desc: "课程作业、小项目、踩坑过程、部署记录和项目复盘。",
+    desc: "从问题到实现，再到项目完成后的复盘。",
   },
   {
     id: "reading",
+    no: "04",
     title: "阅读笔记",
-    desc: "技术文章、书籍、课程和论文阅读中真正理解下来的部分。",
+    desc: "书籍、课程、技术文章和论文中的理解。",
   },
 ];
 
-const indexLinks = [
+const quickLinks = [
   ...(projectPosts.length > 0
     ? [{ label: "作品", href: getRelativeLocaleUrl(locale, "works") }]
     : []),
@@ -58,195 +51,129 @@ const indexLinks = [
   { label: "主题", href: getRelativeLocaleUrl(locale, "topics") },
   { label: "关于", href: getRelativeLocaleUrl(locale, "about") },
 ];
-
 ---
 
 <Layout>
   <Header />
-  <main
-    id="main-content"
-    data-layout="index"
-    data-home-path={homePath}
-    class="app-layout"
-  >
-    <section
-      class="border-border grid gap-12 border-b py-16 md:grid-cols-[0.62fr_0.38fr] md:py-24"
-    >
-      <div>
-        <p
-          class="text-accent text-xs font-semibold tracking-[0.24em] uppercase"
-        >
-          Personal archive
-        </p>
-        <h1
-          class="mt-5 max-w-3xl text-5xl leading-[0.98] font-semibold tracking-[-0.04em] sm:text-7xl"
-        >
-          jpf-hash
-        </h1>
-        <p class="text-muted-foreground mt-7 max-w-2xl text-lg leading-8">
-          这里收录我做过的项目、解决过的问题，以及在学习和阅读过程中留下的笔记。
-        </p>
-        <div class="mt-9 flex flex-wrap items-center gap-3">
-          <LinkButton
-            href={getRelativeLocaleUrl(locale, "posts")}
-            class="bg-foreground text-background hover:bg-accent hover:text-accent-foreground rounded-none px-5 py-3 text-sm font-semibold transition-colors"
-          >
-            浏览笔记
-            <IconArrowRight class="inline-block size-4 rtl:-rotate-180" />
-          </LinkButton>
-          <LinkButton
-            href={getRelativeLocaleUrl(locale, "about")}
-            class="border-border hover:border-accent rounded-none border px-5 py-3 text-sm font-semibold transition-colors"
-          >
-            关于我
-          </LinkButton>
+  <main id="main-content" data-layout="index" data-home-path={homePath}>
+    <section class="relative min-h-[34rem] overflow-hidden border-b border-black/20 text-[#111310] sm:min-h-[38rem]">
+      <img
+        src={`${import.meta.env.BASE_URL}assets/archive-desk.png`}
+        alt="打开的方格笔记本、绘图纸与机械铅笔"
+        class="absolute inset-0 size-full object-cover object-center"
+        width="1716"
+        height="918"
+        fetchpriority="high"
+      />
+      <div class="absolute inset-0 bg-white/48"></div>
+
+      <div class="app-layout relative flex min-h-[34rem] flex-col justify-between py-8 sm:min-h-[38rem] sm:py-10">
+        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-black/25 pb-4 text-[11px] font-semibold uppercase">
+          <span>Personal archive / 2026</span>
+          <nav class="flex flex-wrap gap-x-5 gap-y-2" aria-label="首页快捷导航">
+            {quickLinks.map(link => <a class="hover:text-[#e13b27]" href={link.href}>{link.label}</a>)}
+          </nav>
+        </div>
+
+        <div class="max-w-5xl pb-4">
+          <p class="mb-4 text-sm font-bold text-[#e13b27]">NOTES · WORK · PROCESS</p>
+          <h1 class="font-display text-6xl leading-[0.9] font-semibold sm:text-8xl lg:text-[9rem]">
+            jpf—hash
+          </h1>
+          <div class="mt-7 grid max-w-4xl gap-6 md:grid-cols-[1fr_auto] md:items-end">
+            <p class="max-w-2xl text-base leading-7 font-medium sm:text-lg sm:leading-8">
+              项目、学习、阅读和解决问题的记录。这里保存结果，也保留抵达结果之前的过程。
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <LinkButton
+                href={getRelativeLocaleUrl(locale, "posts")}
+                class="bg-[#111310] px-5 py-3 text-sm font-semibold text-white hover:bg-[#e13b27]"
+              >
+                开始阅读
+                <IconArrowRight class="size-4" />
+              </LinkButton>
+              <LinkButton
+                href={getRelativeLocaleUrl(locale, "about")}
+                class="border border-black/40 bg-white/35 px-5 py-3 text-sm font-semibold hover:border-[#e13b27]"
+              >
+                关于
+              </LinkButton>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <aside
-        class="border-border grid content-between border-t pt-6 md:border-t-0 md:border-l md:pt-0 md:pl-8"
-      >
-        <div>
-          <h2 class="text-sm font-semibold tracking-[0.18em] uppercase">
-            Index
-          </h2>
-          <p class="text-muted-foreground mt-4 text-sm leading-7">
-            项目、技术记录、阅读笔记和随笔，都在这里持续归档。
-          </p>
-        </div>
-        <nav class="divide-border border-border mt-10 divide-y border-y">
-          {
-            indexLinks.map((link, index) => (
-              <a
-                href={link.href}
-                class="group grid grid-cols-[2.5rem_1fr_auto] items-center gap-3 py-3 text-sm"
-              >
-                <span class="text-accent text-xs font-semibold">
-                  {(index + 1).toString().padStart(2, "0")}
-                </span>
-                <span class="font-medium">{link.label}</span>
-                <IconArrowRight class="text-muted-foreground group-hover:text-accent size-4 transition-colors" />
+    <div class="app-layout">
+      {
+        projectPosts.length > 0 && (
+          <section class="grid gap-8 border-b py-14 lg:grid-cols-[16rem_1fr] lg:py-20">
+            <header>
+              <p class="text-accent text-xs font-bold uppercase">Selected work</p>
+              <h2 class="font-display mt-3 text-4xl font-semibold">作品</h2>
+            </header>
+            <div>
+              <ul class="border-border border-t">
+                {projectPosts.slice(0, 3).map(post => <Card variant="h3" {...post} />)}
+              </ul>
+              <a class="text-accent mt-6 inline-flex items-center gap-2 text-sm font-semibold" href={getRelativeLocaleUrl(locale, "works")}>
+                查看全部 <IconArrowRight class="size-4" />
               </a>
+            </div>
+          </section>
+        )
+      }
+
+      <section class="grid gap-8 border-b py-14 lg:grid-cols-[16rem_1fr] lg:py-20">
+        <header>
+          <p class="text-accent text-xs font-bold uppercase">Content index</p>
+          <h2 class="font-display mt-3 text-4xl font-semibold">内容索引</h2>
+        </header>
+        <ol class="border-border border-t">
+          {
+            sections.map(section => (
+              <li class="border-border border-b">
+                <a
+                  href={`${getRelativeLocaleUrl(locale, "topics")}#${section.id}`}
+                  class="group grid gap-3 py-5 sm:grid-cols-[3rem_13rem_1fr_auto] sm:items-center"
+                >
+                  <span class="text-accent text-xs font-bold">{section.no}</span>
+                  <span class="text-xl font-semibold">{section.title}</span>
+                  <span class="text-muted-foreground text-sm leading-6">{section.desc}</span>
+                  <IconArrowRight class="text-muted-foreground group-hover:text-accent hidden size-5 sm:block" />
+                </a>
+              </li>
             ))
           }
-        </nav>
-      </aside>
-    </section>
+        </ol>
+      </section>
 
-    {
-      projectPosts.length > 0 && (
-        <section class="border-border border-b py-12">
-          <div class="mb-6 flex items-end justify-between gap-4">
+      {
+        writingPosts.length > 0 && (
+          <section id="recent-posts" class="grid gap-8 py-14 lg:grid-cols-[16rem_1fr] lg:py-20">
+            <header>
+              <p class="text-accent text-xs font-bold uppercase">Latest notes</p>
+              <h2 class="font-display mt-3 text-4xl font-semibold">最近更新</h2>
+            </header>
             <div>
-              <p class="text-accent text-xs font-semibold tracking-[0.24em] uppercase">
-                Selected work
-              </p>
-              <h2 class="mt-2 text-3xl font-semibold tracking-[-0.03em]">
-                作品与项目
-              </h2>
+              <ul class="border-border border-t">
+                {writingPosts.slice(0, config.posts.perIndex).map(post => <Card variant="h3" {...post} />)}
+              </ul>
+              <a class="text-accent mt-6 inline-flex items-center gap-2 text-sm font-semibold" href={getRelativeLocaleUrl(locale, "posts")}>
+                全部笔记 <IconArrowRight class="size-4" />
+              </a>
             </div>
-            <LinkButton
-              href={getRelativeLocaleUrl(locale, "works")}
-              class="text-muted-foreground hover:text-accent hidden text-sm font-semibold sm:inline-flex"
-            >
-              查看全部
-              <IconArrowRight class="inline-block size-4" />
-            </LinkButton>
-          </div>
-          <ul>
-            {projectPosts.slice(0, 3).map(data => <Card variant="h3" {...data} />)}
-          </ul>
-        </section>
-      )
-    }
-
-    <section
-      class="border-border grid gap-10 border-b py-12 md:grid-cols-[0.32fr_0.68fr]"
-    >
-      <div>
-        <p
-          class="text-accent text-xs font-semibold tracking-[0.24em] uppercase"
-        >
-          Content index
-        </p>
-        <h2 class="mt-3 text-3xl font-semibold tracking-[-0.03em]">
-          可以长期写下去的内容。
-        </h2>
-      </div>
-      <div class="divide-border divide-y">
-        {
-          focusAreas.map(({ id, title, desc }) => (
-            <article class="grid gap-3 py-5 sm:grid-cols-[12rem_1fr]">
-              <h3 class="font-semibold tracking-tight">
-                <a class="hover:text-accent transition-colors" href={`${getRelativeLocaleUrl(locale, "topics")}#${id}`}>
-                  {title}
-                </a>
-              </h3>
-              <p class="text-muted-foreground text-sm leading-7">{desc}</p>
-            </article>
-          ))
-        }
-      </div>
-    </section>
-
-    {
-      featuredPosts.length > 0 && (
-        <section id="featured" class="border-border border-b py-12">
-          <div class="mb-6 flex items-end justify-between gap-4">
-            <div>
-              <p class="text-accent text-xs font-semibold tracking-[0.24em] uppercase">
-                Selected writing
-              </p>
-              <h2 class="mt-2 text-3xl font-semibold tracking-[-0.03em]">
-                {t.home.featured}
-              </h2>
-            </div>
-          </div>
-          <ul>
-            {featuredPosts.map(data => (
-              <Card variant="h3" {...data} />
-            ))}
-          </ul>
-        </section>
-      )
-    }
-
-    {
-      recentPosts.length > 0 && (
-        <section id="recent-posts" class="py-12">
-          <div class="mb-6 flex items-end justify-between gap-4">
-            <div>
-              <p class="text-accent text-xs font-semibold tracking-[0.24em] uppercase">
-                Latest notes
-              </p>
-              <h2 class="mt-2 text-3xl font-semibold tracking-[-0.03em]">
-                {t.home.recentPosts}
-              </h2>
-            </div>
-            <LinkButton
-              href={getRelativeLocaleUrl(locale, "posts")}
-              class="text-muted-foreground hover:text-accent hidden text-sm font-semibold sm:inline-flex"
-            >
-              {t.home.allPosts}
-              <IconArrowRight class="inline-block size-4 rtl:-rotate-180" />
-            </LinkButton>
-          </div>
-          <ul>
-            {recentPosts.slice(0, postsConfig.perIndex).map(data => (
-              <Card variant="h3" {...data} />
-            ))}
-          </ul>
-        </section>
-      )
-    }
+          </section>
+        )
+      }
+    </div>
   </main>
   <Footer />
 </Layout>
 
 <script>
   document.addEventListener("astro:page-load", () => {
-    const indexLayout = (document.querySelector("#main-content") as HTMLElement)
-      ?.dataset;
+    const indexLayout = (document.querySelector("#main-content") as HTMLElement)?.dataset;
     const baseRoot = import.meta.env.BASE_URL.replace(/\/?$/, "/");
     if (indexLayout?.layout) {
       sessionStorage.setItem("backUrl", indexLayout.homePath ?? baseRoot);
