@@ -1,26 +1,28 @@
 ---
 import { getCollection } from "astro:content";
+import { getRelativeLocaleUrl } from "astro:i18n";
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Card from "@/components/Card.astro";
 import { getSortedPosts } from "@/utils/getSortedPosts";
+import config from "@/config";
 
 const topics = [
   {
     id: "programming",
     title: "编程与工具",
-    description: "Python、Git、命令行、编辑器、环境配置和日常开发工具。",
+    description: "Python、Git、命令行、开发环境，以及可以反复使用的工作流。",
   },
   {
     id: "data-ml",
     title: "数据与机器学习",
-    description: "数据处理、模型评估、机器学习基础和实验记录。",
+    description: "数据处理、模型评估、机器学习基础和实验过程。",
   },
   {
     id: "projects",
     title: "项目与实践",
-    description: "课程作业、小项目、部署过程和项目复盘。",
+    description: "从问题、实现到结果，记录项目真正经历过的过程。",
   },
   {
     id: "reading",
@@ -29,60 +31,128 @@ const topics = [
   },
 ];
 
+const locale = Astro.currentLocale ?? config.site.lang;
 const posts = getSortedPosts(await getCollection("posts"));
+const topicIds = new Set(topics.map(topic => topic.id));
+const sections = topics.map(topic => ({
+  ...topic,
+  posts: posts.filter(post => post.data.topic === topic.id),
+}));
+const otherPosts = posts.filter(
+  post => !post.data.topic || !topicIds.has(post.data.topic)
+);
+
+if (otherPosts.length > 0) {
+  sections.push({
+    id: "other",
+    title: "其他记录",
+    description: "尚未归入固定主题的站点记录、随笔和阶段性整理。",
+    posts: otherPosts,
+  });
+}
+
+const archiveLinks = [
+  { label: "分类", href: getRelativeLocaleUrl(locale, "categories") },
+  { label: "标签", href: getRelativeLocaleUrl(locale, "tags") },
+  { label: "归档", href: getRelativeLocaleUrl(locale, "archives") },
+];
 ---
 
 <Layout
-  title="主题 | jpf-hash 的笔记本"
-  description="按编程、数据、项目和阅读主题整理的笔记。"
+  title="主题 | jpf-hash"
+  description="按编程、数据、项目和阅读主题整理的个人内容索引。"
 >
   <Header />
   <main id="main-content" class="app-layout">
     <section class="border-border border-b py-16 md:py-20">
       <p class="text-accent text-xs font-semibold tracking-[0.24em] uppercase">
-        主题
+        Content index
       </p>
       <h1 class="mt-5 max-w-3xl text-5xl leading-none font-semibold tracking-[-0.04em] sm:text-6xl">
-        按主题整理笔记。
+        按主题查找内容。
       </h1>
       <p class="text-muted-foreground mt-7 max-w-2xl text-lg leading-8">
-        写文章时在 frontmatter 中填写 topic，内容会自动出现在对应主题下。
+        技术、项目、阅读和零散记录，沿着各自的主题持续归档。
       </p>
     </section>
 
-    <section class="divide-border divide-y">
-      {
-        topics.map((topic, index) => {
-          const topicPosts = posts.filter(post => post.data.topic === topic.id);
+    <section class="grid gap-10 py-10 md:grid-cols-[12rem_1fr] md:gap-14">
+      <aside>
+        <div class="md:sticky md:top-24">
+          <p class="text-muted-foreground text-xs font-semibold tracking-[0.18em] uppercase">
+            主题目录
+          </p>
+          <ol class="border-border mt-4 border-y">
+            {
+              sections.map((section, index) => (
+                <li class="border-border border-b last:border-b-0">
+                  <a
+                    href={`#${section.id}`}
+                    class="group grid grid-cols-[2rem_1fr] gap-2 py-3 text-sm"
+                  >
+                    <span class="text-accent text-xs font-semibold">
+                      {(index + 1).toString().padStart(2, "0")}
+                    </span>
+                    <span class="text-muted-foreground group-hover:text-foreground transition-colors">
+                      {section.title}
+                    </span>
+                  </a>
+                </li>
+              ))
+            }
+          </ol>
 
-          return (
-            <article id={topic.id} class="scroll-mt-24 py-10">
-              <div class="grid gap-5 md:grid-cols-[10rem_1fr]">
+          <nav class="mt-8 flex flex-wrap gap-x-4 gap-y-2 md:grid">
+            {
+              archiveLinks.map(link => (
+                <a
+                  href={link.href}
+                  class="text-muted-foreground hover:text-accent text-sm transition-colors"
+                >
+                  {link.label} ↗
+                </a>
+              ))
+            }
+          </nav>
+        </div>
+      </aside>
+
+      <div class="divide-border divide-y border-t border-border">
+        {
+          sections.map((section, index) => (
+            <article id={section.id} class="scroll-mt-24 py-9 first:pt-8">
+              <header class="grid gap-4 sm:grid-cols-[3rem_1fr_auto] sm:items-start">
+                <span class="text-accent text-xs font-semibold tracking-widest">
+                  {(index + 1).toString().padStart(2, "0")}
+                </span>
                 <div>
-                  <span class="text-accent text-xs font-semibold tracking-widest">
-                    {(index + 1).toString().padStart(2, "0")}
-                  </span>
-                </div>
-                <div>
-                  <h2 class="text-2xl font-semibold tracking-[-0.03em]">{topic.title}</h2>
+                  <h2 class="text-2xl font-semibold tracking-[-0.03em]">
+                    {section.title}
+                  </h2>
                   <p class="text-muted-foreground mt-3 max-w-2xl text-sm leading-7">
-                    {topic.description}
+                    {section.description}
                   </p>
-                  {
-                    topicPosts.length > 0 ? (
-                      <ul class="mt-6">
-                        {topicPosts.map(post => <Card variant="h3" {...post} />)}
-                      </ul>
-                    ) : (
-                      <p class="text-muted-foreground mt-6 text-sm">暂未收录文章。</p>
-                    )
-                  }
                 </div>
-              </div>
+                {
+                  section.posts.length > 0 && (
+                    <span class="text-muted-foreground text-xs">
+                      {section.posts.length.toString().padStart(2, "0")} 篇
+                    </span>
+                  )
+                }
+              </header>
+
+              {
+                section.posts.length > 0 && (
+                  <ul class="mt-6 sm:ml-12">
+                    {section.posts.map(post => <Card variant="h3" {...post} />)}
+                  </ul>
+                )
+              }
             </article>
-          );
-        })
-      }
+          ))
+        }
+      </div>
     </section>
   </main>
   <Footer />
