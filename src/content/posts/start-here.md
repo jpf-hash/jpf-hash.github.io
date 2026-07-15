@@ -5,6 +5,7 @@ pubDatetime: 2026-06-27T17:20:00+08:00
 tags: ["随笔", "技术笔记", "学习路线"]
 category: "日记"
 featured: true
+status: "evergreen"
 draft: false
 ---
 

@@ -6,6 +6,11 @@ pubDatetime: 2026-05-31T10:00:00+08:00
 tags: ["python", "机器学习"]  # 标签，用逗号分隔
 category: "技术"  # 分类：技术 / 日记 / 工具 / 其他
 topic: "programming"  # 主题：programming / data-ml / projects / reading
+status: "seed"  # 线索：seed / 进行中：in-progress / 已整理：evergreen
+# afterword:
+#   stuck: ""
+#   update: ""
+#   next: ""
 featured: false  # 是否在首页精选区域显示
 draft: false  # 是否为草稿（草稿不会出现在网站上）
 # author: "jpf-hash"  # 作者（可选，默认使用站点配置的作者）

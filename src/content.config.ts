@@ -18,6 +18,14 @@ const posts = defineCollection({
       tags: z.array(z.string()).default(["others"]),
       category: z.string().default("未分类"),
       topic: z.string().optional(),
+      status: z.enum(["seed", "in-progress", "evergreen"]).default("seed"),
+      afterword: z
+        .object({
+          stuck: z.string().optional(),
+          update: z.string().optional(),
+          next: z.string().optional(),
+        })
+        .optional(),
       ogImage: image().or(z.string()).optional(),
       description: z.string(),
       canonicalURL: z.string().optional(),

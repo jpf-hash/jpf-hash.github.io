@@ -5,6 +5,11 @@ pubDatetime: 2026-06-14T10:00:00+08:00
 tags: ["踩坑", "debug"]
 category: "工具"
 topic: "programming"
+status: "evergreen"
+# afterword:
+#   stuck: ""
+#   update: ""
+#   next: ""
 featured: false
 draft: true
 ---

@@ -5,6 +5,11 @@ pubDatetime: 2026-06-14T10:00:00+08:00
 tags: ["论文阅读", "机器学习"]
 category: "技术"
 topic: "reading"
+status: "seed"
+# afterword:
+#   stuck: ""
+#   update: ""
+#   next: ""
 featured: false
 draft: true
 ---

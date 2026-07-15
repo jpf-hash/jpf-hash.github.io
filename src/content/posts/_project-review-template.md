@@ -5,6 +5,11 @@ pubDatetime: 2026-06-14T10:00:00+08:00
 tags: ["项目复盘", "实验"]
 category: "技术"
 topic: "projects"
+status: "in-progress"
+# afterword:
+#   stuck: ""
+#   update: ""
+#   next: ""
 featured: false
 draft: true
 ---

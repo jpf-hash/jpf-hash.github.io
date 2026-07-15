@@ -14,15 +14,16 @@ export function getRelatedPosts(
   const currentTags = new Set(
     currentPost.data.tags.map(t => t.toLowerCase())
   );
+  const currentTopic = currentPost.data.topic;
 
   return getSortedPosts(allPosts)
     .filter(postFilter)
     .filter(p => p.id !== currentPost.id)
     .map(post => ({
       post,
-      score: post.data.tags.filter(t =>
-        currentTags.has(t.toLowerCase())
-      ).length,
+      score:
+        post.data.tags.filter(t => currentTags.has(t.toLowerCase())).length +
+        Number(Boolean(currentTopic && post.data.topic === currentTopic)),
     }))
     .filter(item => item.score > 0)
     .sort((a, b) => b.score - a.score)

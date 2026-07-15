@@ -11,6 +11,7 @@ import { getSortedPosts } from "@/utils/getSortedPosts";
 import { slugifyStr } from "@/utils/slugify";
 import { getReadingTime } from "@/utils/getReadingTime";
 import { getRelatedPosts } from "@/utils/getRelatedPosts";
+import { postStatusLabels } from "@/utils/postStatus";
 import EditPost from "./_components/EditPost.astro";
 import ShareLinks from "./_components/ShareLinks.astro";
 import BackButton from "./_components/BackButton.astro";
@@ -73,6 +74,8 @@ const {
   modDatetime,
   timezone,
   tags,
+  status,
+  afterword,
   hideEditPost,
 } = post.data;
 
@@ -124,8 +127,9 @@ const ogImage = ogImageUrl
       {title}
     </h1>
 
-    <div class="my-2 flex items-center gap-2">
+    <div class="my-2 flex flex-wrap items-center gap-2">
       <Datetime {pubDatetime} {modDatetime} {timezone} {readingTime} size="lg" />
+      <span class="text-accent text-sm font-medium">{postStatusLabels[status]}</span>
       <span
         aria-hidden="true"
         class:list={[
@@ -148,6 +152,42 @@ const ogImage = ogImageUrl
     >
       <Content />
     </article>
+
+    {
+      afterword && (
+        <aside class="border-border mt-10 border-t pt-6">
+          <h2 class="text-accent text-sm font-semibold tracking-[0.18em] uppercase">
+            后记
+          </h2>
+          <dl class="mt-5 grid gap-5 text-sm leading-7 sm:grid-cols-3">
+            {
+              afterword.stuck && (
+                <div>
+                  <dt class="text-muted-foreground">卡住的地方</dt>
+                  <dd class="mt-1">{afterword.stuck}</dd>
+                </div>
+              )
+            }
+            {
+              afterword.update && (
+                <div>
+                  <dt class="text-muted-foreground">后来补充</dt>
+                  <dd class="mt-1">{afterword.update}</dd>
+                </div>
+              )
+            }
+            {
+              afterword.next && (
+                <div>
+                  <dt class="text-muted-foreground">下次再看</dt>
+                  <dd class="mt-1">{afterword.next}</dd>
+                </div>
+              )
+            }
+          </dl>
+        </aside>
+      )
+    }
 
     <hr class="my-8 border-dashed" />
 
