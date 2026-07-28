@@ -4,7 +4,7 @@ export default defineAstroPaperConfig({
   site: {
     url: "https://jpf-hash.github.io/",
     title: "jpf-hash 的笔记本",
-    description: "把学习、实验与解决问题的过程，整理成可复用的笔记。",
+    description: "编程、数据与机器学习的实践笔记：原理、实验、踩坑与复盘。",
     author: "jpf-hash",
     profile: "https://github.com/jpf-hash",
     ogImage: "og-modern.jpg",
