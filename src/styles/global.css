@@ -16,6 +16,25 @@
   }
   body {
     font-variant-numeric: tabular-nums;
+    position: relative;
+  }
+  body::before {
+    position: fixed;
+    z-index: -1;
+    inset: 0;
+    pointer-events: none;
+    content: "";
+    background:
+      radial-gradient(
+        circle at 20% -10%,
+        var(--glow-primary),
+        transparent 34rem
+      ),
+      radial-gradient(
+        circle at 88% 22%,
+        var(--glow-secondary),
+        transparent 30rem
+      );
   }
   a,
   button {
@@ -60,12 +79,23 @@
   animation-delay: 300ms;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 @utility max-w-app {
-  @apply max-w-7xl;
+  @apply max-w-5xl;
 }
 
 @utility app-layout {
-  @apply max-w-app mx-auto w-full px-5 sm:px-8 lg:px-10;
+  @apply max-w-app mx-auto w-full px-5 sm:px-8;
 }
 
 @utility active-nav {
@@ -73,9 +103,12 @@
 }
 
 .active-nav::before {
-  color: var(--accent);
-  content: "●";
-  margin-inline-end: 0.35rem;
+  display: none;
+}
+
+.active-nav {
+  background: var(--muted);
+  color: var(--foreground) !important;
 }
 
 @utility glass {
@@ -84,7 +117,7 @@
 }
 
 :target {
-  scroll-margin-block: 1rem;
+  scroll-margin-block: 7rem;
 }
 
 ::-webkit-scrollbar {

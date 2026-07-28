@@ -44,23 +44,26 @@ const isActive = (path: string) => {
   {t.a11y.skipToContent}
 </a>
 
-<header
-  class="bg-background/95 border-border fixed inset-x-0 top-0 z-40 border-b backdrop-blur-md"
->
-  <div class="app-layout">
-    <div class="flex min-h-18 items-center justify-between gap-6">
+<header class="sticky inset-x-0 top-0 z-40 px-3 pt-3 sm:px-5">
+  <div class="mx-auto max-w-5xl">
+    <div
+      class="bg-background/82 border-border flex min-h-14 items-center justify-between gap-4 rounded-2xl border px-3 shadow-[0_8px_30px_rgba(0,0,0,0.04)] backdrop-blur-xl sm:px-4"
+    >
       <a
         href={getRelativeLocaleUrl(locale, "")}
-        class="group flex items-baseline gap-3"
+        class="group flex items-center gap-2.5 rounded-xl pe-2"
       >
-        <span class="font-display text-2xl font-semibold">jpf—hash</span>
-        <span class="text-muted-foreground hidden text-[10px] uppercase sm:inline">Archive 01</span>
+        <span
+          class="bg-foreground text-background flex size-8 items-center justify-center rounded-lg font-mono text-[11px] font-semibold transition-transform group-hover:-rotate-3"
+          >JH</span
+        >
+        <span class="text-sm font-semibold tracking-[-0.02em]">jpf-hash</span>
       </a>
 
-      <nav id="nav-menu" class="flex flex-1 justify-end">
+      <nav id="nav-menu" class="flex justify-end">
         <button
           id="menu-btn"
-          class="focus-outline border-border text-foreground size-10 border p-2 sm:hidden"
+          class="focus-outline text-foreground hover:bg-muted size-10 rounded-xl p-2 transition-colors md:hidden"
           aria-label={t.a11y.openMenu}
           aria-expanded="false"
           aria-controls="menu-items"
@@ -73,7 +76,7 @@ const isActive = (path: string) => {
 
         <ul
           id="menu-items"
-          class="border-border bg-background [&>li>a]:text-muted-foreground [&>li>a]:hover:text-foreground absolute top-18 right-5 left-5 hidden grid-cols-2 gap-2 border p-4 shadow-xl sm:static sm:flex sm:w-auto sm:items-center sm:gap-6 sm:border-0 sm:bg-transparent sm:p-0 sm:shadow-none [&>li>a]:block [&>li>a]:py-2 [&>li>a]:text-xs [&>li>a]:font-semibold [&>li>a]:transition-colors sm:[&>li>a]:py-0"
+          class="border-border bg-background [&>li>a]:text-muted-foreground [&>li>a]:hover:text-foreground absolute top-[4.8rem] right-5 left-5 hidden grid-cols-2 gap-1 rounded-2xl border p-3 shadow-xl md:static md:flex md:w-auto md:items-center md:gap-0.5 md:border-0 md:bg-transparent md:p-0 md:shadow-none [&>li>a]:block [&>li>a]:rounded-lg [&>li>a]:px-3 [&>li>a]:py-2 [&>li>a]:text-xs [&>li>a]:font-medium [&>li>a]:transition-colors"
         >
           {
             hasProjects && (
@@ -117,7 +120,8 @@ const isActive = (path: string) => {
                 <LinkButton
                   href={getRelativeLocaleUrl(locale, "archives")}
                   class:list={[
-                    "focus-outline border-border text-muted-foreground hover:border-accent hover:text-foreground size-9 border p-2",
+                    "focus-outline border-border text-muted-foreground hover:border-accent hover:text-foreground size-9 border p-2 transition-colors",
+                    "hover:bg-muted rounded-lg border-0",
                     { "active-nav": isActive("/archives") },
                   ]}
                   title={t.nav.archives}
@@ -134,7 +138,7 @@ const isActive = (path: string) => {
               <li class="flex items-center">
                 <LinkButton
                   href={getRelativeLocaleUrl(locale, "search")}
-                  class="focus-outline border-border text-muted-foreground hover:border-accent hover:text-foreground size-9 border p-2"
+                  class="focus-outline text-muted-foreground hover:bg-muted hover:text-foreground size-9 rounded-lg p-2 transition-colors"
                   title={t.nav.search}
                   aria-label={t.nav.search}
                 >
@@ -149,7 +153,7 @@ const isActive = (path: string) => {
               <li class="flex items-center">
                 <button
                   id="theme-btn"
-                  class="focus-outline border-border hover:border-accent hover:[&>svg]:stroke-accent relative size-9 border p-2"
+                  class="focus-outline hover:bg-muted relative size-9 rounded-lg p-2 transition-colors"
                   title={t.a11y.toggleTheme}
                   aria-label="auto"
                   aria-live="polite"
@@ -165,7 +169,6 @@ const isActive = (path: string) => {
     </div>
   </div>
 </header>
-<div class="h-18"></div>
 
 <script>
   function toggleNav() {

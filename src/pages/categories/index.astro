@@ -26,7 +26,7 @@ const locale = Astro.currentLocale ?? config.site.lang;
           <li>
             <a
               href={getRelativeLocaleUrl(locale, `categories/${slug}`)}
-              class="border-border bg-muted/50 hover:bg-accent hover:text-accent-foreground inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-medium transition-colors"
+              class="border-border bg-card hover:bg-accent hover:text-accent-foreground inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium shadow-sm transition-colors"
             >
               {category}
               <span class="text-muted-foreground text-xs">({count})</span>

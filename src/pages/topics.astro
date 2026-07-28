@@ -63,99 +63,86 @@ const archiveLinks = [
   description="按编程、数据、项目和阅读主题整理的个人内容索引。"
 >
   <Header />
-  <main id="main-content" class="app-layout">
-    <section class="border-border grid gap-8 border-b py-14 lg:grid-cols-[16rem_1fr] lg:py-20">
-      <p class="text-accent text-xs font-bold uppercase">
-        Content index
+  <main id="main-content" class="app-layout pb-16">
+    <header class="mx-auto max-w-3xl pt-20 pb-12 sm:pt-24 sm:pb-16">
+      <p class="text-accent mb-3 text-sm font-medium">Explore by topic</p>
+      <h1
+        class="font-display text-4xl leading-tight font-semibold tracking-[-0.045em] sm:text-6xl"
+      >
+        沿着主题，找到相关笔记。
+      </h1>
+      <p class="text-muted-foreground mt-5 max-w-2xl text-base leading-8">
+        技术、项目、阅读和零散记录，会在理解逐渐清晰之后归入各自的路径。
       </p>
-      <div>
-        <h1 class="font-display max-w-4xl text-5xl leading-none font-semibold sm:text-7xl">
-          按主题查找内容。
-        </h1>
-        <p class="text-muted-foreground mt-6 max-w-2xl text-lg leading-8">
-          技术、项目、阅读和零散记录，沿着各自的主题持续归档。
-        </p>
-      </div>
-    </section>
 
-    <section class="grid gap-10 py-10 lg:grid-cols-[16rem_1fr] lg:gap-14 lg:py-14">
-      <aside>
-        <div class="md:sticky md:top-24">
-          <p class="text-muted-foreground text-xs font-bold uppercase">
-            主题目录
-          </p>
-          <ol class="border-border mt-4 border-y">
-            {
-              sections.map((section, index) => (
-                <li class="border-border border-b last:border-b-0">
-                  <a
-                    href={`#${section.id}`}
-                    class="group grid grid-cols-[2rem_1fr] gap-2 py-3 text-sm"
-                  >
-                    <span class="text-accent text-xs font-semibold">
-                      {(index + 1).toString().padStart(2, "0")}
-                    </span>
-                    <span class="text-muted-foreground group-hover:text-foreground transition-colors">
-                      {section.title}
-                    </span>
-                  </a>
-                </li>
-              ))
-            }
-          </ol>
-
-          <nav class="mt-8 flex flex-wrap gap-x-4 gap-y-2 md:grid">
-            {
-              archiveLinks.map(link => (
-                <a
-                  href={link.href}
-                  class="text-muted-foreground hover:text-accent text-sm transition-colors"
-                >
-                  {link.label} ↗
-                </a>
-              ))
-            }
-          </nav>
-        </div>
-      </aside>
-
-      <div class="divide-border divide-y border-t-2 border-foreground">
+      <nav class="mt-8 flex flex-wrap gap-2" aria-label="主题快捷导航">
         {
-          sections.map((section, index) => (
-            <article id={section.id} class="scroll-mt-24 py-9 first:pt-8">
-              <header class="grid gap-4 sm:grid-cols-[3rem_1fr_auto] sm:items-start">
-                <span class="text-accent text-xs font-semibold tracking-widest">
-                  {(index + 1).toString().padStart(2, "0")}
-                </span>
-                <div>
-                  <h2 class="font-display text-3xl font-semibold">
-                    {section.title}
-                  </h2>
-                  <p class="text-muted-foreground mt-3 max-w-2xl text-sm leading-7">
-                    {section.description}
-                  </p>
-                </div>
-                {
-                  section.posts.length > 0 && (
-                    <span class="text-muted-foreground text-xs">
-                      {section.posts.length.toString().padStart(2, "0")} 篇
-                    </span>
-                  )
-                }
-              </header>
-
-              {
-                section.posts.length > 0 && (
-                  <ul class="mt-6 sm:ml-12">
-                    {section.posts.map(post => <Card variant="h3" {...post} />)}
-                  </ul>
-                )
-              }
-            </article>
+          sections.map(section => (
+            <a
+              href={`#${section.id}`}
+              class="border-border bg-card hover:border-accent hover:text-accent rounded-full border px-3 py-1.5 text-sm shadow-sm transition-colors"
+            >
+              {section.title}
+            </a>
           ))
         }
-      </div>
-    </section>
+      </nav>
+    </header>
+
+    <div class="mx-auto max-w-3xl space-y-5">
+      {
+        sections.map((section, index) => (
+          <section
+            id={section.id}
+            class="border-border bg-card scroll-mt-28 rounded-2xl border p-5 shadow-sm sm:p-7"
+          >
+            <header class="flex items-start gap-4">
+              <span class="bg-muted text-muted-foreground flex size-9 shrink-0 items-center justify-center rounded-lg font-mono text-xs">
+                {(index + 1).toString().padStart(2, "0")}
+              </span>
+              <div class="min-w-0 flex-1">
+                <div class="flex flex-wrap items-baseline justify-between gap-3">
+                  <h2 class="font-display text-xl font-semibold tracking-[-0.025em]">
+                    {section.title}
+                  </h2>
+                  <span class="text-muted-foreground text-xs">
+                    {section.posts.length} 篇
+                  </span>
+                </div>
+                <p class="text-muted-foreground mt-2 text-sm leading-6">
+                  {section.description}
+                </p>
+              </div>
+            </header>
+
+            {section.posts.length > 0 ? (
+              <ul class="mt-6 space-y-2">
+                {section.posts.map(post => (
+                  <Card variant="h3" {...post} />
+                ))}
+              </ul>
+            ) : (
+              <p class="text-muted-foreground mt-6 border-t pt-5 text-sm">
+                这里还没有公开笔记。
+              </p>
+            )}
+          </section>
+        ))
+      }
+    </div>
+
+    <nav class="mx-auto mt-8 flex max-w-3xl flex-wrap gap-4 text-sm">
+      {
+        archiveLinks.map(link => (
+          <a
+            href={link.href}
+            class="text-muted-foreground hover:text-accent transition-colors"
+          >
+            {link.label} ↗
+          </a>
+        ))
+      }
+    </nav>
   </main>
   <Footer />
 </Layout>

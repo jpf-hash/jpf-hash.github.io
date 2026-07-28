@@ -16,36 +16,42 @@
 
 :root {
   --font-system:
-    "Avenir Next", Avenir, "Noto Sans SC", "PingFang SC", "Microsoft YaHei",
-    ui-sans-serif, sans-serif;
+    Inter, "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC",
+    "Microsoft YaHei", ui-sans-serif, system-ui, sans-serif;
   --font-heading:
-    "Iowan Old Style", Baskerville, "Noto Serif SC", "Songti SC", ui-serif,
-    serif;
+    Inter, "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "PingFang SC", "Noto Sans SC", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
 }
 
 :root,
 [data-theme="light"] {
-  --background: #f4f5f2;
-  --foreground: #111310;
-  --accent: #e13b27;
+  --background: #fafafa;
+  --foreground: #18181b;
+  --accent: #6558d3;
   --accent-foreground: #ffffff;
-  --muted: #e4e6e1;
-  --muted-foreground: #626760;
-  --border: #c8cbc4;
-  --card: #eceee9;
-  --card-foreground: #111310;
-  --card-border: #c8cbc4;
+  --muted: #f1f1f3;
+  --muted-foreground: #71717a;
+  --border: #e4e4e7;
+  --card: #ffffff;
+  --card-foreground: #18181b;
+  --card-border: #e4e4e7;
+  --glow-primary: rgba(101, 88, 211, 0.13);
+  --glow-secondary: rgba(69, 184, 199, 0.1);
 }
 
 [data-theme="dark"] {
-  --background: #111310;
-  --foreground: #f3f4f0;
-  --accent: #ff563f;
-  --accent-foreground: #111310;
-  --muted: #252824;
-  --muted-foreground: #a5aaa2;
-  --border: #3d413b;
-  --card: #1b1e1a;
-  --card-foreground: #f3f4f0;
-  --card-border: #3d413b;
+  --background: #0c0c0e;
+  --foreground: #f4f4f5;
+  --accent: #a99fff;
+  --accent-foreground: #111113;
+  --muted: #19191c;
+  --muted-foreground: #a1a1aa;
+  --border: #29292e;
+  --card: #141416;
+  --card-foreground: #f4f4f5;
+  --card-border: #29292e;
+  --glow-primary: rgba(130, 116, 255, 0.13);
+  --glow-secondary: rgba(57, 179, 195, 0.08);
 }

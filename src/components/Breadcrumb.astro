@@ -59,12 +59,10 @@ if (breadcrumbList[0] === "tags" && !isNaN(Number(breadcrumbList[2]))) {
 
 <nav class="app-layout mt-6 mb-0" aria-label="breadcrumb">
   <ul
-    class="text-muted-foreground text-xs font-semibold uppercase [&>li]:inline [&>li:not(:last-child)>a]:hover:text-accent"
+    class="text-muted-foreground [&>li:not(:last-child)>a]:hover:text-accent text-xs font-semibold uppercase [&>li]:inline"
   >
     <li>
-      <a href={getRelativeLocaleUrl(locale, "")} class="opacity-80">
-        Index
-      </a>
+      <a href={getRelativeLocaleUrl(locale, "")} class="opacity-80"> Index </a>
       <span aria-hidden="true" class="mx-2 opacity-50">/</span>
     </li>
     {

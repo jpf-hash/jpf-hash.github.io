@@ -19,39 +19,48 @@ const dateLabel = new Intl.DateTimeFormat("zh-CN", {
 }).format(displayDate);
 ---
 
-<li class="group border-border border-b">
+<li class="group">
   <article>
     <a
       href={getPostUrl(id, filePath, Astro.currentLocale)}
-      class="grid gap-4 py-6 sm:grid-cols-[8rem_1fr_auto] sm:items-start sm:gap-7"
+      class="border-border bg-card hover:bg-muted/70 grid gap-4 rounded-xl border p-4 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md sm:grid-cols-[6rem_1fr_auto] sm:items-center sm:gap-5"
     >
-      <div class="text-xs leading-6">
-        <p class="text-accent font-bold">{category}</p>
-        <p class="text-muted-foreground">{postStatusLabels[status]}</p>
-        {featured && <p class="text-muted-foreground">精选</p>}
+      <div class="text-xs leading-5">
+        <time
+          class="text-muted-foreground font-mono"
+          datetime={displayDate.toISOString()}
+        >
+          {dateLabel.slice(5)}
+        </time>
+        <p class="text-accent mt-1 font-medium">{category}</p>
       </div>
 
       <div>
         <Heading
           transition:name={slugifyStr(title.replaceAll(".", "-"))}
-          class="font-display text-foreground group-hover:text-accent text-2xl leading-tight font-semibold transition-colors sm:text-3xl"
+          class="font-display text-foreground group-hover:text-accent text-lg leading-snug font-semibold tracking-[-0.02em] transition-colors"
         >
           {title}
         </Heading>
-        <p class="text-muted-foreground mt-3 max-w-2xl text-sm leading-7">
+        <p
+          class="text-muted-foreground mt-1.5 line-clamp-2 max-w-2xl text-sm leading-6"
+        >
           {description}
         </p>
-        <p class="text-muted-foreground mt-4 text-xs">
-          {tags.slice(0, 3).join(" / ")}
+        <p class="text-muted-foreground mt-2 text-xs">
+          {postStatusLabels[status]}{featured ? " · 精选" : ""}{
+            tags.length ? ` · ${tags.slice(0, 2).join(" / ")}` : ""
+          }
         </p>
       </div>
 
-      <div class="flex items-center justify-between gap-4 sm:block sm:text-right">
-        <time class="text-muted-foreground text-xs" datetime={displayDate.toISOString()}>
-          {dateLabel}
-        </time>
-        <IconArrowRight class="text-muted-foreground group-hover:text-accent mt-4 hidden size-5 transition-colors sm:ms-auto sm:block" />
-      </div>
+      <span
+        class="border-border text-muted-foreground group-hover:border-accent group-hover:text-accent hidden size-9 items-center justify-center rounded-lg border transition-all sm:flex"
+      >
+        <IconArrowRight
+          class="size-4 transition-transform group-hover:translate-x-0.5"
+        />
+      </span>
     </a>
   </article>
 </li>

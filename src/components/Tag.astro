@@ -20,7 +20,7 @@ const locale = Astro.currentLocale ?? config.site.lang;
     transition:name={tag}
     class:list={[
       "inline-flex items-center gap-1 rounded-full border transition-all duration-200",
-      "border-border bg-muted/50 hover:bg-accent hover:text-accent-foreground hover:border-accent",
+      "border-border bg-card hover:bg-accent hover:text-accent-foreground hover:border-accent",
       "focus-visible:text-accent focus-visible:border-accent",
       { "px-2.5 py-0.5 text-xs": size === "sm" },
       { "px-3 py-1 text-sm": size === "lg" },

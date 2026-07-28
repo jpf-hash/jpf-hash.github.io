@@ -19,14 +19,24 @@ const backUrl = config.features.showBackButton
 <main
   data-backUrl={backUrl}
   id="main-content"
-  class:list={["app-layout pb-8", className]}
+  class:list={["app-layout pb-16", className]}
 >
-  <header class="border-border border-b pt-10 pb-10 sm:pt-14 sm:pb-14">
-    <p class="text-accent text-xs font-bold uppercase">Archive</p>
-    <h1 class="font-display mt-3 text-5xl leading-none font-semibold sm:text-7xl">{pageTitle}</h1>
-    {pageDesc && <p class="text-muted-foreground mt-5 max-w-2xl text-base leading-7">{pageDesc}</p>}
+  <header class="mx-auto max-w-3xl pt-20 pb-10 sm:pt-24 sm:pb-14">
+    <p class="text-accent mb-3 text-sm font-medium">jpf-hash / archive</p>
+    <h1
+      class="font-display text-4xl leading-tight font-semibold tracking-[-0.045em] sm:text-6xl"
+    >
+      {pageTitle}
+    </h1>
+    {
+      pageDesc && (
+        <p class="text-muted-foreground mt-5 max-w-2xl text-base leading-8">
+          {pageDesc}
+        </p>
+      )
+    }
   </header>
-  <div class="pt-6">
+  <div class="mx-auto max-w-3xl">
     <slot />
   </div>
 </main>

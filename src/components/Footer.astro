@@ -18,18 +18,18 @@ const currentYear = new Date().getFullYear();
   {...attrs}
 >
   <div
-    class="border-border grid gap-8 border-t py-10 sm:grid-cols-[1fr_auto] sm:items-end sm:py-12"
+    class="border-border mx-auto grid max-w-3xl gap-8 border-t py-8 sm:grid-cols-[1fr_auto] sm:items-center sm:py-10"
   >
     <div>
-      <p class="font-display text-3xl font-semibold">jpf—hash</p>
-      <p class="text-muted-foreground mt-3 max-w-md text-sm leading-6">
-        项目、笔记与过程记录。
+      <p class="text-sm font-semibold">jpf-hash</p>
+      <p class="text-muted-foreground mt-1.5 max-w-md text-xs leading-6">
+        学习、实验与解决问题的记录。
       </p>
     </div>
     <div class="sm:text-right">
       <Socials />
-      <p class="text-muted-foreground mt-4 text-xs">
-        &copy; {currentYear} / {t.footer.allRightsReserved}
+      <p class="text-muted-foreground mt-3 text-xs">
+        &copy; {currentYear} · {t.footer.allRightsReserved}
       </p>
     </div>
   </div>

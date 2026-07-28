@@ -120,35 +120,53 @@ const ogImage = ogImageUrl
     class:list={["app-layout", { "mt-8": !config.features.showBackButton }]}
     data-pagefind-body
   >
-    <header class="border-border max-w-5xl border-b pt-8 pb-10 sm:pt-12 sm:pb-14">
-      <p class="text-accent mb-4 text-xs font-bold uppercase">{post.data.category} / {postStatusLabels[status]}</p>
+    <header class="mx-auto max-w-[48rem] pt-16 pb-10 sm:pt-20 sm:pb-12">
+      <div class="mb-6 flex flex-wrap items-center gap-2 text-xs">
+        <span
+          class="bg-accent/10 text-accent rounded-full px-3 py-1 font-medium"
+          >{post.data.category}</span
+        >
+        <span class="text-muted-foreground">{postStatusLabels[status]}</span>
+      </div>
       <h1
         style={{ viewTransitionName: slugifyStr(title.replaceAll(".", "-")) }}
-        class="font-display text-foreground text-4xl leading-tight font-semibold sm:text-6xl"
+        class="font-display text-foreground text-4xl leading-[1.12] font-semibold tracking-[-0.045em] text-balance sm:text-6xl"
       >
         {title}
       </h1>
 
-      <div class="text-muted-foreground mt-6 flex flex-wrap items-center gap-2">
-        <Datetime {pubDatetime} {modDatetime} {timezone} {readingTime} size="lg" />
-      <span
-        aria-hidden="true"
-        class:list={[
-          "text-muted-foreground max-sm:hidden",
-          { hidden: !config.features.editPost?.enabled || hideEditPost },
-        ]}
+      <p class="text-muted-foreground mt-6 max-w-2xl text-base leading-8">
+        {description}
+      </p>
+
+      <div
+        class="text-muted-foreground mt-7 flex flex-wrap items-center gap-2 text-xs"
       >
-        |
-      </span>
-      <EditPost {hideEditPost} {post} class="max-sm:hidden" />
+        <Datetime
+          {pubDatetime}
+          {modDatetime}
+          {timezone}
+          {readingTime}
+          size="lg"
+        />
+        <span
+          aria-hidden="true"
+          class:list={[
+            "text-muted-foreground max-sm:hidden",
+            { hidden: !config.features.editPost?.enabled || hideEditPost },
+          ]}
+        >
+          ·
+        </span>
+        <EditPost {hideEditPost} {post} class="max-sm:hidden" />
       </div>
     </header>
 
     <article
       id="article"
       class:list={[
-        "mt-10 w-full",
-        "app-prose max-w-3xl",
+        "mx-auto mt-12 w-full sm:mt-16",
+        "app-prose max-w-[48rem]",
         "prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg)",
       ]}
     >
@@ -157,65 +175,65 @@ const ogImage = ogImageUrl
 
     {
       afterword && (
-        <aside class="border-border mt-10 max-w-3xl border-t pt-6">
-          <h2 class="text-accent text-sm font-semibold tracking-[0.18em] uppercase">
-            后记
-          </h2>
+        <aside class="border-border bg-card mx-auto mt-14 max-w-[48rem] rounded-2xl border p-6 shadow-sm">
+          <h2 class="text-accent text-sm font-semibold">后记</h2>
           <dl class="mt-5 grid gap-5 text-sm leading-7 sm:grid-cols-3">
-            {
-              afterword.stuck && (
-                <div>
-                  <dt class="text-muted-foreground">卡住的地方</dt>
-                  <dd class="mt-1">{afterword.stuck}</dd>
-                </div>
-              )
-            }
-            {
-              afterword.update && (
-                <div>
-                  <dt class="text-muted-foreground">后来补充</dt>
-                  <dd class="mt-1">{afterword.update}</dd>
-                </div>
-              )
-            }
-            {
-              afterword.next && (
-                <div>
-                  <dt class="text-muted-foreground">下次再看</dt>
-                  <dd class="mt-1">{afterword.next}</dd>
-                </div>
-              )
-            }
+            {afterword.stuck && (
+              <div>
+                <dt class="text-muted-foreground">卡住的地方</dt>
+                <dd class="mt-1">{afterword.stuck}</dd>
+              </div>
+            )}
+            {afterword.update && (
+              <div>
+                <dt class="text-muted-foreground">后来补充</dt>
+                <dd class="mt-1">{afterword.update}</dd>
+              </div>
+            )}
+            {afterword.next && (
+              <div>
+                <dt class="text-muted-foreground">下次再看</dt>
+                <dd class="mt-1">{afterword.next}</dd>
+              </div>
+            )}
           </dl>
         </aside>
       )
     }
 
-    <hr class="my-8 border-dashed" />
+    <hr class="border-border mx-auto my-10 max-w-[48rem]" />
 
-    <EditPost class="sm:hidden" {hideEditPost} {post} />
+    <div class="mx-auto max-w-[48rem]">
+      <EditPost class="sm:hidden" {hideEditPost} {post} />
+    </div>
 
     <BackToTopButton />
 
-    <ul class="mt-4 mb-8 flex flex-wrap gap-4 sm:my-8">
+    <ul class="mx-auto mt-4 mb-8 flex max-w-[48rem] flex-wrap gap-3 sm:my-8">
       {tags.map(tag => <Tag tag={slugifyStr(tag)} tagName={tag} size="sm" />)}
     </ul>
 
-    <ShareLinks />
+    <div class="mx-auto max-w-[48rem]"><ShareLinks /></div>
 
-    <hr class="my-8 border-dashed" />
+    <hr class="border-border mx-auto my-10 max-w-[48rem]" />
 
-    <AdjacentPostNav {prevPost} {nextPost} />
+    <div class="mx-auto max-w-[48rem]">
+      <AdjacentPostNav {prevPost} {nextPost} />
+    </div>
 
     {
       relatedPosts.length > 0 && (
-        <section class="mt-12 max-w-3xl">
-          <h2 class="text-accent mb-4 text-xl font-semibold">相关文章</h2>
+        <section class="mx-auto mt-14 max-w-[48rem] border-t pt-8">
+          <h2 class="font-display mb-5 text-3xl font-semibold">相关文章</h2>
           <ul class="space-y-4">
             {relatedPosts.map(relatedPost => (
               <li>
                 <a
-                  href={getPostUrl(relatedPost.id, relatedPost.filePath, locale)}
+                  href={getPostUrl(
+                    relatedPost.id,
+                    relatedPost.filePath,
+                    locale
+                  )}
                   class="text-accent hover:underline"
                 >
                   {relatedPost.data.title}
@@ -230,7 +248,7 @@ const ogImage = ogImageUrl
       )
     }
 
-    <Comments class="mt-12 max-w-3xl" />
+    <Comments class="mx-auto mt-14 max-w-[48rem]" />
   </main>
   <Footer />
 </PostLayout>
@@ -239,10 +257,10 @@ const ogImage = ogImageUrl
   function createProgressBar() {
     const progressContainer = document.createElement("div");
     progressContainer.className =
-      "progress-container fixed top-0 z-10 h-1 w-full bg-background";
+      "progress-container fixed top-0 z-50 h-0.5 w-full bg-transparent";
 
     const progressBar = document.createElement("div");
-    progressBar.className = "progress-bar h-1 w-0 bg-accent";
+    progressBar.className = "progress-bar h-0.5 w-0 bg-accent";
     progressBar.id = "myBar";
 
     progressContainer.appendChild(progressBar);

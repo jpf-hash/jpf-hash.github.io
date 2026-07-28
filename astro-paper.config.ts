@@ -4,10 +4,10 @@ export default defineAstroPaperConfig({
   site: {
     url: "https://jpf-hash.github.io/",
     title: "jpf-hash 的笔记本",
-    description: "Python、机器学习、图神经网络。记录学习路线、实验复盘和踩坑经验。",
+    description: "把学习、实验与解决问题的过程，整理成可复用的笔记。",
     author: "jpf-hash",
     profile: "https://github.com/jpf-hash",
-    ogImage: "default-og.jpg",
+    ogImage: "og-modern.jpg",
     lang: "zh-CN",
     timezone: "Asia/Shanghai",
     dir: "ltr",

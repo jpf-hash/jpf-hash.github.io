@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: "关于"
 description: "jpf-hash 的个人笔记、学习方向和写作计划"
 ---
 

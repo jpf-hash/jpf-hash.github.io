@@ -3,7 +3,7 @@
 @layer base {
   .app-prose {
     @apply prose min-w-0 wrap-break-word;
-    font-family: var(--font-heading);
+    font-family: var(--font-system);
     font-size: 1.05rem;
 
     h1,
@@ -12,6 +12,7 @@
     h4,
     th {
       @apply font-display text-foreground font-semibold;
+      letter-spacing: -0.025em !important;
     }
 
     h1 {
@@ -19,7 +20,7 @@
     }
 
     h2 {
-      @apply border-border mt-10 mb-4 border-b pb-3 text-2xl;
+      @apply mt-12 mb-4 border-0 pb-0 text-2xl;
     }
 
     h3 {
@@ -42,7 +43,7 @@
 
     p,
     li {
-      @apply leading-8;
+      @apply leading-[1.9];
     }
 
     a {
@@ -62,7 +63,7 @@
     }
 
     img {
-      @apply border-border mx-auto border;
+      @apply border-border mx-auto rounded-xl border;
     }
 
     figcaption {
@@ -82,7 +83,7 @@
 
     code {
       @apply bg-muted/70 text-foreground px-1.5 py-0.5 font-mono text-sm wrap-break-word before:content-none after:content-none;
-      font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+      font-family: var(--font-mono);
     }
 
     .astro-code code {

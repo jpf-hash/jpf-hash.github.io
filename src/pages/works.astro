@@ -16,30 +16,35 @@ const projects = getSortedPosts(await getCollection("posts")).filter(
   description="jpf-hash 的项目、实现过程与复盘记录。"
 >
   <Header />
-  <main id="main-content" class="app-layout">
-    <section class="border-border grid gap-8 border-b py-14 lg:grid-cols-[16rem_1fr] lg:py-20">
-      <p class="text-accent text-xs font-bold uppercase">
-        Work
+  <main id="main-content" class="app-layout pb-16">
+    <section class="mx-auto max-w-3xl pt-20 pb-12 sm:pt-24 sm:pb-16">
+      <p class="text-accent mb-3 text-sm font-medium">Selected work</p>
+      <h1
+        class="font-display max-w-3xl text-4xl leading-tight font-semibold tracking-[-0.045em] sm:text-6xl"
+      >
+        做过的项目，留下的过程。
+      </h1>
+      <p class="text-muted-foreground mt-5 max-w-2xl text-base leading-8">
+        从问题、实现到结果和复盘。这里只展示已经公开的项目记录。
       </p>
-      <div>
-        <h1 class="font-display max-w-4xl text-5xl leading-none font-semibold sm:text-7xl">
-          做过的项目，留下的过程。
-        </h1>
-        <p class="text-muted-foreground mt-6 max-w-2xl text-lg leading-8">
-          从问题、实现到结果和复盘。这里只展示已经公开的项目记录。
-        </p>
-      </div>
     </section>
 
     {
       projects.length > 0 ? (
-        <section class="py-10 lg:py-14">
-          <ul class="border-border border-t-2">
-            {projects.map(project => <Card variant="h2" {...project} />)}
+        <section class="mx-auto max-w-3xl">
+          <ul class="space-y-2">
+            {projects.map(project => (
+              <Card variant="h2" {...project} />
+            ))}
           </ul>
         </section>
       ) : (
-        <p class="text-muted-foreground py-16 text-sm">目前没有公开项目。</p>
+        <div class="border-border bg-card mx-auto max-w-3xl rounded-2xl border p-6 text-sm shadow-sm">
+          <p class="font-medium">项目页还在准备。</p>
+          <p class="text-muted-foreground mt-2">
+            当一项工作有了足够完整的问题、实现和复盘，它会出现在这里。
+          </p>
+        </div>
       )
     }
   </main>

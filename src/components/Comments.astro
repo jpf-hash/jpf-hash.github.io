@@ -33,8 +33,7 @@ const { class: className = "" } = Astro.props;
     data-lang="zh-CN"
     data-loading="lazy"
     crossorigin="anonymous"
-    async
-  ></script>
+    async></script>
 </div>
 
 <script>
@@ -57,7 +56,7 @@ const { class: className = "" } = Astro.props;
   }
 
   // Listen for theme toggle
-  document.addEventListener("click", (e) => {
+  document.addEventListener("click", e => {
     if ((e.target as HTMLElement)?.closest("#theme-btn")) {
       // Small delay to allow theme to change first
       setTimeout(updateGiscusTheme, 100);

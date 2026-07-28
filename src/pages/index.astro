@@ -6,174 +6,234 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Card from "@/components/Card.astro";
-import LinkButton from "@/components/LinkButton.astro";
 import { getSortedPosts } from "@/utils/getSortedPosts";
 import config from "@/config";
 
 const locale = Astro.currentLocale ?? config.site.lang;
-const sortedPosts = getSortedPosts(await getCollection("posts"));
-const projectPosts = sortedPosts.filter(({ data }) => data.category === "项目");
-const writingPosts = sortedPosts.filter(({ data }) => data.category !== "项目");
+const sortedPosts = getSortedPosts(
+  await getCollection("posts", ({ data }) => !data.draft)
+);
 const homePath = getRelativeLocaleUrl(locale, "");
 
-const sections = [
+const topics = [
   {
     id: "programming",
-    no: "01",
     title: "编程与工具",
-    desc: "代码、环境、命令行和可以反复使用的工作流。",
+    description: "Python、Git、命令行与日常开发工作流",
+    hue: "from-violet-500/15 to-violet-500/0",
   },
   {
     id: "data-ml",
-    no: "02",
     title: "数据与机器学习",
-    desc: "数据处理、模型评估、实验过程与结果。",
+    description: "数据处理、模型评估与实验方法",
+    hue: "from-cyan-500/15 to-cyan-500/0",
   },
   {
     id: "projects",
-    no: "03",
     title: "项目与实践",
-    desc: "从问题到实现，再到项目完成后的复盘。",
+    description: "从问题、实现到结果的完整复盘",
+    hue: "from-amber-500/15 to-amber-500/0",
   },
   {
     id: "reading",
-    no: "04",
     title: "阅读笔记",
-    desc: "书籍、课程、技术文章和论文中的理解。",
+    description: "课程、书籍、技术文章与论文",
+    hue: "from-rose-500/15 to-rose-500/0",
   },
-];
-
-const quickLinks = [
-  ...(projectPosts.length > 0
-    ? [{ label: "作品", href: getRelativeLocaleUrl(locale, "works") }]
-    : []),
-  { label: "笔记", href: getRelativeLocaleUrl(locale, "posts") },
-  { label: "主题", href: getRelativeLocaleUrl(locale, "topics") },
-  { label: "关于", href: getRelativeLocaleUrl(locale, "about") },
-];
+].map(topic => ({
+  ...topic,
+  count: sortedPosts.filter(post => post.data.topic === topic.id).length,
+}));
 ---
 
 <Layout>
   <Header />
-  <main id="main-content" data-layout="index" data-home-path={homePath}>
-    <section class="relative min-h-[34rem] overflow-hidden border-b border-black/20 text-[#111310] sm:min-h-[38rem]">
-      <img
-        src={`${import.meta.env.BASE_URL}assets/archive-desk.png`}
-        alt="打开的方格笔记本、绘图纸与机械铅笔"
-        class="absolute inset-0 size-full object-cover object-center"
-        width="1716"
-        height="918"
-        fetchpriority="high"
-      />
-      <div class="absolute inset-0 bg-white/48"></div>
-
-      <div class="app-layout relative flex min-h-[34rem] flex-col justify-between py-8 sm:min-h-[38rem] sm:py-10">
-        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-black/25 pb-4 text-[11px] font-semibold uppercase">
-          <span>Personal archive / 2026</span>
-          <nav class="flex flex-wrap gap-x-5 gap-y-2" aria-label="首页快捷导航">
-            {quickLinks.map(link => <a class="hover:text-[#e13b27]" href={link.href}>{link.label}</a>)}
-          </nav>
+  <main
+    id="main-content"
+    class="app-layout"
+    data-layout="index"
+    data-home-path={homePath}
+  >
+    <section class="mx-auto max-w-3xl pt-20 pb-14 sm:pt-28 sm:pb-20">
+      <div class="stagger">
+        <div class="mb-8 flex items-center gap-4">
+          <div
+            class="border-border bg-card relative flex size-16 items-center justify-center rounded-2xl border shadow-sm"
+          >
+            <span
+              class="bg-foreground text-background flex size-11 items-center justify-center rounded-xl font-mono text-sm font-semibold"
+              >JH</span
+            >
+            <span
+              class="border-background absolute -right-1 -bottom-1 size-4 rounded-full border-[3px] bg-emerald-500"
+              aria-label="持续更新中"></span>
+          </div>
+          <div>
+            <p class="font-semibold">jpf-hash</p>
+            <p class="text-muted-foreground mt-0.5 text-sm">
+              学习者 · 记录者 · 构建者
+            </p>
+          </div>
         </div>
 
-        <div class="max-w-5xl pb-4">
-          <p class="mb-4 text-sm font-bold text-[#e13b27]">NOTES · WORK · PROCESS</p>
-          <h1 class="font-display text-6xl leading-[0.9] font-semibold sm:text-8xl lg:text-[9rem]">
-            jpf—hash
-          </h1>
-          <div class="mt-7 grid max-w-4xl gap-6 md:grid-cols-[1fr_auto] md:items-end">
-            <p class="max-w-2xl text-base leading-7 font-medium sm:text-lg sm:leading-8">
-              项目、学习、阅读和解决问题的记录。这里保存结果，也保留抵达结果之前的过程。
-            </p>
-            <div class="flex flex-wrap gap-2">
-              <LinkButton
-                href={getRelativeLocaleUrl(locale, "posts")}
-                class="bg-[#111310] px-5 py-3 text-sm font-semibold text-white hover:bg-[#e13b27]"
-              >
-                开始阅读
-                <IconArrowRight class="size-4" />
-              </LinkButton>
-              <LinkButton
-                href={getRelativeLocaleUrl(locale, "about")}
-                class="border border-black/40 bg-white/35 px-5 py-3 text-sm font-semibold hover:border-[#e13b27]"
-              >
-                关于
-              </LinkButton>
-            </div>
-          </div>
+        <h1
+          class="font-display max-w-3xl text-5xl leading-[1.08] font-semibold tracking-[-0.055em] text-balance sm:text-7xl"
+        >
+          你好，我在这里记录<br class="hidden sm:block" />学习与构建的过程。
+        </h1>
+
+        <div
+          class="text-muted-foreground mt-8 max-w-2xl space-y-4 text-base leading-8 sm:text-lg"
+        >
+          <p>
+            我在学习编程、数据和机器学习。这个网站用来保存真正解决过的问题、做过的实验，以及值得再次使用的方法。
+          </p>
+          <p>
+            文章不追求数量，更关心一件事：下一次遇到相似问题时，它是否依然有用。
+          </p>
+        </div>
+
+        <div class="mt-9 flex flex-wrap items-center gap-3">
+          <a
+            href={getRelativeLocaleUrl(locale, "posts")}
+            class="bg-foreground text-background hover:bg-accent inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-all hover:-translate-y-0.5"
+          >
+            阅读笔记
+            <IconArrowRight class="size-4" />
+          </a>
+          <a
+            href="https://github.com/jpf-hash"
+            class="border-border bg-card hover:bg-muted inline-flex items-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-medium shadow-sm transition-all hover:-translate-y-0.5"
+          >
+            GitHub
+            <span aria-hidden="true">↗</span>
+          </a>
         </div>
       </div>
     </section>
 
-    <div class="app-layout">
-      {
-        projectPosts.length > 0 && (
-          <section class="grid gap-8 border-b py-14 lg:grid-cols-[16rem_1fr] lg:py-20">
-            <header>
-              <p class="text-accent text-xs font-bold uppercase">Selected work</p>
-              <h2 class="font-display mt-3 text-4xl font-semibold">作品</h2>
-            </header>
-            <div>
-              <ul class="border-border border-t">
-                {projectPosts.slice(0, 3).map(post => <Card variant="h3" {...post} />)}
-              </ul>
-              <a class="text-accent mt-6 inline-flex items-center gap-2 text-sm font-semibold" href={getRelativeLocaleUrl(locale, "works")}>
-                查看全部 <IconArrowRight class="size-4" />
-              </a>
-            </div>
-          </section>
-        )
-      }
+    <section class="mx-auto max-w-3xl py-10 sm:py-14">
+      <div
+        class="border-border bg-card/75 rounded-2xl border p-5 shadow-sm backdrop-blur sm:p-6"
+      >
+        <div class="flex items-center gap-2 text-sm font-medium">
+          <span class="bg-accent size-2 rounded-full"></span>
+          现在
+        </div>
+        <p class="text-muted-foreground mt-3 leading-7">
+          正在把零散的学习记录整理成可以检索、持续更新、真正能复用的个人知识库。
+        </p>
+      </div>
+    </section>
 
-      <section class="grid gap-8 border-b py-14 lg:grid-cols-[16rem_1fr] lg:py-20">
-        <header>
-          <p class="text-accent text-xs font-bold uppercase">Content index</p>
-          <h2 class="font-display mt-3 text-4xl font-semibold">内容索引</h2>
-        </header>
-        <ol class="border-border border-t">
-          {
-            sections.map(section => (
-              <li class="border-border border-b">
-                <a
-                  href={`${getRelativeLocaleUrl(locale, "topics")}#${section.id}`}
-                  class="group grid gap-3 py-5 sm:grid-cols-[3rem_13rem_1fr_auto] sm:items-center"
-                >
-                  <span class="text-accent text-xs font-bold">{section.no}</span>
-                  <span class="text-xl font-semibold">{section.title}</span>
-                  <span class="text-muted-foreground text-sm leading-6">{section.desc}</span>
-                  <IconArrowRight class="text-muted-foreground group-hover:text-accent hidden size-5 sm:block" />
-                </a>
-              </li>
-            ))
-          }
-        </ol>
-      </section>
+    <section class="mx-auto max-w-3xl py-12 sm:py-16">
+      <div class="mb-7 flex items-end justify-between gap-6">
+        <div>
+          <p class="text-muted-foreground text-sm">Writing</p>
+          <h2
+            class="font-display mt-1 text-2xl font-semibold tracking-[-0.03em]"
+          >
+            最近写作
+          </h2>
+        </div>
+        <a
+          href={getRelativeLocaleUrl(locale, "posts")}
+          class="text-muted-foreground hover:text-accent inline-flex items-center gap-1 text-sm transition-colors"
+        >
+          全部文章 <IconArrowRight class="size-4" />
+        </a>
+      </div>
 
       {
-        writingPosts.length > 0 && (
-          <section id="recent-posts" class="grid gap-8 py-14 lg:grid-cols-[16rem_1fr] lg:py-20">
-            <header>
-              <p class="text-accent text-xs font-bold uppercase">Latest notes</p>
-              <h2 class="font-display mt-3 text-4xl font-semibold">最近更新</h2>
-            </header>
-            <div>
-              <ul class="border-border border-t">
-                {writingPosts.slice(0, config.posts.perIndex).map(post => <Card variant="h3" {...post} />)}
-              </ul>
-              <a class="text-accent mt-6 inline-flex items-center gap-2 text-sm font-semibold" href={getRelativeLocaleUrl(locale, "posts")}>
-                全部笔记 <IconArrowRight class="size-4" />
-              </a>
-            </div>
-          </section>
+        sortedPosts.length > 0 ? (
+          <ul class="space-y-2">
+            {sortedPosts.slice(0, 5).map(post => (
+              <Card variant="h3" {...post} />
+            ))}
+          </ul>
+        ) : (
+          <p class="text-muted-foreground text-sm">第一篇文章正在路上。</p>
         )
       }
-    </div>
+    </section>
+
+    <section class="mx-auto max-w-3xl py-12 sm:py-16">
+      <div class="mb-7">
+        <p class="text-muted-foreground text-sm">Explore</p>
+        <h2 class="font-display mt-1 text-2xl font-semibold tracking-[-0.03em]">
+          沿着主题阅读
+        </h2>
+      </div>
+
+      <div class="grid gap-3 sm:grid-cols-2">
+        {
+          topics.map((topic, index) => (
+            <a
+              href={`${getRelativeLocaleUrl(locale, "topics")}#${topic.id}`}
+              class="border-border bg-card group relative min-h-40 overflow-hidden rounded-2xl border p-5 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
+            >
+              <div
+                class:list={[
+                  "absolute inset-0 bg-gradient-to-br opacity-70",
+                  topic.hue,
+                ]}
+                aria-hidden="true"
+              />
+              <div class="relative flex h-full flex-col justify-between">
+                <div class="flex items-start justify-between">
+                  <span class="text-muted-foreground font-mono text-xs">
+                    0{index + 1}
+                  </span>
+                  <span class="text-muted-foreground group-hover:text-accent transition-transform group-hover:translate-x-0.5">
+                    →
+                  </span>
+                </div>
+                <div class="mt-10">
+                  <h3 class="font-display text-lg font-semibold">
+                    {topic.title}
+                  </h3>
+                  <p class="text-muted-foreground mt-1.5 text-sm leading-6">
+                    {topic.description}
+                  </p>
+                  <p class="text-muted-foreground mt-3 text-xs">
+                    {topic.count > 0 ? `${topic.count} 篇笔记` : "持续整理中"}
+                  </p>
+                </div>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-3xl py-12 sm:py-16">
+      <div
+        class="border-border border-y py-10 sm:grid sm:grid-cols-[1fr_auto] sm:items-center sm:gap-10"
+      >
+        <div>
+          <h2 class="font-display text-2xl font-semibold tracking-[-0.03em]">
+            关于这个笔记本
+          </h2>
+          <p class="text-muted-foreground mt-3 max-w-xl text-sm leading-7">
+            这里保留结果，也保留判断、失败与修正。它不是完成后的作品集，而是一份会慢慢生长的学习记录。
+          </p>
+        </div>
+        <a
+          href={getRelativeLocaleUrl(locale, "about")}
+          class="text-accent mt-6 inline-flex items-center gap-2 text-sm font-medium sm:mt-0"
+        >
+          了解更多 <IconArrowRight class="size-4" />
+        </a>
+      </div>
+    </section>
   </main>
   <Footer />
 </Layout>
 
 <script>
   document.addEventListener("astro:page-load", () => {
-    const indexLayout = (document.querySelector("#main-content") as HTMLElement)?.dataset;
+    const indexLayout = (document.querySelector("#main-content") as HTMLElement)
+      ?.dataset;
     const baseRoot = import.meta.env.BASE_URL.replace(/\/?$/, "/");
     if (indexLayout?.layout) {
       sessionStorage.setItem("backUrl", indexLayout.homePath ?? baseRoot);
