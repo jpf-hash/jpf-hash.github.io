@@ -9,7 +9,7 @@ status: "evergreen"
 draft: false
 ---
 
-## Table of contents
+## 目录
 
 ## 为什么重新整理这个博客
 

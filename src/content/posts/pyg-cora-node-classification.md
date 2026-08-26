@@ -4,13 +4,13 @@ description: "从 edge_index 和 PyG Data 出发，在 Cora 论文引用网络�
 pubDatetime: 2026-07-28T17:10:00+08:00
 tags: ["python", "机器学习", "深度学习", "GNN", "PyTorch", "PyG", "节点分类"]
 category: "技术"
-topic: "machine-learning"
+topic: "data-ml"
 status: "in-progress"
 featured: false
 draft: false
 ---
 
-## Table of contents
+## 目录
 
 ## 从手写 GCN 到真实图数据
 

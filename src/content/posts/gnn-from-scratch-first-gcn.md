@@ -4,13 +4,13 @@ description: "从邻接矩阵、消息传递和对称归一化出发，用纯 Py
 pubDatetime: 2026-07-28T09:30:00+08:00
 tags: ["python", "机器学习", "深度学习", "GNN", "PyTorch", "笔记"]
 category: "技术"
-topic: "machine-learning"
+topic: "data-ml"
 status: "in-progress"
 featured: false
 draft: false
 ---
 
-## Table of contents
+## 目录
 
 ## 为什么开始学习 GNN
 

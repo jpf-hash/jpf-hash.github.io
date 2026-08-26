@@ -4,13 +4,13 @@ description: "继续在 Cora 上比较 GCN、GraphSAGE 与 GAT，理解固定归
 pubDatetime: 2026-07-29T10:20:00+08:00
 tags: ["python", "机器学习", "深度学习", "GNN", "PyTorch", "PyG", "GraphSAGE", "GAT"]
 category: "技术"
-topic: "machine-learning"
+topic: "data-ml"
 status: "in-progress"
 featured: false
 draft: false
 ---
 
-## Table of contents
+## 目录
 
 ## 继续比较三种 GNN
 
